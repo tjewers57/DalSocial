@@ -1,6 +1,7 @@
-import React, { useRef, useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useRef, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
+import '../css/signup.css';
 
 const Login = () => {
     const userRef = useRef();
@@ -9,7 +10,6 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errMsg, setErrMsg] = useState('');
-    const [success, setSuccess] = useState(false);
 
     useEffect(() => {
         userRef.current.focus();
@@ -31,7 +31,7 @@ const Login = () => {
             const response = await axios.post("http://localhost:8080/users/auth", loginData);
             if(response.data === "User authenticated successfully"){
                 localStorage.setItem('loggedInUser', email);
-                setSuccess(true);
+                // add redirect to home once implemented
             }
             else{
                 setErrMsg(response.data);
