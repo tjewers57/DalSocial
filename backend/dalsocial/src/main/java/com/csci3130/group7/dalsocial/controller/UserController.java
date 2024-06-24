@@ -4,6 +4,7 @@ import com.csci3130.group7.dalsocial.model.User;
 import com.csci3130.group7.dalsocial.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import utils.LoginInfo;
 
 import java.util.List;
 
@@ -49,4 +50,10 @@ public class UserController {
     public String deleteUser(@PathVariable Integer id) {
         return userService.deleteUser(id);
     }
+
+    @PostMapping("/auth")
+    public String authUser(@RequestBody LoginInfo loginInfo) {
+        return userService.authenticateUser(loginInfo.getEmail(), loginInfo.getPassword());
+    }
+
 }

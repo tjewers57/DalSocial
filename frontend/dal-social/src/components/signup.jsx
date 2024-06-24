@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import '../css/signup.css';
 
@@ -35,7 +36,7 @@ const SignUp = () => {
     }
 
     return (
-        <div>
+        <div className='accountWrapper'>
             <h2>Register for an account.</h2>
             <form id="signup" onSubmit={verifyFields}>
                 <input type='text' name='firstName' placeholder='First Name' onChange={(e) => setFirstName(e.target.value)} required/>
@@ -45,6 +46,14 @@ const SignUp = () => {
                 <input type='password' name='password' placeholder='Password' onChange={(e) => setPassword(e.target.value)} required/>
                 <button type='submit'>Signup</button>
             </form>
+            <p>
+                Already have an account? <br/>
+                <span>
+                    <Link to="/login">
+                        <a href="#">Login</a>
+                    </Link>
+                </span>
+            </p>
         </div>
     );
 
