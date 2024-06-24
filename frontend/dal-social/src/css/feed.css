@@ -1,0 +1,51 @@
+body {
+    background-color: #282c34;
+    color: white;
+}
+
+.basicWrapper{
+    background-color: #181a1f;
+    width:80%;
+    padding:1em;
+    margin: auto;
+}
+
+.nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding:1em;
+    width:15%;
+}
+
+.nav-item{
+    margin: auto;
+}
+
+.postWrapper{
+    background-color: #0f1113;
+    width:40%;
+    margin: auto;
+    padding: 1em;
+}
+
+.creds{
+    text-align: left;
+    line-height: 3%;
+}
+
+.post{
+    
+}
+
+h1, h2, form {
+    width:80%;
+    text-align: center;
+    margin: auto;
+}
+
+a {
+    color:#6AD1FF;
+    text-decoration: none;
+}

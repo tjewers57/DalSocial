@@ -4,6 +4,7 @@ import SignUp from './components/signup';
 import Login from './components/login';
 
 import './App.css';
+import Feed from './components/feed';
 
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
     <div id='app'>
       <Router>
         <Routes>
-          <Route path = "/"></Route>
+          <Route path = "/" element={<Feed/>}/>
           <Route path = "/signup" element={<SignUp/>}/>
           <Route path = "/login" element={<Login/>}/>
         </Routes>
