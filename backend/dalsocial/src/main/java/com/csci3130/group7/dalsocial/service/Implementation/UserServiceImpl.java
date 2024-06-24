@@ -92,4 +92,9 @@ public class UserServiceImpl implements UserService {
             return "User authenticated successfully";
         }
     }
+
+    @Override
+    public String resetPassword(User user){
+        return "";
+    }
 }

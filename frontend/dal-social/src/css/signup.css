@@ -35,7 +35,7 @@ form {
     width: 100%;
 }
 
-form > input, button {
+form > input, button, select {
     width:25%;
     padding:10px;
     background-color: #282c34;

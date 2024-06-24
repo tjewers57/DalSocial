@@ -2,6 +2,7 @@ package com.csci3130.group7.dalsocial.model;
 
 import jakarta.persistence.*;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -16,12 +17,21 @@ public class User {
 
     @Column(nullable = false)
     private String firstName;
+
     @Column(nullable = false)
     private String lastName;
+
     @Column(nullable = false, unique = true)
     private String email;
+
     @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
+    public String securityQuestion;
+
+    @Column(nullable = false)
+    public String securityAnswer;
 
     @Enumerated(EnumType.STRING)
     private UserRole role;
@@ -85,6 +95,22 @@ public class User {
         this.password = password;
     }
 
+    public String getSecurityQuestion() {
+        return securityQuestion;
+    }
+
+    public void setSecurityQuestion(String securityQuestion) {
+        this.securityQuestion = securityQuestion;
+    }
+
+    public String getSecurityAnswer() {
+        return securityAnswer;
+    }
+
+    public void setSecurityAnswer(String securityAnswer) {
+        this.securityAnswer = securityAnswer;
+    }
+
     /*public Set<Group> getGroups() {
         return groups;
     }
@@ -113,12 +139,14 @@ public class User {
 
     }
 
-    public User(Integer id, String firstName, String lastName, String email, String password, UserRole role) {
+    public User(Integer id, String firstName, String lastName, String email, String password, String securityQuestion, String securityAnswer, UserRole role) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.securityQuestion = securityQuestion;
+        this.securityAnswer = securityAnswer;
         this.role = role;
     }
 }

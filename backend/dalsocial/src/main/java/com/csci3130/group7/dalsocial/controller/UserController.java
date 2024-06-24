@@ -56,4 +56,9 @@ public class UserController {
         return userService.authenticateUser(loginInfo.getEmail(), loginInfo.getPassword());
     }
 
+    @PostMapping("/reset")
+    public String resetPassword(@RequestBody User user) {
+        return userService.resetPassword(user);
+    }
+
 }
