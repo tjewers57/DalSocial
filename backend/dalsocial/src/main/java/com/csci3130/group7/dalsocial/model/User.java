@@ -29,16 +29,13 @@ public class User {
     @OneToMany(mappedBy = "postOwner", cascade = CascadeType.ALL)
     private List<Post> posts;
 
-    @ManyToMany
+    /*@ManyToMany()
     @JoinTable(
-            name="friendship",
-            joinColumns = @JoinColumn(name="user_id"),
-            inverseJoinColumns = @JoinColumn(name="friend_id")
+            name = "group_members",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "group_id")}
     )
-    private Set<User> friends = new HashSet<>();
-
-    @ManyToMany(mappedBy = "members")
-    private Set<Group> groups = new HashSet<>();
+    private Set<Group> groups = new HashSet<>();*/
 
     @OneToOne
     @JoinColumn(name = "profile_id")
@@ -88,21 +85,13 @@ public class User {
         this.password = password;
     }
 
-    public Set<User> getFriends() {
-        return friends;
-    }
-
-    public void setFriends(Set<User> friends) {
-        this.friends = friends;
-    }
-
-    public Set<Group> getGroups() {
+    /*public Set<Group> getGroups() {
         return groups;
     }
 
     public void setGroups(Set<Group> groups) {
         this.groups = groups;
-    }
+    }*/
 
     public List<Post> getPosts() {
         return posts;
