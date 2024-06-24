@@ -1,0 +1,37 @@
+body {
+    position: relative;
+    top:50%;
+    transform: translateY(50%);
+    background-color: #282c34;
+    color: white;
+}
+
+h2, form {
+    width:80%;
+    text-align: center;
+    margin: auto;
+    margin-bottom:0.5em;
+}
+
+form {
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+    width: 25%;
+}
+
+form > input, button {
+    padding:10px;
+    background-color: #282c34;
+    color:#ccc;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+form > button {
+    background-color: #6AD1FF;
+    padding: 10px 10px;
+    color:#282c34;
+
+}
