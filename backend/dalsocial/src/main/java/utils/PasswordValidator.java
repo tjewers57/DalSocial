@@ -24,7 +24,7 @@ public class PasswordValidator {
             if(Character.isUpperCase(c)) { uppercase = true; }
             if(Character.isLowerCase(c)) { lowercase = true; }
             if(Character.isDigit(c)) { number = true; }
-            if(Character.isSpaceChar(c)) { special = true; }
+            if(specialChar(c)) { special = true; }
         }
 
         return uppercase && lowercase && number && special;
