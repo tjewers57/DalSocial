@@ -1,9 +1,8 @@
-import React, { useRef, useState, useEffect, useContext } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import AuthContext from "../context/AuthProvider";
+import axios from 'axios';
 
 const Login = () => {
-    const { setAuth } = useContext(AuthContext);
     const userRef = useRef();
     const errRef = useRef();
 
@@ -23,11 +22,29 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        const loginData = {
+            email,
+            password
+        }
+
+        try {
+            const response = await axios.post("http://localhost:8080/users/auth", loginData);
+            if(response.data === "User authenticated successfully"){
+                localStorage.setItem('loggedInUser', email);
+                setSuccess(true);
+            }
+            else{
+                setErrMsg(response.data);
+            }
+        } catch (error) {
+            console.log(error)
+            alert("An error occured, please try again.");
+        }
     }
 
     return (
         <div className='accountWrapper'>
-            <p ref={errRef} className = {errMsg ? "errMsg" : "offscreen"}>{errMsg}</p>
+            <p ref={errRef} className = {errMsg ? "errMsg" : "offscreen"} style={{color:"red"}}>{errMsg}</p>
             <h2>Sign In</h2>
             <form onSubmit={handleSubmit}>
                 <label htmlFor='email'>Email</label>
@@ -38,7 +55,7 @@ const Login = () => {
             </form>
 
             <p>
-                Not registered?
+                Not registered? <br/>
                 <span>
                     <Link to="/signup">
                         <a href="#">Sign Up</a>
