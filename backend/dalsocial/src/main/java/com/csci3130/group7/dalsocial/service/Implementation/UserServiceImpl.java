@@ -79,4 +79,17 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(id);
         return "User deleted successfully";
     }
+
+    @Override
+    public String authenticateUser(String email, String password) {
+        if(userRepository.findByEmail(email) == null) {
+            return "An account with this email does not exist";
+        }
+        else if(!password.equals(userRepository.findByEmail(email).getPassword())) {
+            return "Incorrect password";
+        }
+        else{
+            return "User authenticated successfully";
+        }
+    }
 }

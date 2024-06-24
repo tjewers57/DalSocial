@@ -20,4 +20,6 @@ public interface UserService {
 
     String deleteUser(Integer id);
 
+    String authenticateUser(String email, String password);
+
 }
