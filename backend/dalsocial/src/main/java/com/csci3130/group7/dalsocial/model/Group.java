@@ -20,13 +20,8 @@ public class Group {
 
     private Integer ownerId;
 
-    @ManyToMany
-    @JoinTable(
-            name = "group_members",
-            joinColumns = @JoinColumn(name = "group_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id")
-    )
-    private Set<User> members = new HashSet<>();
+    //@ManyToMany(mappedBy = "groups")
+    //private Set<User> members = new HashSet<User>();
 
     public Integer getId() {
         return id;
@@ -56,13 +51,13 @@ public class Group {
         this.ownerId = ownerId;
     }
 
-    public Set<User> getMembers() {
+    /*public Set<User> getMembers() {
         return members;
     }
 
     public void setMembers(Set<User> members) {
         this.members = members;
-    }
+    }*/
 
     public Group(){
 

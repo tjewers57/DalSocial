@@ -1,0 +1,52 @@
+body {
+    position: relative;
+    top:50%;
+    transform: translateY(50%);
+    background-color: #282c34;
+    color: white;
+}
+
+.accountWrapper{
+    background-color: #181a1f;
+    width:50%;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+    padding:1em;
+}
+
+h2, form {
+    width:80%;
+    text-align: center;
+    margin: auto;
+    margin-bottom:0.5em;
+}
+
+a {
+    color:#6AD1FF;
+    text-decoration: none;
+}
+
+form {
+    align-items: center;
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+    width: 100%;
+}
+
+form > input, button {
+    width:25%;
+    padding:10px;
+    background-color: #282c34;
+    color:#ccc;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+form > button {
+    background-color: #6AD1FF;
+    padding: 10px 10px;
+    color:#282c34;
+}
