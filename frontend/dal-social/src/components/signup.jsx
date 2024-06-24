@@ -47,7 +47,7 @@ const SignUp = () => {
             </form>
         </div>
     );
-
+    
 }
 
 export default SignUp;
