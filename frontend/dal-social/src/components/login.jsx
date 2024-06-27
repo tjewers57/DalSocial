@@ -54,14 +54,24 @@ const Login = () => {
                 <button>Sign In</button>
             </form>
 
-            <p>
-                Not registered? <br/>
-                <span>
-                    <Link to="/signup">
-                        Sign Up
-                    </Link>
-                </span>
-            </p>
+            <div id="loginRedirects">
+                <p>
+                    Not registered? <br/>
+                    <span>
+                        <Link to="/signup">
+                            Sign Up
+                        </Link>
+                    </span>
+                </p>
+                <p>
+                    Forgot Password? <br/>
+                    <span>
+                        <Link to="/reset">
+                            Reset Password
+                        </Link>
+                    </span>
+                </p>
+            </div>
         </div>
     );
 }

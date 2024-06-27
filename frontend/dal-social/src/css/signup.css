@@ -50,3 +50,10 @@ form > button {
     padding: 10px 10px;
     color:#282c34;
 }
+
+#loginRedirects {
+    display:flex;
+    flex-direction: row;
+    gap: 1em;
+    justify-content: center;
+}
