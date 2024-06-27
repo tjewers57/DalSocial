@@ -12,6 +12,11 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.List;
+import java.util.Optional;
+
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -80,6 +85,75 @@ public class UserServiceTest {
         when(userRepository.save(john)).thenReturn(john);
 
         Assertions.assertEquals("User created successfully", userService.createUser(john));
+    }
+
+    @Test
+    public void fetchReturnsEmptyList(){
+        when(userRepository.findAll()).thenReturn(List.of());
+        Assertions.assertTrue(userService.fetchAllUsers().isEmpty());
+    }
+
+    @Test
+    public void fetchReturnsListOfUsers(){
+        User john = new User();
+        john.setEmail("j@dal.ca");
+        john.setPassword("Password1!");
+        when(userRepository.findAll()).thenReturn(List.of(john));
+
+        Assertions.assertEquals(List.of(john), userService.fetchAllUsers());
+    }
+
+    @Test (expected = RuntimeException.class)
+    public void findByIdReturnsErrorWhenUserDoesNotExist(){
+        int id = anyInt();
+        when(userRepository.findById(id)).thenReturn(null);
+        userService.findUserById(id);
+    }
+
+    @Test
+    public void findByIdReturnsUser(){
+        int id = anyInt();
+
+        User john = new User();
+        john.setEmail("j@dal.ca");
+        john.setPassword("Password1!");
+
+        when(userRepository.findById(id)).thenReturn(Optional.of(john));
+
+        Assertions.assertEquals(john, userService.findUserById(id));
+    }
+
+    @Test
+    public void findByFirstNameReturnsEmptyList(){
+        when(userRepository.findByFirstName(anyString())).thenReturn(List.of());
+        Assertions.assertTrue(userService.fetchAllUsers().isEmpty());
+    }
+
+    @Test
+    public void findByFirstNameReturnsListOfUsers(){
+        User john = new User();
+        john.setFirstName("John");
+        john.setEmail("j@dal.ca");
+        john.setPassword("Password1!");
+
+        when(userRepository.findByFirstName("John")).thenReturn(List.of(john));
+    }
+
+    @Test
+    public void findByEmailReturnsNull(){
+        when(userRepository.findByEmail(anyString())).thenReturn(null);
+        Assertions.assertNull(userService.findByEmail(anyString()));
+    }
+
+    @Test
+    public void findByEmailReturnsUser(){
+        User john = new User();
+        john.setFirstName("John");
+        john.setEmail("j@dal.ca");
+        john.setPassword("Password1!");
+
+        when(userRepository.findByEmail("j@dal.ca")).thenReturn(john);
+        Assertions.assertEquals(john, userService.findByEmail("j@dal.ca"));
     }
 
 
