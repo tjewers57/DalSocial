@@ -2,6 +2,8 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import SignUp from './components/signup';
 import Login from './components/login';
+import ResetPassword from './components/resetPassword';
+import ProtectedRoute from './components/protectedRoute';
 
 import './App.css';
 
@@ -15,6 +17,10 @@ function App() {
           <Route path = "/"></Route>
           <Route path = "/signup" element={<SignUp/>}/>
           <Route path = "/login" element={<Login/>}/>
+          <Route path = "/reset" element={<ResetPassword/>}/>
+          <Route element={<ProtectedRoute/>}>
+            {/* put protected routes here (i.e. anything other than signup, login, or password reset.) */}
+          </Route>
         </Routes>
       </Router>
     </div>

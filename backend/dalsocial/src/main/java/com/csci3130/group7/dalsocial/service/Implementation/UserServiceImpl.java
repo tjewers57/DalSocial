@@ -18,6 +18,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String createUser(User user) {
+        if(user == null) { return "Error, user not saved"; }
         // dal email suffix is 7 chars long, username portion must be at least 1 char.
         if(user.getEmail().length() < 8 || !user.getEmail().endsWith("@dal.ca")) {
             return "Invalid email address, please enter a valid Dalhousie email address";
@@ -62,6 +63,9 @@ public class UserServiceImpl implements UserService {
     public String updateUser(User user) {
         Optional<User> optionalUser = userRepository.findById(user.getId());
         if(optionalUser.isPresent()) {
+            if(!PasswordValidator.validatePassword(user.getPassword())){
+                return "Password does not meet all requirements";
+            }
             User user1 = optionalUser.get();
             user1.setFirstName(user.getFirstName());
             user1.setLastName(user.getLastName());
@@ -91,5 +95,13 @@ public class UserServiceImpl implements UserService {
         else{
             return "User authenticated successfully";
         }
+    }
+
+    @Override
+    public boolean correctAnswer(String email, String securityAnswer){
+        if(userRepository.findByEmail(email) == null) {
+            return false;
+        }
+        return securityAnswer.equals(userRepository.findByEmail(email).getSecurityAnswer());
     }
 }

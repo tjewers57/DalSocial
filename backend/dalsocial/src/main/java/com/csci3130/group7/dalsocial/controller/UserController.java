@@ -56,4 +56,8 @@ public class UserController {
         return userService.authenticateUser(loginInfo.getEmail(), loginInfo.getPassword());
     }
 
+    @GetMapping("/checkanswer/{email}/{answer}")
+    public boolean checkAnswer(@PathVariable String email, @PathVariable String answer) {
+        return userService.correctAnswer(email, answer);
+    }
 }
