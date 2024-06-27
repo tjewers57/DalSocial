@@ -1,7 +1,6 @@
 body {
     position: relative;
-    top:50%;
-    transform: translateY(50%);
+    margin-top:10%;
     background-color: #282c34;
     color: white;
 }
