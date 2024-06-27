@@ -1,7 +1,6 @@
 body {
     position: relative;
-    top:50%;
-    transform: translateY(50%);
+    margin-top:10%;
     background-color: #282c34;
     color: white;
 }
@@ -35,7 +34,7 @@ form {
     width: 100%;
 }
 
-form > input, button {
+form > input, button, select {
     width:25%;
     padding:10px;
     background-color: #282c34;
@@ -49,4 +48,11 @@ form > button {
     background-color: #6AD1FF;
     padding: 10px 10px;
     color:#282c34;
+}
+
+#loginRedirects {
+    display:flex;
+    flex-direction: row;
+    gap: 1em;
+    justify-content: center;
 }
