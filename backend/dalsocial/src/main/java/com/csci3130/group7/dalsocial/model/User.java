@@ -51,6 +51,10 @@ public class User {
     @JoinColumn(name = "profile_id")
     private Profile profile;
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public Integer getId() {
         return id;
     }

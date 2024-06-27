@@ -15,8 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 import java.util.Optional;
 
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -104,7 +103,7 @@ public class UserServiceTest {
     }
 
     @Test (expected = RuntimeException.class)
-    public void findByIdReturnsErrorWhenUserDoesNotExist(){
+    public void findByIdThrowsExceptionWhenUserDoesNotExist(){
         int id = anyInt();
         when(userRepository.findById(id)).thenReturn(null);
         userService.findUserById(id);
@@ -154,6 +153,90 @@ public class UserServiceTest {
 
         when(userRepository.findByEmail("j@dal.ca")).thenReturn(john);
         Assertions.assertEquals(john, userService.findByEmail("j@dal.ca"));
+    }
+
+    @Test
+    public void updateReturnsErrorWhenUserDoesntExist(){
+        int id = anyInt();
+        User user = new User();
+        user.setId(id);
+        when(userRepository.findById(user.getId())).thenReturn(Optional.empty());
+        Assertions.assertEquals("User not found with id: " + user.getId(), userService.updateUser(user));
+    }
+
+    @Test
+    public void updateReturnsErrorWhenPasswordInvalid(){
+        User john = new User();
+        john.setEmail("john@dal.ca");
+        john.setPassword("Password1");
+        when(userRepository.findById(john.getId())).thenReturn(Optional.of(john));
+        Assertions.assertEquals("Password does not meet all requirements", userService.updateUser(john));
+    }
+
+    @Test
+    public void updateUpdatesUser(){
+        User john = new User();
+        john.setEmail("john@dal.ca");
+        john.setPassword("Password1!");
+        when(userRepository.findById(john.getId())).thenReturn(Optional.of(john));
+        Assertions.assertEquals("User successfully updated", userService.updateUser(john));
+    }
+
+    @Test
+    public void deleteDeletesUser(){
+        Assertions.assertEquals("User deleted successfully", userService.deleteUser(anyInt()));
+    }
+
+    @Test
+    public void authenticateReturnsErrorWhenUserDoesNotExist(){
+        when(userRepository.findByEmail(anyString())).thenReturn(null);
+        Assertions.assertEquals("An account with this email does not exist", userService.authenticateUser("john@dal.ca", "test"));
+    }
+
+    @Test
+    public void authenticateReturnsErrorWhenPasswordIncorrect(){
+        User john = new User();
+        john.setEmail("john@dal.ca");
+        john.setPassword("Password1!");
+
+        when(userRepository.findByEmail(anyString())).thenReturn(john);
+        Assertions.assertEquals("Incorrect password", userService.authenticateUser("john@dal.ca", "incorrect"));
+    }
+
+    @Test
+    public void authenticateReturnsSuccessfulWhenPasswordCorrect(){
+        User john = new User();
+        john.setEmail("john@dal.ca");
+        john.setPassword("Password1!");
+
+        when(userRepository.findByEmail(anyString())).thenReturn(john);
+        Assertions.assertEquals("User authenticated successfully", userService.authenticateUser("john@dal.ca", "Password1!"));
+    }
+
+    @Test
+    public void answerCheckReturnsFalseWhenUserDoesntExist(){
+        when(userRepository.findByEmail(anyString())).thenReturn(null);
+        Assertions.assertFalse(userService.correctAnswer("john@dal.ca", "test"));
+    }
+
+    @Test
+    public void answerCheckReturnsFalseWhenAnswerIncorrect(){
+        User john = new User();
+        john.setEmail("john@dal.ca");
+        john.setPassword("Password1!");
+        john.setSecurityAnswer("Correct");
+        when(userRepository.findByEmail(anyString())).thenReturn(john);
+        Assertions.assertFalse(userService.correctAnswer("john@dal.ca", "incorrect"));
+    }
+
+    @Test
+    public void answerCheckReturnsTrueWhenAnswerCorrect(){
+        User john = new User();
+        john.setEmail("john@dal.ca");
+        john.setPassword("Password1!");
+        john.setSecurityAnswer("Correct");
+        when(userRepository.findByEmail(anyString())).thenReturn(john);
+        Assertions.assertTrue(userService.correctAnswer("john@dal.ca", "Correct"));
     }
 
 
