@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../css/signup.css';
 
 const ResetPassword  = () => {
-
+    const navigate = useNavigate();
     const errRef = useRef();
-    
+
     const [email, setEmail] = useState('');
     const [securityQuestion, setSecurityQuestion] = useState('');
     const [securityAnswer, setSecurityAnswer] = useState('');
@@ -61,6 +62,8 @@ const ResetPassword  = () => {
                 const update = await axios.put('http://localhost:8080/users/update', user.data);
                 if(update.data === "User successfully updated"){
                     alert("Password reset successfully!");
+                    navigate("/login");
+
                 } else {
                     setErrMsg(update.data);
                 }
