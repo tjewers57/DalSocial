@@ -32,6 +32,9 @@ const Login = () => {
             if(response.data === "User authenticated successfully"){
                 localStorage.setItem('loggedInUser', email);
                 // add redirect to home once implemented
+                //window.history.pushState({}, '', '/feed')
+                window.history.replaceState({}, '', '/feed');
+                window.location.reload();
             }
             else{
                 setErrMsg(response.data);
