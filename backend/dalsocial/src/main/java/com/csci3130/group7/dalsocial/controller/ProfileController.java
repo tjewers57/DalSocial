@@ -24,9 +24,9 @@ public class ProfileController {
         return profileService.findProfileById(id);
     }
 
-    @GetMapping("/getbyuser")
-    public Profile getProfileByUser(@RequestBody User user) {
-        return profileService.findProfileByUser(user);
+    @GetMapping("/getbyuser/{id}")
+    public Profile getProfileByUser(@PathVariable int id) {
+        return profileService.findProfileByUser(id);
     }
 
     @PutMapping("/update")

@@ -9,7 +9,7 @@ public interface ProfileService {
 
     Profile findProfileById(Integer id);
 
-    Profile findProfileByUser(User user);
+    Profile findProfileByUser(Integer id);
 
     String updateProfile(Profile profile);
 

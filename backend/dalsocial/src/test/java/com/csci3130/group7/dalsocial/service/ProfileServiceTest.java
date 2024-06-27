@@ -69,19 +69,19 @@ public class ProfileServiceTest {
     }
 
     @Test
-    public void findByUserReturnsNullWhenUserIsNull(){
+    public void findByUserReturnsNullWhenUserDoesntExist(){
         Profile profile = new Profile();
-        when(profileRepository.findByUser(null)).thenReturn(null);
+        when(profileRepository.findByUserId(anyInt())).thenReturn(null);
         Assertions.assertNull(profileService.findProfileByUser(null));
     }
 
     @Test
     public void findByUserReturnsProfile(){
         Profile profile = new Profile();
-        User user = new User();
-        profile.setUser(user);
-        when(profileRepository.findByUser(user)).thenReturn(profile);
-        Assertions.assertEquals(profile, profileService.findProfileByUser(user));
+        profile.setUser(new User());
+        int id = anyInt();
+        when(profileRepository.findByUserId(id)).thenReturn(profile);
+        Assertions.assertEquals(profile, profileService.findProfileByUser(id));
 
     }
 

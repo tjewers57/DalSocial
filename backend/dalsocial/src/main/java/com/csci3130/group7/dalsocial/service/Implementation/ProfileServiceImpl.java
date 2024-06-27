@@ -41,8 +41,8 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     @Override
-    public Profile findProfileByUser(User user) {
-        return profileRepository.findByUser(user);
+    public Profile findProfileByUser(Integer id) {
+        return profileRepository.findByUserId(id);
     }
 
     @Override
