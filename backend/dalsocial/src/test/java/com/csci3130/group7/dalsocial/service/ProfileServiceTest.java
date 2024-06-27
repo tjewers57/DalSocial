@@ -16,7 +16,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -108,8 +107,4 @@ public class ProfileServiceTest {
     public void deleteDeletesProfile(){
         Assertions.assertEquals("Profile deleted successfully", profileService.deleteProfile(anyInt()));
     }
-
-
-
-
 }
