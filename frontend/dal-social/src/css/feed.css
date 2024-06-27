@@ -39,7 +39,7 @@ body {
     
 }
 
-h1, h2, form {
+h1, h2{
     width:80%;
     text-align: center;
     margin: auto;
@@ -48,4 +48,26 @@ h1, h2, form {
 a {
     color:#6AD1FF;
     text-decoration: none;
+}
+
+#input-text{
+    width: 300px;
+    height: auto;
+    box-sizing:content-box;
+}
+
+#input-title{
+    width: 200px;
+    height: 20px;
+    text-align: center;
+}
+
+form > input, button, select, textarea {
+    width:25%;
+    padding:10px;
+    background-color: #282c34;
+    color:#ccc;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-weight: bold;
 }
