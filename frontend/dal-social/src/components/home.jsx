@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import '../css/feed.css';
 import { Link } from 'react-router-dom';
 
-const Feed = () => {
+const Home = () => {
     return (
         <div className='basicWrapper'>
             <h1>DALSOCIAL</h1>
@@ -22,4 +22,4 @@ const Feed = () => {
     );
 }
 
-export default Feed;
+export default Home;
