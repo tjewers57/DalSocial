@@ -56,9 +56,8 @@ public class UserController {
         return userService.authenticateUser(loginInfo.getEmail(), loginInfo.getPassword());
     }
 
-    @PostMapping("/reset")
-    public String resetPassword(@RequestBody User user) {
-        return userService.resetPassword(user);
+    @GetMapping("/checkanswer/{email}/{answer}")
+    public boolean checkAnswer(@PathVariable String email, @PathVariable String answer) {
+        return userService.correctAnswer(email, answer);
     }
-
 }

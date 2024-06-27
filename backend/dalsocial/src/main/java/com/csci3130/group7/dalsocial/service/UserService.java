@@ -22,6 +22,6 @@ public interface UserService {
 
     String authenticateUser(String email, String password);
 
-    String resetPassword(User user);
+    boolean correctAnswer(String email, String securityAnswer);
 
 }
