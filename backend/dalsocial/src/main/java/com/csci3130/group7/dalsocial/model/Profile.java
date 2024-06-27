@@ -9,6 +9,7 @@ public class Profile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    private String title;
     private String bio;
 
     @Enumerated(EnumType.STRING)
@@ -20,6 +21,14 @@ public class Profile {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getBio() {
@@ -44,6 +53,10 @@ public class Profile {
 
     public User getUser() {
         return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Profile(){}
