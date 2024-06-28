@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../css/signup.css';
 
 const SignUp = () => {
+
+    const navigate = useNavigate();
+
     const[firstName, setFirstName] = useState('');
     const[lastName, setLastName] = useState('');
     const[email, setEmail] = useState('');
@@ -33,6 +36,9 @@ const SignUp = () => {
         try {
             const response = await axios.post('http://localhost:8080/users/save', formData);
             alert(response.data);
+            if(response.data === "User created successfully"){
+                navigate('/login');
+            }
         } catch (error) {
             console.log(error)
             alert("An error occured, please try again.");
