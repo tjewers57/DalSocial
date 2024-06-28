@@ -5,11 +5,11 @@ import Login from './components/login';
 import Profile from './components/profile';
 import ResetPassword from './components/resetPassword';
 import ProtectedRoute from './components/protectedRoute';
-
-import './App.css';
 import Home from './components/home';
 import Feed from './components/feed';
 
+
+import './App.css';
 
 function App() {
   
