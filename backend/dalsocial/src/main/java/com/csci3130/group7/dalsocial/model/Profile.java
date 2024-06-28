@@ -47,8 +47,7 @@ public class Profile {
         this.status = status;
     }
 
-    @OneToOne
-    @JoinColumn(name = "user_id")
+    @OneToOne(mappedBy = "profile")
     private User user;
 
     public User getUser() {
@@ -61,10 +60,9 @@ public class Profile {
 
     public Profile(){}
 
-    public Profile(Integer id, String bio, ProfileStatus status, User user) {
-        this.id = id;
+    public Profile(String title, String bio, ProfileStatus status) {
+        this.title = title;
         this.bio = bio;
         this.status = status;
-        this.user = user;
     }
 }
