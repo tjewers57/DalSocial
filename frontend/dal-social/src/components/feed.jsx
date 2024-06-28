@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import '../css/feed.css';
 import axios from 'axios';
 import { Link, useNavigate} from 'react-router-dom';
+import Logout from './logout.jsx';
 
 const Feed = () => {
     const userRef = useRef();
@@ -9,7 +10,9 @@ const Feed = () => {
 
     const[content, setContent] = useState('');
     const[title, setTitle] = useState('');
-    const[userId, setUserId] = useState('');
+    const[user_Id, setUserId] = useState('');
+
+    const[isExpanded, setIsExpanded] = useState(false);
 
     const navigate = useNavigate();
 
@@ -20,7 +23,7 @@ const Feed = () => {
         const formData = {
             content,
             title,
-            userId
+            user_Id
         }
 
         try{
@@ -44,30 +47,30 @@ const Feed = () => {
         }
     }
 
+    const toggleVisible = () => {
+        setIsExpanded(!isExpanded);
+    }
+
     return (
         <div className='basicWrapper'>
             <h1>DALSOCIAL</h1>
             <h2>DALHOUSIE SOCIAL NETWORK</h2>
 
             <nav className='nav'>
-                <Link to="/signup" className='nav-item'>
-                    <a href="#">Sign Up</a>
-                </Link>
-                <p className='nav-item'>|</p>
-                <Link to="/login" className='nav-item'>
-                    <a href="#">Login</a>
-                </Link>
-                
+                <button aria-expanded={isExpanded} id='nav-button' onClick={toggleVisible}>Create Post</button>
+                <Logout className='logout'/>
             </nav>
             
             <p>This is the feed page (in development)</p>
 
-            <form onSubmit={handleSubmit}>
-                <label>Create your post!</label>
-                <input type='text' placeholder='Title' id='input-title' onChange={(e) => setTitle(e.target.value)} required></input>
-                <textarea type="text" placeholder='Text' id='input-text' rows='8' onChange={(e) => setContent(e.target.value)} required></textarea>
-                <button type='submit'>Post</button>
-            </form>
+            <div id={isExpanded ? 'visible' : 'hidden'} className='post'>
+                <form onSubmit={handleSubmit}>
+                    <label>Create your post!</label>
+                    <input type='text' placeholder='Title' id='input-title' onChange={(e) => setTitle(e.target.value)} required></input>
+                    <textarea type="text" placeholder='Text' id='input-text' rows='8' onChange={(e) => setContent(e.target.value)} required></textarea>
+                    <button type='submit' id='post-button'>Post</button>
+                </form>
+            </div>
 
         </div>
     );
