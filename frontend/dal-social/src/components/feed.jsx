@@ -120,7 +120,7 @@ const Feed = () => {
 
                 <div className='grid-item'>
                     {posts.map((post) => (
-                        <div key='{post.id}'>
+                        <div className='grid-item' key='{post.id}'>
                             <h3>{post.title}</h3>
                             <p>{post.content}</p>
                         </div>
