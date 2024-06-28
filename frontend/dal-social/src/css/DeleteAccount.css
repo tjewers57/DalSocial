@@ -1,0 +1,58 @@
+body {
+    position: relative;
+    margin-top: 10%;
+    background-color: #282c34;
+    color: white;
+}
+
+.basicWrapper {
+    background-color: #181a1f;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+    padding: 1em;
+}
+
+h1, p, form {
+    width: 80%;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 0.5em;
+}
+
+input {
+    width: 25%;
+    padding: 10px;
+    background-color: #282c34;
+    color: #ccc;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+button {
+    width: 25%;
+    padding: 10px;
+    background-color: #6AD1FF;
+    color: #282c34;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 1em;
+}
+
+button:hover {
+    cursor: pointer;
+    opacity: 80%;
+}
+
+@media (max-width: 768px) {
+    .basicWrapper {
+        width: 90%;
+    }
+
+    input, button {
+        width: 80%;
+    }
+}
