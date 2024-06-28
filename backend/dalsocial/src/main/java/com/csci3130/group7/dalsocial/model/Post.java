@@ -21,7 +21,7 @@ public class Post {
 
     private String content;
 
-    private Integer user_Id;
+    private Integer userId;
 
     public Integer getId() {
         return id;
@@ -48,22 +48,22 @@ public class Post {
     }
 
     public Integer getUserId() {
-        return user_Id;
+        return userId;
     }
 
     public void setUserId(Integer postOwner) {
-        this.user_Id = postOwner;
+        this.userId = postOwner;
     }
 
     public Post(){
 
     }
 
-    public Post(Integer id, String title, String content, Integer user_Id) {
+    public Post(Integer id, String title, String content, Integer userId) {
         this.id = id;
         this.postDate = LocalDate.now();
         this.title = title;
         this.content = content;
-        this.user_Id = user_Id;
+        this.userId = userId;
     }
 }
