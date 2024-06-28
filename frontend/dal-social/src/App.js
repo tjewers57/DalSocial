@@ -11,6 +11,8 @@ import Feed from './components/feed';
 import './App.css';
 
 
+import './App.css';
+
 function App() {
   
   return (
