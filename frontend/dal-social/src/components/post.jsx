@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import '../css/post.css';
+import { Link, useNavigate} from 'react-router-dom';
 
 const Post = (post) => {
     const[firstName, setFirstName] = useState('');
     const[lastName, setLastName] = useState('');
     const[email, setEmail] = useState('');
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         getUser();
@@ -25,12 +29,12 @@ const Post = (post) => {
 
     return (
         <div className='postTemplate'>
-            <h6>{post.post.title}</h6>
-            <pre>
+            <h2 className='post-title'>{post.post.title}</h2>
+            <pre className='post-content'>
                 {post.post.content}
             </pre>
-            <p>
-                Posted: <strong>{post.post.postDate}</strong> by <strong>{firstName} {lastName}</strong>
+            <p className='post-date'>
+                Posted: <strong>{post.post.postDate}</strong> by <a className='post-profile' onClick={() => navigate('/profile/' + email)}>{firstName} {lastName}</a>
             </p>
         </div>
     );

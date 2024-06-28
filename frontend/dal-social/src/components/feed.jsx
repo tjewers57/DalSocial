@@ -3,6 +3,7 @@ import '../css/feed.css';
 import axios from 'axios';
 import { Link, useNavigate} from 'react-router-dom';
 import Logout from './logout.jsx';
+import Post from './post.jsx';
 
 const Feed = () => {
     const userRef = useRef();
@@ -109,24 +110,12 @@ const Feed = () => {
             </div>
 
             <div className='grid-containter'>
-                <div className='grid-item'>1</div>
-                <div className='grid-item'>2</div>
-                <div className='grid-item'>3</div>
-                <div className='grid-item'>4</div>
-                <div className='grid-item'>5</div>
-                <div className='grid-item'>6</div>
-                <div className='grid-item'>7</div>
-
-
-                <div className='grid-item'>
-                    {posts.map((post) => (
-                        <div className='grid-item' key='{post.id}'>
-                            <h3>{post.title}</h3>
-                            <p>{post.content}</p>
-                        </div>
-                    ))}
-                </div>
-
+                {posts.map((post) => (
+                    <div className='grid-item' key='{post.id}'>
+                        <Post post={post}/>
+                    </div>
+                ))}
+                
             </div>
 
         </div>
