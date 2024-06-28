@@ -9,6 +9,7 @@ const Profile = () => {
     const { email } = useParams();
     const[title, setTitle] = useState('');
     const[bio, setBio] = useState('');
+    const[status, setStatus] = useState('');
     const[firstName, setFirstName] = useState('');
     const[lastName, setLastName] = useState('');
     const[posts, setPosts] = useState([]);
@@ -29,6 +30,7 @@ const Profile = () => {
                 setFirstName(response.data.firstName);
                 setLastName(response.data.lastName);
                 setPosts(response.data.posts);
+                console.log(posts);
                 returnUser = response.data;
             }
         } catch (error) {
@@ -45,6 +47,23 @@ const Profile = () => {
             const profile = await axios.get('http://localhost:8080/profiles/getbyuser/' + user.data.id);
             setTitle(profile.data.title);
             setBio(profile.data.bio);
+            switch(profile.data.status){
+                case "STATUS_OFFLINE":
+                    setStatus("Offline");
+                    break;
+                case "STATUS_ONLINE":
+                    setStatus("Online");
+                    break;
+                case "STATUS_AWAY":
+                    setStatus("Away");
+                    break;
+                case "STATUS_BUSY":
+                    setStatus("Busy");
+                    break;
+                case "STATUS_INVISIBLE":
+                    setStatus("Offline");
+                    break;
+            }
             returnProfile = profile.data;
         } catch (error) {
             console.log(error);
@@ -135,6 +154,7 @@ const Profile = () => {
             <section className='userInfo'>
                 <p> {firstName} {lastName} </p>
                 <p> {email} </p>
+                <p> {status} </p>
             </section>
             <section className='bio'>
                 <h6>{title}</h6>
@@ -147,13 +167,15 @@ const Profile = () => {
                 <button onClick={addFriend}>Add Friend</button>
             )}
             <section className='posts'>
-                { posts ? (
+                <h5>Posts</h5>
+                { posts.length > 0 ? (
                     posts.map((post, index) => (
                         <div key={index} className='post'>
+                            {/* add post component here once implemented */}
                         </div>
                     ))
                 ) : (
-                    <p>Loading...</p>
+                    <p>{firstName} currently does not have any posts.</p>
                 )}
             </section>
         </div>
