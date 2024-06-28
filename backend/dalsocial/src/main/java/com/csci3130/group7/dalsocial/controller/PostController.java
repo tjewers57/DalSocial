@@ -12,7 +12,7 @@ import utils.LoginInfo;
 import java.util.List;
 
 @RestController
-@RequestMapping("/post")
+@RequestMapping("/posts")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 
 public class PostController {
@@ -24,9 +24,9 @@ public class PostController {
         return postService.createPost(post);
     }
 
-    @GetMapping("/fetch")
-    public List<Post> fetchAllPosts(@RequestBody User postOwner) {
-        return postService.fetchAllPostsByUser(postOwner);
+    @GetMapping("/fetch/{id}")
+    public List<Post> fetchAllPosts(@PathVariable Integer userId) {
+        return postService.fetchAllPostsByUserId(userId);
     }
 
     @GetMapping("/get/{id}")

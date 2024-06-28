@@ -26,8 +26,8 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    public List<Post> fetchAllPostsByUser(User postOwner){
-        return postRepository.findAllByUser(postOwner);
+    public List<Post> fetchAllPostsByUserId(Integer userId){
+        return postRepository.findAllByUserId(userId);
     }
 
     @Override
