@@ -1,12 +1,9 @@
 package com.csci3130.group7.dalsocial.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
 
 @Entity
 public class User {
@@ -47,8 +44,9 @@ public class User {
     )
     private Set<Group> groups = new HashSet<>();*/
 
-    @OneToOne
-    @JoinColumn(name = "profile_id")
+    @JsonIgnore
+    @OneToOne (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "profile_id", referencedColumnName = "id")
     private Profile profile;
 
     public void setId(Integer id) {

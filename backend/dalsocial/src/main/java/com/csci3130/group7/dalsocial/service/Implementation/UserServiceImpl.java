@@ -1,6 +1,9 @@
 package com.csci3130.group7.dalsocial.service.Implementation;
 
+import com.csci3130.group7.dalsocial.model.Profile;
+import com.csci3130.group7.dalsocial.model.ProfileStatus;
 import com.csci3130.group7.dalsocial.model.User;
+import com.csci3130.group7.dalsocial.repository.ProfileRepository;
 import com.csci3130.group7.dalsocial.repository.UserRepository;
 import com.csci3130.group7.dalsocial.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    private ProfileRepository profileRepository;
 
     @Override
     public String createUser(User user) {
@@ -29,6 +34,8 @@ public class UserServiceImpl implements UserService {
         if(!PasswordValidator.validatePassword(user.getPassword())){
             return "Password does not meet all requirements";
         }
+        Profile profile = new Profile("", "", ProfileStatus.STATUS_OFFLINE);
+        user.setProfile(profile);
         userRepository.save(user);
         return "User created successfully";
     }
