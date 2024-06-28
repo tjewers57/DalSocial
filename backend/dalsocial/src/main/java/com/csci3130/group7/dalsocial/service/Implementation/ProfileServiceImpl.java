@@ -52,6 +52,7 @@ public class ProfileServiceImpl implements ProfileService {
             Profile updatedProfile = optionalProfile.get();
             updatedProfile.setBio(profile.getBio());
             updatedProfile.setTitle(profile.getTitle());
+            updatedProfile.setStatus(profile.getStatus());
             profileRepository.save(updatedProfile);
             return "Profile updated successfully";
         } else{
