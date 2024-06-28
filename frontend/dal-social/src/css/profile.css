@@ -1,0 +1,54 @@
+
+
+.con {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 7px solid #0c4fed;
+    border-radius: 8px;
+    background-color: #d0f4f5   ;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-field,
+.select-field {
+     color:rebeccapurple;
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 13px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.select-field {
+    background-color: #fff;
+    color: rebeccapurple;
+    padding: 10px;
+}
+
+.submit-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+/* Optional: Add more specific styles for form elements as needed */
