@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../css/signup.css';
 
@@ -10,6 +10,8 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errMsg, setErrMsg] = useState('');
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         userRef.current.focus();
@@ -32,6 +34,7 @@ const Login = () => {
             if(response.data === "User authenticated successfully"){
                 localStorage.setItem('loggedInUser', email);
                 // add redirect to home once implemented
+                navigate('/feed');
             }
             else{
                 setErrMsg(response.data);

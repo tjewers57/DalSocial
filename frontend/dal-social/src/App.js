@@ -7,6 +7,7 @@ import ProtectedRoute from './components/protectedRoute';
 
 import './App.css';
 import Home from './components/home';
+import Feed from './components/feed';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path = "/reset" element={<ResetPassword/>}/>
           <Route element={<ProtectedRoute/>}>
             {/* put protected routes here (i.e. anything other than signup, login, or password reset.) */}
+            <Route path = "/feed" element={<Feed/>}/>
           </Route>
         </Routes>
       </Router>
