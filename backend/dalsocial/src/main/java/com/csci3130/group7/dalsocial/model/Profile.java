@@ -9,6 +9,7 @@ public class Profile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    private String title;
     private String bio;
 
     @Enumerated(EnumType.STRING)
@@ -20,6 +21,14 @@ public class Profile {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getBio() {
@@ -38,20 +47,22 @@ public class Profile {
         this.status = status;
     }
 
-    @OneToOne
-    @JoinColumn(name = "user_id")
+    @OneToOne(mappedBy = "profile")
     private User user;
 
     public User getUser() {
         return user;
     }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public Profile(){}
 
-    public Profile(Integer id, String bio, ProfileStatus status, User user) {
-        this.id = id;
+    public Profile(String title, String bio, ProfileStatus status) {
+        this.title = title;
         this.bio = bio;
         this.status = status;
-        this.user = user;
     }
 }
