@@ -1,0 +1,73 @@
+body {
+    background-color: #282c34;
+    color: white;
+}
+
+.basicWrapper{
+    background-color: #181a1f;
+    width:80%;
+    padding:1em;
+    margin: auto;
+}
+
+.nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding:1em;
+    width:15%;
+}
+
+.nav-item{
+    margin: auto;
+}
+
+.postWrapper{
+    background-color: #0f1113;
+    width:40%;
+    margin: auto;
+    padding: 1em;
+}
+
+.creds{
+    text-align: left;
+    line-height: 3%;
+}
+
+.post{
+    
+}
+
+h1, h2{
+    width:80%;
+    text-align: center;
+    margin: auto;
+}
+
+a {
+    color:#6AD1FF;
+    text-decoration: none;
+}
+
+#input-text{
+    width: 300px;
+    height: auto;
+    box-sizing:content-box;
+}
+
+#input-title{
+    width: 200px;
+    height: 20px;
+    text-align: center;
+}
+
+form > input, button, select, textarea {
+    width:25%;
+    padding:10px;
+    background-color: #282c34;
+    color:#ccc;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-weight: bold;
+}

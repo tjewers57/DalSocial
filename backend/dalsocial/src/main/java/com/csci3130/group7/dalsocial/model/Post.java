@@ -21,9 +21,7 @@ public class Post {
 
     private String content;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User postOwner;
+    private Integer userId;
 
     public Integer getId() {
         return id;
@@ -49,23 +47,23 @@ public class Post {
         this.title = title;
     }
 
-    public User getPostOwner() {
-        return postOwner;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setPostOwner(User postOwner) {
-        this.postOwner = postOwner;
+    public void setUserId(Integer postOwner) {
+        this.userId = postOwner;
     }
 
     public Post(){
 
     }
 
-    public Post(Integer id, String title, String content, User user) {
+    public Post(Integer id, String title, String content, Integer userId) {
         this.id = id;
         this.postDate = LocalDate.now();
         this.title = title;
         this.content = content;
-        this.postOwner = user;
+        this.userId = userId;
     }
 }
