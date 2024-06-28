@@ -44,6 +44,11 @@ form > input, button, select {
     font-weight: bold;
 }
 
+button:hover {
+    cursor: pointer;
+    opacity: 80%;
+}
+
 form > button {
     background-color: #6AD1FF;
     padding: 10px 10px;

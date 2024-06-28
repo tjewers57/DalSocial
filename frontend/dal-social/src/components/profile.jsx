@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import '../css/profile.css'
 
 const Profile = () => {
 
@@ -87,7 +88,7 @@ const Profile = () => {
 
             bioTitle.setAttribute('id', 'updateTitle');
             bioContent.setAttribute('id', 'updateBio');
-            bioContent.setAttribute('rows', 50);
+            bioContent.setAttribute('rows', 25);
             bioContent.setAttribute('cols', 50);
 
             var bioSubmit = document.createElement('button');
@@ -117,7 +118,7 @@ const Profile = () => {
             var displayBio = document.createElement('section');
             displayBio.setAttribute('class', "bio");
             
-            var displayTitle = document.createElement('h6');
+            var displayTitle = document.createElement('h4');
             displayTitle.innerHTML = title;
             
             var displayContent = document.createElement('p');
@@ -152,22 +153,22 @@ const Profile = () => {
     return (
         <div className='profileWrapper'>
             <section className='userInfo'>
-                <p> {firstName} {lastName} </p>
+                <h4> {firstName} {lastName} </h4>
                 <p> {email} </p>
-                <p> {status} </p>
+                <p id="status"> {status} </p>
+                {email == localStorage.getItem("loggedInUser") && (
+                    <button onClick={editProfile}>Edit</button>
+                )}
+                {email != localStorage.getItem("loggedInUser") && (
+                    <button onClick={addFriend}>Add Friend</button>
+                )}
             </section>
             <section className='bio'>
-                <h6>{title}</h6>
+                <h4>{title}</h4>
                 <pre>{bio}</pre>
             </section>
-            {email == localStorage.getItem("loggedInUser") && (
-                <button onClick={editProfile}>Edit</button>
-            )}
-            {email != localStorage.getItem("loggedInUser") && (
-                <button onClick={addFriend}>Add Friend</button>
-            )}
             <section className='posts'>
-                <h5>Posts</h5>
+                <h3>Posts</h3>
                 { posts.length > 0 ? (
                     posts.map((post, index) => (
                         <div key={index} className='post'>
