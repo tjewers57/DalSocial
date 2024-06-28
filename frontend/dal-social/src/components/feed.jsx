@@ -8,9 +8,8 @@ const Feed = () => {
     const errRef = useRef();
 
     const[content, setContent] = useState('');
-    const[postDate, setPostDate] = useState('');
     const[title, setTitle] = useState('');
-    const userId = '';
+    const[userId, setUserId] = useState('');
 
     const navigate = useNavigate();
 
@@ -20,26 +19,29 @@ const Feed = () => {
 
         const formData = {
             content,
-            postDate,
             title,
             userId
         }
 
         try{
             const email = localStorage.getItem('loggedInUser');
-            const user = axios.get("http://localhost:8080/users/getbyemail/" + email);
-            userId = user.data.id;
-
-            //add storing into the database
-            //const response = await axios.post("http://localhost:8080:users/save")
+            const user = await axios.get("http://localhost:8080/users/getbyemail/" + email);
+            setUserId(user.data.id);
         }
         catch(error) {
-            console.error("There was an erroring fetching the user id", error);
+            console.error("There was an error fetching the user id", error);
             alert("There was an erroring fetching the user id");
         }
 
-
-
+        try{
+            //add storing into the database
+            const response = await axios.post("http://localhost:8080/posts/save", formData);
+            alert(response.data);
+        }
+        catch(error){
+            console.error("There was an error saving the post", error);
+            alert("There was an error saving the post");
+        }
     }
 
     return (
