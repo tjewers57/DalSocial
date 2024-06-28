@@ -35,11 +35,28 @@
     border-radius: 10px;
 }
 
+.postsContainer {
+    width:100%;
+    display:grid;
+    grid-template-columns: auto auto auto;
+}
+
+#postPlaceholder {
+    grid-column: 1 / span 3;
+}
+
+.postsContainer > div {
+    width: 75%;
+    border: 2 px solid #ccc;
+    border-radius: 10px;
+}
+
 .posts > h3 {
     width:25%;
     margin:auto;
     padding-bottom:15px;
     border-bottom:2px solid #ccc;
+    margin-bottom: 1em;
 }
 
 textarea {

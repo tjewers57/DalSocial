@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import Status from './status';
 import '../css/profile.css'
+import Post from './post';
 
 const Profile = () => {
 
@@ -87,7 +89,9 @@ const Profile = () => {
             bioContent.value = p.bio;
 
             bioTitle.setAttribute('id', 'updateTitle');
+            bioTitle.setAttribute('placeholder', "Give your bio a title!");
             bioContent.setAttribute('id', 'updateBio');
+            bioContent.setAttribute('placeholder', "Tell everyone about yourself!");
             bioContent.setAttribute('rows', 25);
             bioContent.setAttribute('cols', 50);
 
@@ -162,6 +166,11 @@ const Profile = () => {
                 {email != localStorage.getItem("loggedInUser") && (
                     <button onClick={addFriend}>Add Friend</button>
                 )}
+                <div className='statusForm'>
+                {email == localStorage.getItem("loggedInUser") && (
+                    <Status/>
+                )}
+                </div>
             </section>
             <section className='bio'>
                 <h4>{title}</h4>
@@ -169,15 +178,17 @@ const Profile = () => {
             </section>
             <section className='posts'>
                 <h3>Posts</h3>
-                { posts.length > 0 ? (
-                    posts.map((post, index) => (
-                        <div key={index} className='post'>
-                            {/* add post component here once implemented */}
-                        </div>
-                    ))
-                ) : (
-                    <p>{firstName} currently does not have any posts.</p>
-                )}
+                <div className='postsContainer'>
+                    { posts.length > 0 ? (
+                        posts.map((post, index) => (
+                            <div key={index} className='post'>
+                                <Post post={post}/>
+                            </div>
+                        ))
+                    ) : (
+                        <p id="postPlaceholder">{firstName} currently does not have any posts.</p>
+                    )}
+                </div>
             </section>
         </div>
     );
