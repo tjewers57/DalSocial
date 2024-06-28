@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/friend-requests")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class FriendRequestController {
 
     @Autowired

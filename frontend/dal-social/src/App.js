@@ -9,6 +9,8 @@ import './App.css';
 import Home from './components/home';
 import Feed from './components/feed';
 import Profile from './components/profile';
+import Friends from './components/friends';
+
 
 
 function App() {
@@ -25,6 +27,7 @@ function App() {
             {/* put protected routes here (i.e. anything other than signup, login, or password reset.) */}
             <Route path = "/feed" element={<Feed/>}/>
             <Route path = "/profile" element={<Profile/>}/>
+            <Route path = "/friends" element={<Friends/>}/>
           </Route>
         </Routes>
       </Router>
