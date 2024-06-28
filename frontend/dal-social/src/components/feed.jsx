@@ -25,11 +25,12 @@ const Feed = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             try{
-                const response = await axios.get('http://localhost:8080/posts/fetch/3');
+                const response = await axios.get('http://localhost:8080/posts/fetch/4');
                 if(!response){
                     throw new Error("Failed to grab posts");
                 }
-                const data = await response.json();
+                console.log(response);
+                const data = response['data'];
                 setPosts(data);
             }
             catch(error){
@@ -116,6 +117,15 @@ const Feed = () => {
                 <div className='grid-item'>6</div>
                 <div className='grid-item'>7</div>
 
+
+                <div className='grid-item'>
+                    {posts.map((post) => (
+                        <div key='{post.id}'>
+                            <h3>{post.title}</h3>
+                            <p>{post.content}</p>
+                        </div>
+                    ))}
+                </div>
 
             </div>
 
