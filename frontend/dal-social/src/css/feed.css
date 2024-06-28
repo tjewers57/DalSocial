@@ -36,7 +36,22 @@ body {
 }
 
 .post{
-    
+    border-style: groove;
+    width:500px;
+    padding: 1em;
+    margin: auto;
+    box-shadow: #0f1113;
+    border-color: #6AD1FF;
+    background-color: rgb(29, 29, 31);
+    transition: display 2.0s ease;
+}
+
+#hidden{
+    display: none;
+}
+
+#visible{
+    display: block;
 }
 
 h1, h2{
@@ -70,4 +85,24 @@ form > input, button, select, textarea {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-weight: bold;
+}
+
+#nav-button{
+    width: auto;
+    margin: auto;
+    transition: background-color 0.3s ease;
+}
+
+#nav-button:hover{
+    background-color: #6AD1FF;
+    color: #0f1113;
+}
+
+#post-button{
+    transition: background-color 0.3s ease;
+}
+
+#post-button:hover{
+    background-color: #282c34;
+    color: lightgrey;
 }
