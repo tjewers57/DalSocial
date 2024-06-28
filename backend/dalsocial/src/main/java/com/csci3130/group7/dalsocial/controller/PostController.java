@@ -24,7 +24,7 @@ public class PostController {
         return postService.createPost(post);
     }
 
-    @GetMapping("/fetch/{id}")
+    @GetMapping("/fetch/{userId}")
     public List<Post> fetchAllPosts(@PathVariable Integer userId) {
         return postService.fetchAllPostsByUserId(userId);
     }
