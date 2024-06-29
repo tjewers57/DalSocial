@@ -6,7 +6,6 @@ import '../css/signup.css';
 const Login = () => {
     const userRef = useRef();
     const errRef = useRef();
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errMsg, setErrMsg] = useState('');
@@ -26,13 +25,15 @@ const Login = () => {
 
         const loginData = {
             email,
-            password
+            password,
+
         }
 
         try {
             const response = await axios.post("http://localhost:8080/users/auth", loginData);
             if(response.data === "User authenticated successfully"){
                 localStorage.setItem('loggedInUser', email);
+
                 // add redirect to home once implemented
                 navigate('/feed');
             }

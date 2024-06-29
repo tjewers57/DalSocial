@@ -15,8 +15,11 @@ import java.util.List;
 
         List<Friend> findBySenderAndStatus(User sender, Friend status);
 
+        @Override
+        List<Friend> findAllById(Iterable<Long> longs);
 
-List<Friend> findById(long id);
+        List<Friend> findById(long id);
+       // List<Friend> findFriendsByReceiverAndStatus(Integer receiver, Friend status);
 
 
     }

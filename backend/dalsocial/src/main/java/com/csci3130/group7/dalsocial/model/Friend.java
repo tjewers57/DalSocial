@@ -2,20 +2,28 @@ package com.csci3130.group7.dalsocial.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Friend {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = false)
     private Integer id;
 
     private Boolean status;
 
-    @OneToOne(cascade = CascadeType.ALL)
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(unique = false)
     private User sender;
 
-    @OneToOne(cascade = CascadeType.ALL)
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(unique = false)
     private User receiver;
+
 
 
     public void setId(Integer id) {

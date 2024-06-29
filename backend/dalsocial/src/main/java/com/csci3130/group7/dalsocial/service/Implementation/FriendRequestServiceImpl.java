@@ -2,6 +2,7 @@ package com.csci3130.group7.dalsocial.service.Implementation;
 
 import com.csci3130.group7.dalsocial.model.Friend;
 import com.csci3130.group7.dalsocial.model.User;
+import com.csci3130.group7.dalsocial.repository.UserRepository;
 import jdk.jshell.Snippet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ public class FriendRequestServiceImpl {
 
     @Autowired
     private FriendRequestRepository friendRequestRepository;
+    private UserRepository userRepository;
 
 
 
