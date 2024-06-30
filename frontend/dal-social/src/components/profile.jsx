@@ -33,7 +33,6 @@ const Profile = () => {
                 setFirstName(response.data.firstName);
                 setLastName(response.data.lastName);
                 setPosts(response.data.posts);
-                console.log(posts);
                 returnUser = response.data;
             }
         } catch (error) {
