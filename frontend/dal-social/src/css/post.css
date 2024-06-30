@@ -23,6 +23,10 @@
     transform: background-color 3.0s ease;
 }
 
+.post-profile:hover {
+    cursor: pointer;
+}
+
 .post-profile:hover{
     color: rgb(24, 105, 158);
 }
