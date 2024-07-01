@@ -44,6 +44,12 @@ public class FriendRequestController {
         friendRequestServiceImpl.acceptFriendRequest(requestId);
     }
 
+    @GetMapping("/getfriendsbyid/{receiverId}/{status}")
+    public List<Friend> getFriendsbyid(@PathVariable Integer receiverId, @PathVariable boolean status) {
+        return friendRequestServiceImpl.findAllByReceiverIdAndStatus(receiverId, status);
+    }
+
+
 
 
     @DeleteMapping("/reject/{requestId}")

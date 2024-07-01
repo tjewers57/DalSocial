@@ -3,6 +3,7 @@ package com.csci3130.group7.dalsocial.service.Implementation;
 import com.csci3130.group7.dalsocial.model.Friend;
 import com.csci3130.group7.dalsocial.model.User;
 import com.csci3130.group7.dalsocial.repository.UserRepository;
+import com.csci3130.group7.dalsocial.service.FriendRequestService;
 import jdk.jshell.Snippet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class FriendRequestServiceImpl {
+public class FriendRequestServiceImpl implements FriendRequestService {
 
     @Autowired
     private FriendRequestRepository friendRequestRepository;
@@ -49,4 +50,8 @@ public class FriendRequestServiceImpl {
         return "Friend request rejected";
     }
 
+    @Override
+    public List<Friend> findAllByReceiverIdAndStatus(Integer receiverId, boolean status) {
+        return friendRequestRepository.findAllByReceiverIdAndStatus(receiverId, status);
+    }
 }

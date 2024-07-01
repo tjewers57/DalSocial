@@ -22,6 +22,9 @@ import java.util.List;
        // List<Friend> findFriendsByReceiverAndStatus(Integer receiver, Friend status);
 
 
+        List<Friend> findAllByReceiverIdAndStatus(Integer receiverId, boolean status);
+
+
     }
 
 
