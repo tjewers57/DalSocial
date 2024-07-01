@@ -18,8 +18,9 @@ function FriendListComponent() {
         fetchFriendData();
         fetchUsers();
         fetchProfile();
-        fetchFriends();
         fetchFriendRequests();
+        fetchFriends();
+
 
     }, []);
 
@@ -123,7 +124,8 @@ function FriendListComponent() {
         }
     };
 
-
+    {fetchFriends()}
+    {fetchFriendRequests()}
 
 
     return (
