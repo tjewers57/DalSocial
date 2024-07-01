@@ -36,7 +36,7 @@ public class FriendRequestController {
 
     @PostMapping("/{senderId}/send-friend-request/{receiverId}")
     public Friend sendFriendRequest(@PathVariable Integer senderId, @PathVariable Integer receiverId) {
-        // Assuming senderId and receiverId are provided from the client
+
         User sender = userServiceImpl.findUserById(senderId); // Get sender from database
         User receiver = userServiceImpl.findUserById(receiverId);// Get receiver from database
         return friendRequestServiceImpl.sendFriendRequest(sender, receiver);
@@ -61,7 +61,6 @@ public class FriendRequestController {
     public void rejectFriendRequest(@PathVariable Long requestId) {
         friendRequestServiceImpl.rejectFriendRequest(requestId);
     }
-    // Please note that delete the friend request by Id is also delete the associate user from user Table
-    // Working to find the fix for the bug
+
 
 }

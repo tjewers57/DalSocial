@@ -2,15 +2,15 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import '../css/friends.css'; // Assuming this is your CSS file
+import '../css/friends.css';
 
 function FriendListComponent() {
-    const { friend } = useParams(); // Assuming this is used for something specific in your app
+    const { friend } = useParams();
     const [friends, setFriends] = useState([]);
     const [bff,setBff]=useState([]);
     const [request,setRequest]=useState([]);
     const [user, setUser] = useState(null);
-    const [senderId, setSenderId] = useState(null); // Initialize senderId as null initially
+    const [senderId, setSenderId] = useState(null);
 
 
     useEffect(() => {
@@ -59,7 +59,7 @@ function FriendListComponent() {
             if (!response.data) {
                 throw new Error('Failed to fetch profile');
             }
-            setSenderId(response.data.id); // Set senderId here
+            setSenderId(response.data.id); // Set loggedIn user's id here
         } catch (error) {
             console.error('Error fetching profile:', error);
             alert('An error occurred while fetching profile.');
@@ -71,7 +71,7 @@ function FriendListComponent() {
         try {
             await axios.post(`http://localhost:8080/friend-requests/${senderId}/send-friend-request/${receiverId}`);
             alert('Friend request sent successfully!');
-            // You may want to refresh friend list or take other actions upon success
+
         } catch (error) {
             alert('Failed to send friend request. Please try again.');
         }
@@ -82,7 +82,7 @@ function FriendListComponent() {
         try {
             await axios.post(`http://localhost:8080/friend-requests/accept/${id}`);
             alert('Congratulations! you just made a new friend');
-            // You may want to refresh friend list or take other actions upon success
+            fetchFriends();
         } catch (error) {
             alert('Failed to accept friend request');
         }
@@ -92,7 +92,7 @@ function FriendListComponent() {
         try {
             await axios.delete(`http://localhost:8080/friend-requests/reject/${id}`);
             alert('Friend request rejected successfully');
-            // You may want to refresh friend list or take other actions upon success
+
         } catch (error) {
             alert('Failed to reject a friend request');
         }
@@ -125,8 +125,8 @@ function FriendListComponent() {
     };
 
 
-     fetchFriendRequests();
-    fetchFriends();
+
+
 
     return (
         <div className="container">

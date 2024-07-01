@@ -16,12 +16,10 @@ public class Friend {
 
 
     @ManyToOne()
-    @JoinColumn()
     private User sender;
 
 
     @ManyToOne()
-    @JoinColumn()
     private User receiver;
 
 
