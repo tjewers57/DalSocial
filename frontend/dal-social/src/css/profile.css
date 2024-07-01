@@ -1,0 +1,85 @@
+.profileWrapper {
+    background-color: #181a1f;
+    width:60%;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+    padding:1em;
+    display:grid;
+    grid-template-columns: repeat(1fr, 2);
+}
+
+.profileWrapper > section {
+    padding: 10px;
+}
+
+.userInfo {
+    width:75%;
+    margin:auto;
+    grid-column: 1 / span 2;
+    border:2px solid #ccc;
+    border-radius: 10px;
+}
+
+.bio {
+    width:75%;
+    margin:auto;
+    grid-column: 1 / span 2;
+}
+
+.posts {
+    width:75%;
+    margin:auto;
+    grid-column: 1 / span 2;
+    border:2px solid #ccc;
+    border-radius: 10px;
+}
+
+.postsContainer {
+    width:100%;
+    display:grid;
+    grid-template-columns: auto auto auto;
+}
+
+#postPlaceholder {
+    grid-column: 1 / span 3;
+}
+
+.postsContainer > div {
+    width: 75%;
+    border: 2 px solid #ccc;
+    border-radius: 10px;
+}
+
+.posts > h3 {
+    width:25%;
+    margin:auto;
+    padding-bottom:15px;
+    border-bottom:2px solid #ccc;
+    margin-bottom: 1em;
+}
+
+textarea {
+    background-color: #282c34;
+    color:#ccc;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-weight: bold;
+    width:75%;
+}
+
+.userInfo > button {
+    background-color: #6AD1FF;
+    padding: 10px 10px;
+    color:#282c34;
+    margin-bottom: 1em;
+}
+
+#status {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width:25%;
+    margin:auto;
+    padding:5px;
+    margin-bottom: 10px;
+}

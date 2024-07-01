@@ -1,0 +1,32 @@
+.postTemplate{
+    display: grid;
+    grid-template-columns: auto;
+    transform: background-color 5.0 ease;
+    padding: 1em;
+}
+
+.postTemplate:hover{
+    background-color: rgb(30, 32, 34);
+}
+
+.post-title{
+    margin: auto;
+}
+
+.post-content{
+    font-size: larger;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+
+.post-profile {
+    transform: background-color 3.0s ease;
+}
+
+.post-profile:hover {
+    cursor: pointer;
+}
+
+.post-profile:hover{
+    color: rgb(24, 105, 158);
+}
