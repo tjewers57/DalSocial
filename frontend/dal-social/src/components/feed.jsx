@@ -86,7 +86,7 @@ const Feed = () => {
             <nav className='nav'>
                 <button id='nav-button' onClick={() => navigate('/profile/' + localStorage.getItem('loggedInUser'))}>Profile</button>
                 <button aria-expanded={isExpanded} id='nav-button' onClick={toggleVisible}>Create Post</button>
-                <button id='nav-button' onClick={()=> navigate('/friends')}>Friends</button>
+                {/* <button id='nav-button' onClick={()=> navigate('/friends')}>Friends</button> */}
                 <Logout className='logout'/>
             </nav>
             
