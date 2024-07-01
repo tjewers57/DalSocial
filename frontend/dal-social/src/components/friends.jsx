@@ -27,7 +27,7 @@ function FriendListComponent() {
 
     const fetchFriendData = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/friend-requests/a');
+            const response = await axios.get('http://localhost:8080/friend-requests/fetch');
             if (!response.data) {
                 throw new Error('Failed to fetch friends');
             }

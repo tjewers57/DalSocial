@@ -5,6 +5,7 @@ import Status from './status';
 import '../css/profile.css'
 import Post from './post';
 import DeleteUser from './deleteUser';
+import FriendRequest from './friendRequest';
 
 const Profile = () => {
 
@@ -147,13 +148,7 @@ const Profile = () => {
             document.querySelector(".bio").replaceWith(displayBio);
         });
     }
-
-    const addFriend = async (e) => {
-        e.preventDefault();
-        // to-do once  feature is added
-        console.log(email + " " + localStorage.getItem("loggedInUser"));
-    }
-    
+ 
     return (
         <div className='profileWrapper'>
             <section className='userInfo'>
@@ -163,15 +158,15 @@ const Profile = () => {
                 {email == localStorage.getItem("loggedInUser") && (
                     <button onClick={editProfile}>Edit</button>
                 )}
-                {email != localStorage.getItem("loggedInUser") && (
-                    <button onClick={addFriend}>Add Friend</button>
-                )}
                 <div className='statusForm'>
                 {email == localStorage.getItem("loggedInUser") && (
                     <Status/>
                 )}
                 {email == localStorage.getItem("loggedInUser") && (
                     <DeleteUser/>
+                )}
+                {email != localStorage.getItem("loggedInUser") && (
+                    <FriendRequest userEmail={email}/>
                 )}
                 </div>
             </section>
