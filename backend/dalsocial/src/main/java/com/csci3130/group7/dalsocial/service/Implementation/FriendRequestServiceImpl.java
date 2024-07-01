@@ -54,4 +54,12 @@ public class FriendRequestServiceImpl implements FriendRequestService {
     public List<Friend> findAllByReceiverIdAndStatus(Integer receiverId, boolean status) {
         return friendRequestRepository.findAllByReceiverIdAndStatus(receiverId, status);
     }
+
+
+    public List<Friend> fetchAllfriends(){
+
+        return friendRequestRepository.findAll();
+
+    }
+
 }

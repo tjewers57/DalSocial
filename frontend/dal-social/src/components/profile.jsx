@@ -150,7 +150,7 @@ const Profile = () => {
 
     const addFriend = async (e) => {
         e.preventDefault();
-        // to-do once friends feature is added
+        // to-do once  feature is added
         console.log(email + " " + localStorage.getItem("loggedInUser"));
     }
     
