@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Link, useNavigate} from 'react-router-dom';
 import Logout from './logout.jsx';
 import Post from './post.jsx';
+import Friend from './friends';
 
 const Feed = () => {
     const userRef = useRef();
@@ -94,6 +95,7 @@ const Feed = () => {
             <nav className='nav'>
                 <button id='nav-button' onClick={() => navigate('/profile/' + localStorage.getItem('loggedInUser'))}>Profile</button>
                 <button aria-expanded={isExpanded} id='nav-button' onClick={toggleVisible}>Create Post</button>
+                <button id='nav-button' onClick={()=> navigate('/friends')}>Friends</button>
                 <Logout className='logout'/>
             </nav>
             

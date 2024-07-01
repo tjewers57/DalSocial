@@ -2,6 +2,8 @@ package com.csci3130.group7.dalsocial.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Friend {
 
@@ -11,12 +13,11 @@ public class Friend {
 
     private Boolean status;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     private User sender;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     private User receiver;
-
 
     public void setId(Integer id) {
         this.id = id;
