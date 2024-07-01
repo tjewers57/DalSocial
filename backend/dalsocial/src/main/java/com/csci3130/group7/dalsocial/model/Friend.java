@@ -9,22 +9,15 @@ public class Friend {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = false)
     private Integer id;
 
     private Boolean status;
 
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(unique = false)
+    @ManyToOne()
     private User sender;
 
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(unique = false)
+    @ManyToOne()
     private User receiver;
-
-
 
     public void setId(Integer id) {
         this.id = id;
