@@ -24,7 +24,11 @@ public class FriendRequestController {
     @GetMapping("/all")
     public List<User> getAllUsers() {
         return userServiceImpl.fetchAllUsers();
+    }
 
+    @GetMapping("/a")
+    public List<Friend> getAllFriends() {
+        return friendRequestServiceImpl.fetchAllfriends();
     }
 
     @PostMapping("/{senderId}/send-friend-request/{receiverId}")
