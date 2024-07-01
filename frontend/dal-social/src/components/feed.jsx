@@ -56,30 +56,21 @@ const Feed = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const formData = {
-            content,
-            title,
-            user_Id
-        }
-
         try{
             const email = localStorage.getItem('loggedInUser');
             const user = await axios.get("http://localhost:8080/users/getbyemail/" + email);
             setUserId(user.data.id);
-        }
-        catch(error) {
-            console.error("There was an error fetching the user id", error);
-            alert("There was an erroring fetching the user id");
-        }
-
-        try{
-            //add storing into the database
+            const formData = {
+                content,
+                title,
+                userId: user.data.id
+            }
             const response = await axios.post("http://localhost:8080/posts/save", formData);
             alert(response.data);
         }
-        catch(error){
-            console.error("There was an error saving the post", error);
-            alert("There was an error saving the post");
+        catch(error) {
+            console.log(error);
+            alert("An error occured, please try again.");
         }
     }
 
