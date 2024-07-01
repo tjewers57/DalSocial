@@ -90,7 +90,7 @@ function FriendListComponent() {
 
     const rejectFriendRequest = async (id) => {
         try {
-            await axios.post(`http://localhost:8080/friend-requests/reject/${id}`);
+            await axios.delete(`http://localhost:8080/friend-requests/reject/${id}`);
             alert('Friend request rejected successfully');
             // You may want to refresh friend list or take other actions upon success
         } catch (error) {
@@ -124,9 +124,9 @@ function FriendListComponent() {
         }
     };
 
-    {fetchFriends()}
-    {fetchFriendRequests()}
 
+     fetchFriendRequests();
+    fetchFriends();
 
     return (
         <div className="container">
@@ -172,7 +172,7 @@ function FriendListComponent() {
                             <p>Name: {res.sender.firstName} {res.sender.lastName}</p>
                             <p>Email: {res.sender.email}</p>
                             <button onClick={() => acceptFriendRequest(res.id) }>Accept</button>
-                            <button onClick={() => acceptFriendRequest(res.id)}>Reject</button>
+                            <button onClick={() => rejectFriendRequest(res.id) }>Reject</button>
 
 
                         </div>

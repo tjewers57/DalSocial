@@ -9,19 +9,19 @@ public class Friend {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = false)
+    @Column()
     private Integer id;
 
     private Boolean status;
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(unique = false)
+    @ManyToOne()
+    @JoinColumn()
     private User sender;
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(unique = false)
+    @ManyToOne()
+    @JoinColumn()
     private User receiver;
 
 
