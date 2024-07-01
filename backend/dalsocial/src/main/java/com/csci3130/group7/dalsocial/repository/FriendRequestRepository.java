@@ -11,21 +11,13 @@ import java.util.List;
     @Repository
     public interface FriendRequestRepository extends JpaRepository<Friend, Long> {
 
-        List<Friend> findByReceiverAndStatus(User receiver, Friend status);
+        Friend findBySenderAndReceiver(User sender, User receiver);
 
-        List<Friend> findBySenderAndStatus(User sender, Friend status);
+        void deleteBySenderAndReceiver(User sender, User receiver);
 
-        @Override
-        List<Friend> findAllById(Iterable<Long> longs);
-
-        List<Friend> findById(long id);
-
-       // List<Friend> findFriendsByReceiverAndStatus(Integer receiver, Friend status);
-
+        List<Friend> findAllBySenderIdAndStatus(Integer senderId, boolean status);
 
         List<Friend> findAllByReceiverIdAndStatus(Integer receiverId, boolean status);
-
-
     }
 
 
