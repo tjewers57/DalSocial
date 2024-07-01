@@ -4,6 +4,7 @@ import axios from 'axios';
 import Status from './status';
 import '../css/profile.css'
 import Post from './post';
+import DeleteUser from './deleteUser';
 
 const Profile = () => {
 
@@ -168,6 +169,9 @@ const Profile = () => {
                 <div className='statusForm'>
                 {email == localStorage.getItem("loggedInUser") && (
                     <Status/>
+                )}
+                {email == localStorage.getItem("loggedInUser") && (
+                    <DeleteUser/>
                 )}
                 </div>
             </section>
