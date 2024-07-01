@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -7,24 +6,23 @@ import '../css/friends.css'; // Assuming this is your CSS file
 function FriendListComponent() {
     const { friend } = useParams(); // Assuming this is used for something specific in your app
     const [friends, setFriends] = useState([]);
-    const [bff,setBff]=useState([]);
-    const [request,setRequest]=useState([]);
-    const [user, setUser] = useState(null);
+    const [bff, setBff] = useState([]);
+    const [request, setRequest] = useState([]);
+    const [users, setUsers] = useState([]);
     const [senderId, setSenderId] = useState(null); // Initialize senderId as null initially
 
-
     useEffect(() => {
-
-        fetchFriendData();
-        fetchUsers();
-        fetchProfile();
-        fetchFriendRequests();
-        fetchFriends();
-
-
+        fetchProfile(); // Ensure senderId is set before fetching other data
     }, []);
 
-
+    useEffect(() => {
+        if (senderId) {
+            fetchFriendData();
+            fetchUsers();
+            fetchFriends();
+            fetchFriendRequests();
+        }
+    }, [senderId]);
 
     const fetchFriendData = async () => {
         try {
@@ -38,20 +36,18 @@ function FriendListComponent() {
         }
     };
 
-
-
     const fetchUsers = async () => {
         try {
             const response = await axios.get('http://localhost:8080/users/fetch');
             if (!response.data) {
                 throw new Error('Failed to fetch users');
             }
-            setUser(response.data);
+            const filteredUsers = response.data.filter(user => user.id !== senderId);
+            setUsers(filteredUsers);
         } catch (error) {
             console.error('Error fetching users:', error);
         }
     };
-
 
     const fetchProfile = async () => {
         try {
@@ -66,7 +62,6 @@ function FriendListComponent() {
         }
     };
 
-
     const sendFriendRequest = async (senderId, receiverId) => {
         try {
             await axios.post(`http://localhost:8080/friend-requests/${senderId}/send-friend-request/${receiverId}`);
@@ -76,7 +71,6 @@ function FriendListComponent() {
             alert('Failed to send friend request. Please try again.');
         }
     };
-
 
     const acceptFriendRequest = async (id) => {
         try {
@@ -97,8 +91,6 @@ function FriendListComponent() {
             alert('Failed to reject a friend request');
         }
     };
-
-
 
     const fetchFriends = async () => {
         try {
@@ -124,10 +116,6 @@ function FriendListComponent() {
         }
     };
 
-    {fetchFriends()}
-    {fetchFriendRequests()}
-
-
     return (
         <div className="container">
 
@@ -138,18 +126,16 @@ function FriendListComponent() {
                 bff.map((res, index) => (
                     <div key={index} className="Container">
                         <p>{res.sender.firstName} {res.sender.lastName}</p>
-
                     </div>
                 ))
             ) : (
                 <p>Loading users...</p>
             )}
 
-
             <div>
                 <h2>Recommendation to make more friends </h2>
-                {user ? (
-                    user.map((res, index) => (
+                {users ? (
+                    users.map((res, index) => (
                         <div key={index} className="Container">
                             <p>{res.firstName} {res.lastName}</p>
                             <button onClick={() => sendFriendRequest(senderId, res.id)}>+</button>
@@ -158,33 +144,23 @@ function FriendListComponent() {
                 ) : (
                     <p>Loading users...</p>
                 )}
-
-
             </div>
-
 
             <div>
                 <h2>Pending friend Request</h2>
-
                 {request ? (
                     request.map((res, index) => (
                         <div key={index} className="Container">
                             <p>Name: {res.sender.firstName} {res.sender.lastName}</p>
                             <p>Email: {res.sender.email}</p>
-                            <button onClick={() => acceptFriendRequest(res.id) }>Accept</button>
-                            <button onClick={() => acceptFriendRequest(res.id)}>Reject</button>
-
-
+                            <button onClick={() => acceptFriendRequest(res.id)}>Accept</button>
+                            <button onClick={() => rejectFriendRequest(res.id)}>Reject</button>
                         </div>
                     ))
                 ) : (
                     <p>Loading users...</p>
                 )}
-
-
             </div>
-
-
         </div>
     );
 }
