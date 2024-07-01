@@ -27,12 +27,33 @@ const Feed = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             try{
-                const response = await axios.get('http://localhost:8080/posts/fetch/4');
-                if(!response){
-                    throw new Error("Failed to grab posts");
+                const email = localStorage.getItem('loggedInUser');
+                const user = await axios.get("http://localhost:8080/users/getbyemail/" + email);
+                
+                const friendsResponse = await axios.get('http://localhost:8080/friend-requests/getfriendsbyid/' + user.data.id + '/true');
+                if(!friendsResponse){
+                    throw new Error("Failed to grab userId");
                 }
-                const data = response['data'];
-                setPosts(data);
+                const friendsData = friendsResponse['data'];
+                console.log(friendsData);
+                console.log(friendsData.length);
+                
+                let allPosts = [];
+                
+                for(let i = 0; i < friendsData.length; i++){
+                    if(friendsData[i].sender.id != user.data.id){
+                        const postsResponse = await axios.get('http://localhost:8080/posts/fetch/' + friendsData[i].sender.id);
+                        if(!postsResponse){
+                            throw new Error("Failed to grab posts");
+                        }
+                        const postsData = postsResponse['data'];
+                        allPosts = [...allPosts, ...postsData];
+                    }
+                }
+
+                
+                
+                setPosts(allPosts);
             }
             catch(error){
                 setError(error);
