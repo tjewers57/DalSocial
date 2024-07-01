@@ -31,7 +31,6 @@ const Feed = () => {
                 if(!response){
                     throw new Error("Failed to grab posts");
                 }
-                console.log(response);
                 const data = response['data'];
                 setPosts(data);
             }
@@ -112,8 +111,8 @@ const Feed = () => {
             </div>
 
             <div className='grid-containter'>
-                {posts.map((post) => (
-                    <div className='grid-item' key='{post.id}'>
+                {posts.map((post, index) => (
+                    <div className='grid-item' key={index}>
                         <Post post={post}/>
                     </div>
                 ))}
