@@ -25,7 +25,7 @@ public class FriendRequestController {
 
     @PostMapping("/{senderId}/send-friend-request/{receiverId}")
     public String sendFriendRequest(@PathVariable Integer senderId, @PathVariable Integer receiverId) {
-        // Assuming senderId and receiverId are provided from the client
+
         User sender = userService.findUserById(senderId); // Get sender from database
         User receiver = userService.findUserById(receiverId);// Get receiver from database
         return friendRequestService.sendFriendRequest(sender, receiver);
