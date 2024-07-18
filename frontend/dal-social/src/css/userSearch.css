@@ -1,0 +1,52 @@
+.searchWrapper {
+    max-width: 15%;
+    margin:auto;
+}
+
+.searchResult {
+    display:none;
+    max-height: 10em;
+    overflow-y: scroll;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+}
+
+.searchBar:focus + .searchResult {
+    display:block;
+}
+
+.searchResult:hover {
+    display: block;
+}
+
+.searchItem {
+    border: 1px solid #ccc;
+    text-align: center;
+    width:90%;
+    height:75%;
+    border-radius: 5px;
+    margin: 5px auto 5px auto;
+    background-color: #181a1f;
+}
+
+.searchItem:hover {
+    cursor: pointer;
+}
+
+.searchBar {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #282c34;
+    color:#ccc;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+::-webkit-scrollbar {
+    background: none;
+    width: 0px;
+}
+
+
