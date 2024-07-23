@@ -1,21 +1,17 @@
 package com.csci3130.group7.dalsocial.controller;
 
 import com.csci3130.group7.dalsocial.model.Post;
-import com.csci3130.group7.dalsocial.model.User;
 import com.csci3130.group7.dalsocial.service.PostService;
-import com.csci3130.group7.dalsocial.service.UserService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import utils.LoginInfo;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/posts")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-
 public class PostController {
+
     @Autowired
     PostService postService;
 
@@ -35,12 +31,23 @@ public class PostController {
     }
 
     @PutMapping("/update")
-    public String updateUser(@RequestBody Post post) {
+    public String updatePost(@RequestBody Post post) {
         return postService.updatePost(post);
     }
 
     @DeleteMapping("/delete/{id}")
-    public String deleteUser(@PathVariable Integer id) {
+    public String deletePost(@PathVariable Integer id) {
         return postService.deletePost(id);
     }
+
+    @PutMapping("/like/{id}")
+    public String likePost(@PathVariable Integer id) {
+        return postService.likePost(id);
+    }
+
+    @PutMapping("/dislike/{id}")
+    public String dislikePost(@PathVariable Integer id) {
+        return postService.dislikePost(id);
+    }
 }
+
