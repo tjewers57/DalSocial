@@ -73,17 +73,20 @@ public class Post {
         this.dislikes = dislikes;
     }
 
-    // Constructors
+    // Constructors including likes and dislike options
+
 
     public Post() {
     }
 
-    public Post(Integer id, String title, String content, Integer userId) {
+    public Post(Integer id, String title, String content, Integer userId, int likes, int dislikes) {
         this.id = id;
         this.postDate = LocalDate.now();
         this.title = title;
         this.content = content;
         this.userId = userId;
+        this.likes = likes;
     }
+
 }
 
