@@ -98,7 +98,7 @@ const Profile = () => {
 
             var bioSubmit = document.createElement('button');
             bioSubmit.innerHTML = "Submit Changes";
-            
+
             editBio.append(bioForm);
             bioForm.append(bioTitle);
             bioForm.append(bioContent);
@@ -122,12 +122,12 @@ const Profile = () => {
 
             var displayBio = document.createElement('section');
             displayBio.setAttribute('class', "bio");
-            
+
             var displayTitle = document.createElement('h4');
             displayTitle.innerHTML = title;
-            
+
             var displayContent = document.createElement('p');
-            displayContent.innerText = bio; 
+            displayContent.innerText = bio;
 
             displayBio.append(displayTitle);
             displayBio.append(displayContent);
@@ -148,7 +148,7 @@ const Profile = () => {
             document.querySelector(".bio").replaceWith(displayBio);
         });
     }
- 
+
     return (
         <div className='profileWrapper'>
             <section className='userInfo'>
@@ -159,15 +159,15 @@ const Profile = () => {
                     <button onClick={editProfile}>Edit</button>
                 )}
                 <div className='statusForm'>
-                {email == localStorage.getItem("loggedInUser") && (
-                    <Status/>
-                )}
-                {email == localStorage.getItem("loggedInUser") && (
-                    <DeleteUser/>
-                )}
-                {email != localStorage.getItem("loggedInUser") && (
-                    <FriendRequest userEmail={email}/>
-                )}
+                    {email == localStorage.getItem("loggedInUser") && (
+                        <Status/>
+                    )}
+                    {email == localStorage.getItem("loggedInUser") && (
+                        <DeleteUser/>
+                    )}
+                    {email != localStorage.getItem("loggedInUser") && (
+                        <FriendRequest userEmail={email}/>
+                    )}
                 </div>
             </section>
             <section className='bio'>

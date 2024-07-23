@@ -13,7 +13,7 @@ import com.csci3130.group7.dalsocial.service.PostService;
 
 @Service
 public class PostServiceImpl implements PostService{
-    
+
     @Autowired
     PostRepository postRepository;
 

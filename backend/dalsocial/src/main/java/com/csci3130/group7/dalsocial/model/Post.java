@@ -1,9 +1,9 @@
-package com.csci3130.group7.dalsocial.model;
+Post Model:
+
+        package com.csci3130.group7.dalsocial.model;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.cglib.core.Local;
-
 import java.time.LocalDate;
 
 @Entity
@@ -18,10 +18,12 @@ public class Post {
     private LocalDate postDate;
 
     private String title;
-
     private String content;
-
     private Integer userId;
+    private int likes = 0;
+    private int dislikes = 0;
+
+    // Getters and Setters
 
     public Integer getId() {
         return id;
@@ -51,12 +53,29 @@ public class Post {
         return userId;
     }
 
-    public void setUserId(Integer postOwner) {
-        this.userId = postOwner;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
-    public Post(){
+    public int getLikes() {
+        return likes;
+    }
 
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
+
+    public int getDislikes() {
+        return dislikes;
+    }
+
+    public void setDislikes(int dislikes) {
+        this.dislikes = dislikes;
+    }
+
+    // Constructors
+
+    public Post() {
     }
 
     public Post(Integer id, String title, String content, Integer userId) {
@@ -67,3 +86,4 @@ public class Post {
         this.userId = userId;
     }
 }
+

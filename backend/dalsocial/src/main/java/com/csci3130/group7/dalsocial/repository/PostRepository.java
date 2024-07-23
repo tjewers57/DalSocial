@@ -10,7 +10,7 @@ import com.csci3130.group7.dalsocial.model.Post;
 
 @Repository
 public interface PostRepository extends JpaRepository<Post, Integer> {
-    
+
     List<Post> findByPostDate(LocalDate postDate);
 
     List<Post> findAllByUserId(Integer user_Id);

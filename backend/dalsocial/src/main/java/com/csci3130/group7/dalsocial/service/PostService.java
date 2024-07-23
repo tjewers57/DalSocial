@@ -5,7 +5,7 @@ import com.csci3130.group7.dalsocial.model.Post;
 import java.util.List;
 
 public interface PostService {
-    
+
     String createPost(Post post);
 
     List<Post> fetchAllPostsByUserId(Integer userId);
@@ -16,3 +16,4 @@ public interface PostService {
 
     String updatePost(Post post);
 }
+
