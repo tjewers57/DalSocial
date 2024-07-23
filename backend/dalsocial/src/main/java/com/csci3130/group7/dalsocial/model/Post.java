@@ -86,7 +86,7 @@ public class Post {
         this.content = content;
         this.userId = userId;
         this.likes = likes;
+        this.dislikes = dislikes;
     }
-
 }
 
