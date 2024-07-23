@@ -1,6 +1,4 @@
-Post Model:
-
-        package com.csci3130.group7.dalsocial.model;
+package com.csci3130.group7.dalsocial.model;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
