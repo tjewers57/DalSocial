@@ -2,56 +2,50 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Status from './status';
-import '../css/profile.css'
+import '../css/profile.css';
 import Post from './post';
 import DeleteUser from './deleteUser';
 import FriendRequest from './friendRequest';
 
 const Profile = () => {
-
     const navigate = useNavigate();
-
     const { email } = useParams();
-    const[title, setTitle] = useState('');
-    const[bio, setBio] = useState('');
-    const[status, setStatus] = useState('');
-    const[firstName, setFirstName] = useState('');
-    const[lastName, setLastName] = useState('');
-    const[posts, setPosts] = useState([]);
+    const [title, setTitle] = useState('');
+    const [bio, setBio] = useState('');
+    const [status, setStatus] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [posts, setPosts] = useState([]);
 
     useEffect(() => {
         fetchUser();
         fetchProfile();
-    }, [])
+    }, []);
 
     const fetchUser = async () => {
-        var returnUser;
         try {
-            const response = await axios.get('http://localhost:8080/users/getbyemail/' + email);
-            if(response.data == ''){
+            const response = await axios.get(`http://localhost:8080/users/getbyemail/${email}`);
+            if (response.data === '') {
                 alert("Error, invalid profile, redirecting to home.");
-                navigate("/profile/" + localStorage.getItem("loggedInUser"));
+                navigate(`/profile/${localStorage.getItem("loggedInUser")}`);
             } else {
                 setFirstName(response.data.firstName);
                 setLastName(response.data.lastName);
                 setPosts(response.data.posts);
-                returnUser = response.data;
             }
         } catch (error) {
             console.log(error);
-            alert("An error occured, please try again.");
+            alert("An error occurred, please try again.");
         }
-        return returnUser;
-    }
+    };
 
     const fetchProfile = async () => {
-        var returnProfile;
         try {
-            const user = await axios.get('http://localhost:8080/users/getbyemail/' + email);
-            const profile = await axios.get('http://localhost:8080/profiles/getbyuser/' + user.data.id);
+            const user = await axios.get(`http://localhost:8080/users/getbyemail/${email}`);
+            const profile = await axios.get(`http://localhost:8080/profiles/getbyuser/${user.data.id}`);
             setTitle(profile.data.title);
             setBio(profile.data.bio);
-            switch(profile.data.status){
+            switch (profile.data.status) {
                 case "STATUS_OFFLINE":
                     setStatus("Offline");
                     break;
@@ -67,18 +61,17 @@ const Profile = () => {
                 case "STATUS_INVISIBLE":
                     setStatus("Offline");
                     break;
+                default:
+                    setStatus("Offline");
             }
-            returnProfile = profile.data;
         } catch (error) {
             console.log(error);
-            alert("An error occured, please try again.");
+            alert("An error occurred, please try again.");
         }
-        return returnProfile;
-    }
+    };
 
     const editProfile = async (e) => {
         e.preventDefault();
-
         fetchProfile().then(p => {
             var editBio = document.createElement('section');
             editBio.setAttribute('class', "bio");
@@ -143,11 +136,31 @@ const Profile = () => {
                 const response = await axios.put('http://localhost:8080/profiles/update', data);
             } catch (error) {
                 console.log(error);
-                alert("An error occured, please try again.");
+                alert("An error occurred, please try again.");
             }
             document.querySelector(".bio").replaceWith(displayBio);
         });
     }
+
+    const handleLike = async (postId) => {
+        try {
+            await axios.put(`http://localhost:8080/posts/like/${postId}`);
+            fetchUser(); // Refresh the posts after liking
+        } catch (error) {
+            console.log(error);
+            alert("An error occurred, please try again.");
+        }
+    };
+
+    const handleDislike = async (postId) => {
+        try {
+            await axios.put(`http://localhost:8080/posts/dislike/${postId}`);
+            fetchUser(); // Refresh the posts after disliking
+        } catch (error) {
+            console.log(error);
+            alert("An error occurred, please try again.");
+        }
+    };
 
     return (
         <div className='profileWrapper'>
@@ -155,18 +168,18 @@ const Profile = () => {
                 <h4> {firstName} {lastName} </h4>
                 <p> {email} </p>
                 <p id="status"> {status} </p>
-                {email == localStorage.getItem("loggedInUser") && (
+                {email === localStorage.getItem("loggedInUser") && (
                     <button onClick={editProfile}>Edit</button>
                 )}
                 <div className='statusForm'>
-                    {email == localStorage.getItem("loggedInUser") && (
-                        <Status/>
+                    {email === localStorage.getItem("loggedInUser") && (
+                        <Status />
                     )}
-                    {email == localStorage.getItem("loggedInUser") && (
-                        <DeleteUser/>
+                    {email === localStorage.getItem("loggedInUser") && (
+                        <DeleteUser />
                     )}
-                    {email != localStorage.getItem("loggedInUser") && (
-                        <FriendRequest userEmail={email}/>
+                    {email !== localStorage.getItem("loggedInUser") && (
+                        <FriendRequest userEmail={email} />
                     )}
                 </div>
             </section>
@@ -177,10 +190,10 @@ const Profile = () => {
             <section className='posts'>
                 <h3>Posts</h3>
                 <div className='postsContainer'>
-                    { posts.length > 0 ? (
+                    {posts.length > 0 ? (
                         posts.map((post, index) => (
                             <div key={index} className='post'>
-                                <Post post={post}/>
+                                <Post post={post} onLike={() => handleLike(post.id)} onDislike={() => handleDislike(post.id)} />
                             </div>
                         ))
                     ) : (
@@ -190,6 +203,8 @@ const Profile = () => {
             </section>
         </div>
     );
-}
+};
 
 export default Profile;
+
+
