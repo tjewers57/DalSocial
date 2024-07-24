@@ -8,14 +8,7 @@ import ProtectedRoute from './components/protectedRoute';
 import Home from './components/home';
 import Feed from './components/feed';
 import FriendList from './components/friendList';
-
-import './App.css';
-
-
-import './App.css';
-import UserSearch from './components/userSearch';
 import { Format } from './Format';
-
 import './App.css';
 
 function App() {
@@ -29,10 +22,12 @@ function App() {
           <Route path = "/login" element={<Login/>}/>
           <Route path = "/reset" element={<ResetPassword/>}/>
           <Route element={<ProtectedRoute/>}>
-            {/* put protected routes here (i.e. anything other than signup, login, or password reset.) */}
-            <Route path = "/feed" element={<Feed/>}/>
-            <Route path = "/profile/:email" element={<Profile/>}/>
-            <Route path="/friendlist" element={<FriendList/>}/>
+            <Route element={<Format/>}>
+              {/* put protected routes here (i.e. anything other than signup, login, or password reset.) */}
+              <Route path = "/feed" element={<Feed/>}/>
+              <Route path = "/profile/:email" element={<Profile/>}/>
+              <Route path="/friendlist" element={<FriendList/>}/>
+            </Route>
           </Route>
         </Routes>
       </Router>

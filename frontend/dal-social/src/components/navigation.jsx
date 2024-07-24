@@ -20,7 +20,7 @@ const Navigation = () => {
                     </Link>
                 </div>
                 <div className='navItem'>
-                    <Link to="./friends">
+                    <Link to="./friendlist">
                         <button>Friends</button>
                     </Link>
                 </div>
