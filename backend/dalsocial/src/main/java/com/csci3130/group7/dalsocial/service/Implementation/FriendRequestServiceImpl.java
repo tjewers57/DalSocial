@@ -56,8 +56,21 @@ public class FriendRequestServiceImpl implements FriendRequestService {
     }
 
     @Override
-    public List<Friend> findAllByReceiverIdAndStatus(Integer receiverId, boolean status) {
-        return friendRequestRepository.findAllByReceiverIdAndStatus(receiverId, status);
+    public List<Friend> findAllFriendsOfUser(Integer userId) {
+        List<Friend> receiverSide = friendRequestRepository.findAllByReceiverIdAndStatus(userId, true);
+        List<Friend> senderSide = friendRequestRepository.findAllBySenderIdAndStatus(userId, true);
+        receiverSide.addAll(senderSide);
+        return receiverSide;
+    }
+
+    @Override
+    public List<Friend> findAllOutgoingRequests(Integer userId) {
+        return friendRequestRepository.findAllBySenderIdAndStatus(userId, false);
+    }
+
+    @Override
+    public List<Friend> findAllIncomingRequests(Integer userId) {
+        return friendRequestRepository.findAllByReceiverIdAndStatus(userId, false);
     }
 
     @Override

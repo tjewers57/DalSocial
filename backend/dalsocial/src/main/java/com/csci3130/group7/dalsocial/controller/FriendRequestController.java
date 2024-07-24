@@ -48,9 +48,19 @@ public class FriendRequestController {
         return friendRequestService.fetchAllFriends();
     }
 
-    @GetMapping("/getfriendsbyid/{receiverId}/{status}")
-    public List<Friend> getFriendsbyid(@PathVariable Integer receiverId, @PathVariable boolean status) {
-        return friendRequestService.findAllByReceiverIdAndStatus(receiverId, status);
+    @GetMapping("/getfriendsbyuserid/{userId}")
+    public List<Friend> getFriendsByUserId(@PathVariable Integer userId) {
+        return friendRequestService.findAllFriendsOfUser(userId);
+    }
+
+    @GetMapping("/getoutgoingrequests/{userId}")
+    public List<Friend> getOutgoingRequests(@PathVariable Integer userId) {
+        return friendRequestService.findAllOutgoingRequests(userId);
+    }
+
+    @GetMapping("/getincomingrequests/{userId}")
+    public List<Friend> getIncomingRequests(@PathVariable Integer userId) {
+        return friendRequestService.findAllIncomingRequests(userId);
     }
 
     @GetMapping("/checkrequeststatus/{senderId}/{receiverId}")
