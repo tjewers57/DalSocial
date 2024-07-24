@@ -14,6 +14,9 @@ import './App.css';
 
 import './App.css';
 import UserSearch from './components/userSearch';
+import { Format } from './Format';
+
+import './App.css';
 
 function App() {
   
@@ -25,7 +28,6 @@ function App() {
           <Route path = "/signup" element={<SignUp/>}/>
           <Route path = "/login" element={<Login/>}/>
           <Route path = "/reset" element={<ResetPassword/>}/>
-          <Route path ="/test" element={<UserSearch/>}/>
           <Route element={<ProtectedRoute/>}>
             {/* put protected routes here (i.e. anything other than signup, login, or password reset.) */}
             <Route path = "/feed" element={<Feed/>}/>
