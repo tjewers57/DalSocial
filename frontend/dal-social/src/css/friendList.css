@@ -1,0 +1,64 @@
+.friendsList {
+    width:80%;
+    margin: auto;
+}
+
+#friends {
+    margin: auto;
+    margin-bottom: 1em;
+}
+
+.friendWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    text-align: center;
+}
+
+#friendsHeader {
+    width:80%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+#friendsHeader > .searchBar {
+    width:50%;
+}
+
+.friendWrapper > #friendsHeader > h2 {
+    text-align: center;
+    width: 50%;
+    margin: auto;
+    margin-bottom: 0.5em;
+}
+
+#friendRequestContainer > .friendWrapper {
+    width: 90%;
+    margin: auto;
+}
+
+#friendRequestContainer{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    width:75%;
+    margin: auto;
+}
+
+#friendRequestContainer > h2 {
+    grid-column: 1 / span 2;
+}
+
+.requestEntry, #friends > .friendProfile {
+    background-color: #181a1f;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ccc; 
+    width:95%;
+    margin: auto;
+    margin-bottom: 5px;
+}
+
+.friendProfile:hover{
+    cursor: pointer;
+    opacity: 80%;
+}
