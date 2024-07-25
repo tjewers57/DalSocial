@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import '../css/friends.css';
+import '../css/admin.css';
 
 function AdminListComponent() {
     const { friend } = useParams();
@@ -46,7 +46,22 @@ function AdminListComponent() {
 
     };
 
- 
+
+
+    const changeUserRole = async (userId) => {
+        try {
+
+            await axios.post(`http://localhost:8080/users/changeRole/${userId}`);
+            alert('User role changed successfully!');
+
+        } catch (error) {
+            alert('Failed to change the user role');
+        }
+        fetchUsers();
+
+    };
+
+
 
     return (
         <div className="container">
