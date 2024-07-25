@@ -13,7 +13,7 @@ import { Format } from './Format';
 import './App.css';
 
 function App() {
-  
+
   return (
     <div id='app'>
       <Router>
