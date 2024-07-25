@@ -1,7 +1,7 @@
 
 
-/**
 
+/**
 
 import React, { useRef, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -49,6 +49,9 @@ const Login = () => {
             console.log(error)
             alert("An error occured, please try again.");
         }
+
+
+
     }
 
     return (
@@ -86,8 +89,8 @@ const Login = () => {
 }
 
 export default Login;
+**/
 
- **/
 import React, { useRef, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -124,11 +127,12 @@ const Login = () => {
             if (response.data === "User authenticated successfully") {
                 localStorage.setItem('loggedInUser', email);
 
-                // Example: Assume response also contains user role info
-                const userRole = response.data.role;
+                const currentUser = await axios.get('http://localhost:8080/users/getbyemail/' + localStorage.getItem('loggedInUser'));
+                const userRole = currentUser.data.role;
 
-                if (userRole === 'ROLE_ADMIN') {
-                    navigate('/admin'); // Redirect to admin page for admin users
+                if (userRole === "ROLE_USER") {
+                    navigate('/feed');// Redirect to admin page for admin users
+
                 } else {
                     navigate('/admin'); // Redirect to feed/home page for regular users
                 }
