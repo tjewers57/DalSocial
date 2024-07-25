@@ -118,9 +118,9 @@ const FriendList = () => {
                 </div>
                 {friends.length != 0 ? (
                 friends.map((friend, index) =>
-                    <div className="friendProfile" onClick={() => navigate(`/profile/${friend.email}`)}key={index}>
-                        <p>{ friend.firstName } { friend.lastName }</p>
-                        <p>{ friend.email }</p>
+                    <div className="friendProfile" key={index}>
+                        <p className="friendProfile" onClick={() => navigate(`/profile/${friend.email}`)}>{ friend.firstName } { friend.lastName}</p>
+                        <FriendRequest userEmail={friend.email}/>
                     </div>    
                 )) : (
                     <p>No friends at the moment, use the search bar at the top of the page to find other users!</p>
