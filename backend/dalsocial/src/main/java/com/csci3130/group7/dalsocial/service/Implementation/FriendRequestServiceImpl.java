@@ -35,15 +35,6 @@ public class FriendRequestServiceImpl implements FriendRequestService {
     }
 
     @Override
-    public void acceptFriendRequest(Long requestId) {
-        Friend friendRequest = friendRequestRepository.findById(requestId).orElse(null);
-        if (friendRequest != null) {
-            friendRequest.setStatus(true);
-            friendRequestRepository.save(friendRequest);
-        }
-    }
-
-    @Override
     public String acceptBySenderAndReceiver(User sender, User receiver) {
         Friend friend = friendRequestRepository.findBySenderAndReceiver(sender, receiver);
         if (friend != null) {
@@ -90,17 +81,6 @@ public class FriendRequestServiceImpl implements FriendRequestService {
     public boolean checkIfRequestPending(Integer receiverId, Integer senderId) {
         List<Friend> friends = friendRequestRepository.findAllByReceiverIdAndStatus(receiverId, false);
         return friends.stream().anyMatch(friend -> friend.getSender().getId().equals(senderId));
-    }
-
-    @Override
-    public List<Friend> fetchAllFriends(){
-        return friendRequestRepository.findAll();
-    }
-
-    @Override
-    public String rejectFriendRequest(Long requestId) {
-        friendRequestRepository.deleteById(requestId);
-        return "Friend request rejected";
     }
 
     @Override

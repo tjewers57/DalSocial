@@ -7,11 +7,7 @@ import java.util.List;
 
 public interface FriendRequestService {
 
-    public List<Friend> fetchAllFriends();
-
     public String sendFriendRequest(User sender, User receiver);
-
-    public void acceptFriendRequest(Long requestId);
 
     public String acceptBySenderAndReceiver(User sender, User receiver);
 
@@ -20,8 +16,6 @@ public interface FriendRequestService {
     public List<Friend> findAllOutgoingRequests(Integer userId);
 
     public List<Friend> findAllIncomingRequests(Integer userId);
-
-    public String rejectFriendRequest(Long requestId);
 
     public String deleteBySenderAndReceiver(User sender, User receiver);
 
