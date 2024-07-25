@@ -1,32 +1,41 @@
-.postTemplate{
-    display: grid;
-    grid-template-columns: auto;
-    transform: background-color 5.0 ease;
+.postTemplate {
+    display: flex;
+    flex-direction: column;
     padding: 1em;
+    background-color: #282c34;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    transition: background-color 0.5s ease;
 }
 
-.postTemplate:hover{
+.postTemplate:hover {
     background-color: rgb(30, 32, 34);
 }
 
-.post-title{
-    margin: auto;
+.post-title {
+    margin-bottom: 1em;
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
-.post-content{
+.post-content {
     font-size: larger;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    white-space: pre-wrap;
+    margin-bottom: 1em;
 }
 
 .post-profile {
-    transform: background-color 3.0s ease;
+    transition: color 0.3s ease;
 }
 
 .post-profile:hover {
     cursor: pointer;
+    color: rgb(24, 105, 158);
 }
 
-.post-profile:hover{
-    color: rgb(24, 105, 158);
+.post-date {
+    font-size: 0.9em;
+    color: #ccc;
+    margin-top: auto;
 }
