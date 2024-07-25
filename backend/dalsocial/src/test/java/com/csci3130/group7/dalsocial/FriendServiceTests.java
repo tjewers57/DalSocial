@@ -1,4 +1,4 @@
-package com.csci3130.group7.dalsocial.service;
+package com.csci3130.group7.dalsocial;
 
 import com.csci3130.group7.dalsocial.model.Friend;
 import com.csci3130.group7.dalsocial.model.User;
@@ -20,7 +20,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class FriendServiceTest {
+public class FriendServiceTests {
 
     @Mock
     private FriendRequestRepository friendRequestRepository;
