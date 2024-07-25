@@ -7,6 +7,7 @@ build-frontend:
   stage: build
   image: node:14 # using Node 14 docker image
   script:
+    - cd frontend/dal-social
     - echo "Installing dependencies"
     - npm install # install dependencies
     - echo "Dependencies installed"
