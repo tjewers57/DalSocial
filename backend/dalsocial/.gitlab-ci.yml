@@ -2,7 +2,7 @@ stages: # List of stages for jobs, and their order of execution.
   - build
   - test
 
-build-job: # Compiles the project
+build-backend: # Compiles the project
   stage: build
   image: maven:3.9-eclipse-temurin-21-alpine # Docker image running Maven 3.9 with JDK21
   script:
@@ -10,7 +10,7 @@ build-job: # Compiles the project
     - mvn clean package -Dskiptests
     - echo "Compile complete"
 
-test:   # Testing 
+test-backend:   # Testing
   stage: test    # Tests only execute if the compile stage is successful. 
   script:
     - echo "Running Unit Tests"
