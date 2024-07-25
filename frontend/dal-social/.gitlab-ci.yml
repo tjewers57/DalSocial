@@ -1,0 +1,15 @@
+# CI/CD Pipeline for the Frontend React Application, installs app dependencies and builds the application.
+
+stages:
+  - build
+
+build-frontend:
+  stage: build
+  image: node:14 # using Node 14 docker image
+  script:
+    - echo "Installing dependencies"
+    - npm install # install dependencies
+    - echo "Dependencies installed"
+    - echo "Starting React App"
+    - npm run build # build react app
+    - echo "Build complete"

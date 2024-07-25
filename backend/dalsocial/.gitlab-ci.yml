@@ -1,3 +1,5 @@
+# CI/CD Pipeline for the Backend Spring Boot project, compiles the maven project then executes the unit tests.
+
 stages: # List of stages for jobs, and their order of execution.
   - build
   - test

@@ -1,0 +1,20 @@
+# this is the main/root CI file that triggers the CI files in the frontend and backend directories.
+
+stages:
+  - triggers
+
+trigger_backend: # executes the backend CI pipeline if there are any changes in the backend.
+  stage: triggers
+  trigger:
+    include: backend/dalsocial/.gitlab-ci.yml
+  rules:
+    - changes:
+        - backend/dalsocial/*
+
+trigger_frontend: # executes the frontend CI pipeline if there are any changes in the frontend.
+  stage: triggers
+  trigger:
+    include: frontend/dal-social/.gitlab-ci.yml
+  rules:
+    - changes:
+        - frontend/dal-social/*
