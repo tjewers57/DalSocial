@@ -23,6 +23,8 @@ public class Post {
 
     private Integer userId;
 
+    private Integer likes;
+
     public Integer getId() {
         return id;
     }
@@ -55,15 +57,24 @@ public class Post {
         this.userId = postOwner;
     }
 
+    public Integer getLikes(){
+        return likes;
+    }
+    public void setLikes(Integer likes){
+        this.likes = likes;
+    }
+
+
     public Post(){
 
     }
 
-    public Post(Integer id, String title, String content, Integer userId) {
+    public Post(Integer id, String title, String content, Integer userId, Integer likes) {
         this.id = id;
         this.postDate = LocalDate.now();
         this.title = title;
         this.content = content;
         this.userId = userId;
+        this.likes = likes;
     }
 }

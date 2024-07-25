@@ -1,13 +1,10 @@
 package com.csci3130.group7.dalsocial.controller;
 
 import com.csci3130.group7.dalsocial.model.Post;
-import com.csci3130.group7.dalsocial.model.User;
 import com.csci3130.group7.dalsocial.service.PostService;
-import com.csci3130.group7.dalsocial.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import utils.LoginInfo;
 
 import java.util.List;
 
@@ -43,4 +40,10 @@ public class PostController {
     public String deleteUser(@PathVariable Integer id) {
         return postService.deletePost(id);
     }
+
+    @PutMapping("/{id}/{likes}")
+    public String likePost(@PathVariable Integer id, Integer likes) {return postService.likePost(id,likes);}
+
+    @PutMapping("/dislikes/{id}")
+    public String dislikePost(@PathVariable Integer id) {return postService.dislikePost(id);}
 }

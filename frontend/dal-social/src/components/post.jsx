@@ -7,7 +7,8 @@ const Post = (post) => {
     const[firstName, setFirstName] = useState('');
     const[lastName, setLastName] = useState('');
     const[email, setEmail] = useState('');
-
+    const[likes, setLikes] = useState(post.post.likes);
+   // const [hasLiked, setHasLiked] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -20,12 +21,30 @@ const Post = (post) => {
             setFirstName(user.data.firstName);
             setLastName(user.data.lastName);
             setEmail(user.data.email);
+
+
         } catch (error) {
             console.log(error)
             alert("An error occured, please try again.");
         }
 
-    }
+    };
+    const handleLike = async (likes) => {
+
+
+            try {
+                await axios.put(`http://localhost:8080/posts/${post.post.id}/${post.post.likes}`);
+                setLikes((post.post.likes)+1);
+            } catch (error) {
+                console.log(error);
+                alert("An error occurred, please try again.");
+            }
+
+    };
+
+
+
+
 
     return (
         <div className='postTemplate'>
@@ -33,8 +52,14 @@ const Post = (post) => {
             <pre className='post-content'>
                 {post.post.content}
             </pre>
+            <div className='postActions'>
+                <button onClick={handleLike}>Like
+                </button>
+                <span>{post.post.likes}</span>
+            </div>
             <p className='post-date'>
-                Posted: <strong>{post.post.postDate}</strong> by <a className='post-profile' onClick={() => navigate('/profile/' + email)}>{firstName} {lastName}</a>
+                Posted: <strong>{post.post.postDate}</strong> by <a className='post-profile'
+                                                                    onClick={() => navigate('/profile/' + email)}>{firstName} {lastName}</a>
             </p>
         </div>
     );
