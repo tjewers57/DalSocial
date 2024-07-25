@@ -31,21 +31,11 @@ public class FriendRequestController {
         return friendRequestService.sendFriendRequest(sender, receiver);
     }
 
-    @PostMapping("/accept/{requestId}")
-    public void acceptFriendRequest(@PathVariable Long requestId) {
-        friendRequestService.acceptFriendRequest(requestId);
-    }
-
     @PostMapping("/acceptbyusers/{senderId}/{receiverId}")
     public String acceptFriendRequestByUsers(@PathVariable Integer senderId, @PathVariable Integer receiverId) {
         User sender = userService.findUserById(senderId);
         User receiver = userService.findUserById(receiverId);
         return friendRequestService.acceptBySenderAndReceiver(sender, receiver);
-    }
-
-    @GetMapping("/fetch")
-    public List<Friend> getAllFriends() {
-        return friendRequestService.fetchAllFriends();
     }
 
     @GetMapping("/getfriendsbyuserid/{userId}")
@@ -77,11 +67,6 @@ public class FriendRequestController {
         } else {
             return "No request pending";
         }
-    }
-
-    @DeleteMapping("/reject/{requestId}")
-    public String rejectFriendRequest(@PathVariable Long requestId) {
-        return friendRequestService.rejectFriendRequest(requestId);
     }
 
     @DeleteMapping("/deletebyusers/{senderId}/{receiverId}")
