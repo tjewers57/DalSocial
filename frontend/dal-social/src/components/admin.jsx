@@ -81,7 +81,7 @@ function AdminListComponent() {
     return (
         <div className="container">
             <h1>Administration</h1>
-            <div>
+            <div className='adminWrapper'>
                 <h2>List of Users - <strong>take caution when making changes here.</strong></h2>
                 {users.length !== 0 ? (
                     users.map((res, index) => (
@@ -95,18 +95,18 @@ function AdminListComponent() {
                     <p>Loading users...</p>
                 )}
             </div>
-            <div>
+            <div className='adminWrapper'>
                 <h2>Pending User Requests</h2>
                 {pendingUsers.length !== 0 ? (
                     pendingUsers.map((res, index) => (
                         <div key={index} className="Container">
-                            <p>{res.firstName} {res.lastName}</p>
+                            <p>{res.firstName} {res.lastName} ({res.email})</p>
                             <button onClick={() => approveUser(res.id)}>Approve</button>
                             <button onClick={() => rejectUser(res.id)}>Reject</button>
                         </div>
                     ))
                 ) : (
-                    <p>Loading pending users...</p>
+                    <p>No pending users to approve...</p>
                 )}
             </div>
         </div>

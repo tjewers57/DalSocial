@@ -91,9 +91,7 @@ const Feed = () => {
             <h2>DALHOUSIE SOCIAL NETWORK</h2>
 
             <nav className='nav'>
-                <button id='nav-button' onClick={() => navigate('/profile/' + localStorage.getItem('loggedInUser'))}>Profile</button>
                 <button aria-expanded={isExpanded} id='nav-button' onClick={toggleVisible}>Create Post</button>
-                <Logout className='logout'/>
             </nav>
             <div id={isExpanded ? 'visible' : 'hidden'} className='post'>
                 <form onSubmit={handleSubmit}>
