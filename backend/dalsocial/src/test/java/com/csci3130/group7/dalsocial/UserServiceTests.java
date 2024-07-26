@@ -127,7 +127,7 @@ public class UserServiceTests {
     @Test
     public void findByFirstNameReturnsEmptyList(){
         when(userRepository.findByFirstName(anyString())).thenReturn(List.of());
-        Assertions.assertTrue(userService.fetchAllUsers().isEmpty());
+        Assertions.assertTrue(userService.findByFirstName(anyString()).isEmpty());
     }
 
     @Test
@@ -138,6 +138,7 @@ public class UserServiceTests {
         john.setPassword("Password1!");
 
         when(userRepository.findByFirstName("John")).thenReturn(List.of(john));
+        Assertions.assertTrue(userService.findByFirstName("John").contains(john));
     }
 
     @Test
