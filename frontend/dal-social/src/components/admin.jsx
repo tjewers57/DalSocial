@@ -18,7 +18,7 @@ function AdminListComponent() {
                 throw new Error('Failed to fetch users');
             }
             // Filter out users with the role 'ROLE_ADMIN'
-            const filteredUsers = response.data.filter(user => user.role !== 'ROLE_ADMIN');
+            const filteredUsers = response.data.filter(user => user.role !== 'ROLE_ADMIN' & user.status!=="PENDING");
             setUsers(filteredUsers);
         } catch (error) {
             console.error('Error fetching users:', error);
