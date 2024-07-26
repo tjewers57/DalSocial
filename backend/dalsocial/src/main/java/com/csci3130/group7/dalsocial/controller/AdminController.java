@@ -26,6 +26,15 @@ public class AdminController {
         return adminService.updateUserRolebyId(userId);
     }
 
+//Admin
+@PutMapping("/approveUser/{userId}")
+public String approveUser(@PathVariable int userId) {
+    return adminService.approveUser(userId);
+}
 
+    @PutMapping("/rejectUser/{userId}")
+    public String rejectUser(@PathVariable int userId) {
+        return adminService.rejectUser(userId);
+    }
 
 }

@@ -152,4 +152,23 @@ public class User {
         this.securityAnswer = securityAnswer;
         this.role = role;
     }
+
+    //admin
+    @Enumerated(EnumType.STRING)
+    private UserStatus status;
+    public UserStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(UserStatus status) {
+        this.status = status;
+    }
+    private Boolean approved;
+    public Boolean getApproved() {
+        return approved;
+    }
+
+    public void setApproved(Boolean approved) {
+        this.approved = approved;
+    }
 }

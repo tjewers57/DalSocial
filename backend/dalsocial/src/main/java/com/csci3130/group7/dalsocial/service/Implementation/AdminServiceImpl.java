@@ -2,6 +2,7 @@ package com.csci3130.group7.dalsocial.service.Implementation;
 
 import com.csci3130.group7.dalsocial.model.User;
 import com.csci3130.group7.dalsocial.model.UserRole;
+import com.csci3130.group7.dalsocial.model.UserStatus;
 import com.csci3130.group7.dalsocial.repository.AdminRepository;
 import com.csci3130.group7.dalsocial.repository.UserRepository;
 import com.csci3130.group7.dalsocial.service.AdminService;
@@ -33,5 +34,30 @@ public class AdminServiceImpl implements AdminService {
         }
     }
 
+    //Admin
+    @Override
+    public String approveUser(int userId) {
+        Optional<User> optionalUser = userRepository.findById(userId);
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            user.setStatus(UserStatus.APPROVED);
+            user.setApproved(true); // Set approved to true
+            userRepository.save(user);
+            return "User approved successfully";
+        } else {
+            return "User not found";
+        }
+    }
 
+    @Override
+    public String rejectUser(int userId) {
+        Optional<User> optionalUser = userRepository.findById(userId);
+        if (optionalUser.isPresent()) {
+            userRepository.deleteById(userId);
+            return "User rejected and deleted successfully";
+        } else {
+            return "User not found";
+        }
+
+    }
 }
