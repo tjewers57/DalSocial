@@ -16,21 +16,19 @@ function AdminListComponent() {
         fetchUsers();
     }, []);
 
-
-
-
-    const fetchUsers = async () => {
-        try {
-            const response = await axios.get('http://localhost:8080/users/fetch');
-            if (!response.data) {
-                throw new Error('Failed to fetch users');
-            }
-            setUser(response.data);
-        } catch (error) {
-            console.error('Error fetching users:', error);
+const fetchUsers = async () => {
+    try {
+        const response = await axios.get('http://localhost:8080/users/fetch');
+        if (!response.data) {
+            throw new Error('Failed to fetch users');
         }
-    };
-
+        // Filter out users with the role 'ROLE_ADMIN'
+        const filteredUsers = response.data.filter(user => user.role !== 'ROLE_ADMIN');
+        setUser(filteredUsers);
+    } catch (error) {
+        console.error('Error fetching users:', error);
+    }
+};
  
 
     const deleteUser = async (deleteId) => {
@@ -51,7 +49,7 @@ function AdminListComponent() {
     const changeUserRole = async (userId) => {
         try {
 
-            await axios.post(`http://localhost:8080/users/changeRole/${userId}`);
+            await axios.put(`http://localhost:8080/admin/changeRole/${userId}`);
             alert('User role changed successfully!');
 
         } catch (error) {
@@ -79,6 +77,7 @@ function AdminListComponent() {
                         <div key={index} className="Container">
                             <p>{res.firstName} {res.lastName}</p>
                             <button onClick={() => deleteUser(res.id)}>Remove</button>
+                            <button onClick={() => changeUserRole(res.id) } >Admin</button>
                         </div>
                     ))
                 ) : (
