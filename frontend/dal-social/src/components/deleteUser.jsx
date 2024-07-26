@@ -13,7 +13,7 @@ const DeleteUser = () => {
         try {
             const user = await axios.get('http://localhost:8080/users/getbyemail/' + localStorage.getItem('loggedInUser'));
             const response = await axios.delete('http://localhost:8080/users/delete/' + user.data.id);
-            if(response.data == "User deleted successfully"){
+            if(response.data === "User deleted successfully"){
                 alert("User deleted successfully");
                 localStorage.removeItem('loggedInUser');
                 navigate("/signup");
