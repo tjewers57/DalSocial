@@ -39,16 +39,18 @@ public class UserServiceTests {
 
     @Test
     public void createReturnsErrorWhenEmailIsInvalid(){
-        // only dal students/faculty can use the app, so the domain name must be "@dal.ca"
-        User notDal = new User();
-        notDal.setEmail("john@mail.com");
-
         // no host portion -> not a valid email
         User notLongEnough = new User();
         notLongEnough.setEmail("@dal.ca");
-
-        Assertions.assertEquals("Invalid email address, please enter a valid Dalhousie email address", userService.createUser(notDal));
         Assertions.assertEquals("Invalid email address, please enter a valid Dalhousie email address", userService.createUser(notLongEnough));
+    }
+
+    @Test
+    public void createReturnsErrorWhenEmailIsNotDalEmail(){
+        // only dal students/faculty can use the app, so the domain name must be "@dal.ca"
+        User notDal = new User();
+        notDal.setEmail("john@mail.com");
+        Assertions.assertEquals("Invalid email address, please enter a valid Dalhousie email address", userService.createUser(notDal));
     }
 
     @Test
