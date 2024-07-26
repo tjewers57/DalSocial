@@ -15,6 +15,7 @@ build-backend: # Compiles the project
 
 test-backend:   # Testing
   stage: test    # Tests only execute if the compile stage is successful. 
+  image: maven:3.9-eclipse-temurin-21-alpine
   script:
     - cd backend/dalsocial
     - echo "Running Unit Tests"
