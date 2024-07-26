@@ -36,6 +36,10 @@ public class FriendServiceTests {
         MockitoAnnotations.openMocks(this);
         sender = new User();
         receiver = new User();
+        int senderId = 1;
+        sender.setId(senderId);
+        int receiverId = 2;
+        receiver.setId(receiverId);
     }
 
     @Test
@@ -94,37 +98,34 @@ public class FriendServiceTests {
         List<Friend> requests = new ArrayList<>();
         Friend request = new Friend();
         request.setId(1);
-        receiver.setId(1);
         request.setSender(sender);
         request.setReceiver(receiver);
         request.setStatus(true);
         requests.add(request);
-        when(friendRequestRepository.findAllByReceiverIdAndStatus(1, true)).thenReturn(requests);
-        Assert.assertTrue(friendRequestService.findAllFriendsOfUser(1).contains(request));
+        when(friendRequestRepository.findAllByReceiverIdAndStatus(receiver.getId(), true)).thenReturn(requests);
+        Assert.assertTrue(friendRequestService.findAllFriendsOfUser(receiver.getId()).contains(request));
     }
 
     @Test
     public void findAllOutGoingRequestsReturnsListOfRequests(){
         Friend request = new Friend();
         request.setId(1);
-        sender.setId(1);
         request.setSender(sender);
         request.setReceiver(receiver);
         request.setStatus(false);
-        when(friendRequestRepository.findAllBySenderIdAndStatus(1, false)).thenReturn(List.of(request));
-        Assert.assertTrue(friendRequestService.findAllOutgoingRequests(1).contains(request));
+        when(friendRequestRepository.findAllBySenderIdAndStatus(sender.getId(), false)).thenReturn(List.of(request));
+        Assert.assertTrue(friendRequestService.findAllOutgoingRequests(sender.getId()).contains(request));
     }
 
     @Test
     public void findAllIncomingRequestsReturnsListOfRequests(){
         Friend request = new Friend();
         request.setId(1);
-        receiver.setId(1);
         request.setSender(sender);
         request.setReceiver(receiver);
         request.setStatus(false);
-        when(friendRequestRepository.findAllByReceiverIdAndStatus(1, false)).thenReturn(List.of(request));
-        Assert.assertTrue(friendRequestService.findAllIncomingRequests(1).contains(request));
+        when(friendRequestRepository.findAllByReceiverIdAndStatus(receiver.getId(), false)).thenReturn(List.of(request));
+        Assert.assertTrue(friendRequestService.findAllIncomingRequests(receiver.getId()).contains(request));
     }
 
     @Test
@@ -156,8 +157,6 @@ public class FriendServiceTests {
     public void checkIfRequestSentReturnsTrueWhenRequestExists(){
         Friend request = new Friend();
         request.setId(1);
-        sender.setId(1);
-        receiver.setId(2);
         request.setSender(sender);
         request.setReceiver(receiver);
         request.setStatus(false);
@@ -175,8 +174,6 @@ public class FriendServiceTests {
     public void checkIfRequestPendingReturnsTrueWhenRequestExists(){
         Friend request = new Friend();
         request.setId(1);
-        sender.setId(1);
-        receiver.setId(2);
         request.setSender(sender);
         request.setReceiver(receiver);
         request.setStatus(false);
@@ -192,5 +189,4 @@ public class FriendServiceTests {
         request.setReceiver(receiver);
         Assert.assertEquals("Friend request deleted", friendRequestService.deleteBySenderAndReceiver(sender, receiver));
     }
-
 }
