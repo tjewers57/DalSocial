@@ -9,7 +9,7 @@ build-frontend:
   script:
     - cd frontend/dal-social
     - echo "Installing dependencies"
-    - npm clean cache --force
+    - npm clean cache
     - npm install # install dependencies
     - echo "Dependencies installed"
     - echo "Starting React App"
