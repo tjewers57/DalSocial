@@ -42,6 +42,17 @@ public class BlockServiceImpl implements BlockService {
     }
 
     @Override
+    public Boolean checkBlockStatus(Integer userId, Integer targetId){
+        Optional<Block> optionalBlock = blockRepository.findByUserIdAndTargetId(userId, targetId);
+        if(optionalBlock.isPresent()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    @Override
     public String deleteBlock(Integer id){
         blockRepository.deleteById(id);
         return "Block deleted successfully";

@@ -40,6 +40,11 @@ public class BlockController {
         return blockService.findBlockById(id);
     }
 
+    @GetMapping("/status/{userId}/{targetId}")
+    public Boolean getBlockStatus(@PathVariable Integer userId, Integer targetId){
+        return blockService.checkBlockStatus(userId, targetId);
+    }
+
     @DeleteMapping("/delete/{id}")
     public String deleteBlock(@PathVariable Integer id){
         return blockService.deleteBlock(id);

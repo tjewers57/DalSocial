@@ -18,7 +18,7 @@ const Blocked = (userEmail) => {
             }
             
             //this will grab the status of the relationship between the two users
-            const blockStatus = await axios.get('http://localhost:8080/friend-requests/checkrequeststatus/' + currentUser.data.id + '/' + targetUser.data.id);
+            const blockStatus = await axios.get('http://localhost:8080/block/get/' + currentUser.data.id + '/' + targetUser.data.id);
             if(blockStatus.data){
                 setIsBlocked(true);
             }

@@ -1,6 +1,8 @@
 package com.csci3130.group7.dalsocial.service;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
 
@@ -72,6 +74,32 @@ public class BlockServiceTest {
 
         when(blockRepository.findById(id)).thenReturn(Optional.of(block));
         assertEquals(block, blockService.findBlockById(id));
+    }
+
+    @Test
+    public void testCheckBlockStatusWhenTrue(){
+        Block block = new Block();
+        int userId = 1;
+        int targetId = 2;
+
+        block.setUserId(userId);
+        block.setTargetId(targetId);
+
+        when(blockRepository.findByUserIdAndTargetId(userId, targetId)).thenReturn(Optional.of(block));
+        assertTrue(blockService.checkBlockStatus(userId, targetId));
+    }
+
+    @Test
+    public void testCheckBlockStatusWhenFalse(){
+        Block block = new Block();
+        int userId = 1;
+        int targetId = 2;
+
+        block.setUserId(3);
+        block.setTargetId(4);
+
+        blockRepository.save(block);
+        assertFalse(blockService.checkBlockStatus(userId, targetId));
     }
 
     @Test
