@@ -160,7 +160,7 @@ public class FriendServiceTests {
         receiver.setId(2);
         request.setSender(sender);
         request.setReceiver(receiver);
-        request.setStatus(true);
+        request.setStatus(false);
         when(friendRequestRepository.findAllBySenderIdAndStatus(sender.getId(), false)).thenReturn(List.of(request));
         Assert.assertTrue(friendRequestService.checkIfRequestSent(sender.getId(), receiver.getId()));
     }
@@ -179,7 +179,7 @@ public class FriendServiceTests {
         receiver.setId(2);
         request.setSender(sender);
         request.setReceiver(receiver);
-        request.setStatus(true);
+        request.setStatus(false);
         when(friendRequestRepository.findAllByReceiverIdAndStatus(receiver.getId(), false)).thenReturn(List.of(request));
         Assert.assertTrue(friendRequestService.checkIfRequestPending(receiver.getId(), sender.getId()));
     }
