@@ -25,5 +25,5 @@ test-backend:   # Testing
     expire_in: 30 days
     reports:
       junit:
-        - backend/dalsocial/target/surefire-reports/TEST-*.xml
-        - backend/dalsocial/target/failsafe-reports/TEST-*.xml
+        - /builds/courses/2024-summer/csci3130/Group07/backend/dalsocial/target/surefire-reports/TEST-*.xml
+        - /builds/courses/2024-summer/csci3130/Group07/backend/dalsocial/target/failsafe-reports/TEST-*.xml
