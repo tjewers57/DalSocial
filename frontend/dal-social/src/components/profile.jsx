@@ -6,12 +6,14 @@ import '../css/profile.css'
 import Post from './post';
 import DeleteUser from './deleteUser';
 import FriendRequest from './friendRequest';
+import Blocked from './blocked';
 
 const Profile = () => {
 
     const navigate = useNavigate();
 
     const { email } = useParams();
+    const[targetEmail, setTargetEmail] = useState('');
     const[title, setTitle] = useState('');
     const[bio, setBio] = useState('');
     const[status, setStatus] = useState('');
@@ -20,6 +22,7 @@ const Profile = () => {
     const[posts, setPosts] = useState([]);
 
     useEffect(() => {
+        fetchTargetEmail();
         fetchUser();
         fetchProfile();
     }, [])
@@ -74,6 +77,24 @@ const Profile = () => {
             alert("An error occured, please try again.");
         }
         return returnProfile;
+    }
+
+    const fetchTargetEmail = async () => {
+        try{
+            const currentURL = window.location.href;
+            const url = new URL(currentURL);
+
+            const path = url.pathname;
+            const parts = path.split('/').filter(part => part !== '');
+            const selectParts = parts.slice(1, 2); 
+            const targetEmail = selectParts[0];
+            setTargetEmail(targetEmail);
+            console.log(targetEmail);
+        }
+        catch (error){
+            console.log(error);
+            alert("An error occured, please try again.");
+        }
     }
 
     const editProfile = async (e) => {
@@ -174,6 +195,11 @@ const Profile = () => {
                 <h4>{title}</h4>
                 <pre>{bio}</pre>
             </section>
+
+            <section>
+                <Blocked targetEmail={targetEmail}/>
+            </section>
+
             <section className='posts'>
                 <h3>Posts</h3>
                 <div className='postsContainer'>
