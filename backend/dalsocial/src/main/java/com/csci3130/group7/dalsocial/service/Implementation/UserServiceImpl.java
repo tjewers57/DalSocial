@@ -16,6 +16,8 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService {
 
+    private final int MIN_EMAIL_LENGTH = 8;
+
     @Autowired
     UserRepository userRepository;
     @Autowired
@@ -25,7 +27,7 @@ public class UserServiceImpl implements UserService {
     public String createUser(User user) {
         if(user == null) { return "Error, user not saved"; }
         // dal email suffix is 7 chars long, username portion must be at least 1 char.
-        if(user.getEmail().length() < 8 || !user.getEmail().endsWith("@dal.ca")) {
+        if(user.getEmail().length() < MIN_EMAIL_LENGTH || !user.getEmail().endsWith("@dal.ca")) {
             return "Invalid email address, please enter a valid Dalhousie email address";
         }
         if(userRepository.findByEmail(user.getEmail()) != null){
