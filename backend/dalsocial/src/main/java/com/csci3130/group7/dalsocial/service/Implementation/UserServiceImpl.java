@@ -65,7 +65,7 @@ public String createUser(User user) {
 
     // Set the user status to PENDING and approved to false
     user.setStatus(UserStatus.PENDING);
-    user.setApproved(false);
+
 
     userRepository.save(user);
 

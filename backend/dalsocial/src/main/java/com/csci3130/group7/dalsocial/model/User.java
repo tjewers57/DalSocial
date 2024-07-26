@@ -163,12 +163,4 @@ public class User {
     public void setStatus(UserStatus status) {
         this.status = status;
     }
-    private Boolean approved;
-    public Boolean getApproved() {
-        return approved;
-    }
-
-    public void setApproved(Boolean approved) {
-        this.approved = approved;
-    }
 }

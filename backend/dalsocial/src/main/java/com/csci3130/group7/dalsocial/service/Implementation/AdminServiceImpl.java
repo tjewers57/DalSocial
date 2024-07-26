@@ -41,7 +41,7 @@ public class AdminServiceImpl implements AdminService {
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();
             user.setStatus(UserStatus.APPROVED);
-            user.setApproved(true); // Set approved to true
+
             userRepository.save(user);
             return "User approved successfully";
         } else {
