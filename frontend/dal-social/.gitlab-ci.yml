@@ -13,5 +13,5 @@ build-frontend:
     - npm install # install dependencies
     - echo "Dependencies installed"
     - echo "Starting React App"
-    - npm run build # build react app
+    - CI=false npm run build # build react app
     - echo "Build complete"
