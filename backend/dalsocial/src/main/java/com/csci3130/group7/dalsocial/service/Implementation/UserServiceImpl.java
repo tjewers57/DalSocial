@@ -3,6 +3,7 @@ package com.csci3130.group7.dalsocial.service.Implementation;
 import com.csci3130.group7.dalsocial.model.Profile;
 import com.csci3130.group7.dalsocial.model.ProfileStatus;
 import com.csci3130.group7.dalsocial.model.User;
+import com.csci3130.group7.dalsocial.model.ApprovalStatus;
 import com.csci3130.group7.dalsocial.repository.ProfileRepository;
 import com.csci3130.group7.dalsocial.repository.UserRepository;
 import com.csci3130.group7.dalsocial.service.UserService;
@@ -20,26 +21,29 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository userRepository;
+
     @Autowired
     private ProfileRepository profileRepository;
 
     @Override
     public String createUser(User user) {
-        if(user == null) { return "Error, user not saved"; }
+        if (user == null) { return "Error, user not saved"; }
         // dal email suffix is 7 chars long, username portion must be at least 1 char.
-        if(user.getEmail().length() < MIN_EMAIL_LENGTH || !user.getEmail().endsWith("@dal.ca")) {
+        if (user.getEmail().length() < 8 || !user.getEmail().endsWith("@dal.ca")) {
             return "Invalid email address, please enter a valid Dalhousie email address";
         }
-        if(userRepository.findByEmail(user.getEmail()) != null){
+        if (userRepository.findByEmail(user.getEmail()) != null) {
             return "An account with this email already exists";
         }
-        if(!PasswordValidator.validatePassword(user.getPassword())){
+        if (!PasswordValidator.validatePassword(user.getPassword())) {
             return "Password does not meet all requirements";
         }
         Profile profile = new Profile("", "", ProfileStatus.STATUS_OFFLINE);
         user.setProfile(profile);
+        // Set the user status to PENDING and approved to false
+        user.setStatus(ApprovalStatus.PENDING);
         userRepository.save(user);
-        return "User created successfully";
+        return "User created successfully. Awaiting approval.";
     }
 
     @Override
@@ -101,7 +105,8 @@ public class UserServiceImpl implements UserService {
         }
         else if(!password.equals(userRepository.findByEmail(email).getPassword())) {
             return "Incorrect password";
-        }
+        }else if (ApprovalStatus.PENDING.equals(userRepository.findByEmail(email).getStatus())) {
+            return "Your account is in pending status";}
         else{
             return "User authenticated successfully";
         }
@@ -113,5 +118,10 @@ public class UserServiceImpl implements UserService {
             return false;
         }
         return securityAnswer.equals(userRepository.findByEmail(email).getSecurityAnswer());
+    }
+
+    @Override
+    public List<User> fetchPendingUsers() {
+        return userRepository.findByStatus(ApprovalStatus.PENDING);
     }
 }

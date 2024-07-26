@@ -1,18 +1,14 @@
-
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect, useParams } from 'react';
 import axios from 'axios';
 import '../css/admin.css';
 
 function AdminListComponent() {
-    const { friend } = useParams();
-    const [friends, setFriends] = useState([]);
-    const [user, setUser] = useState(null);
-    const [senderId, setSenderId] = useState(null);
-    const [deleteId, setDeleteId]=useState(null);
+    const [users, setUsers] = useState([]);
+    const [pendingUsers, setPendingUsers] = useState([]);
 
     useEffect(() => {
         fetchUsers();
+        fetchPendingUsers();
     }, []);
 
     const fetchUsers = async () => {
@@ -23,12 +19,20 @@ function AdminListComponent() {
             }
             // Filter out users with the role 'ROLE_ADMIN'
             const filteredUsers = response.data.filter(user => user.role !== 'ROLE_ADMIN');
-            setUser(filteredUsers);
+            setUsers(filteredUsers);
         } catch (error) {
             console.error('Error fetching users:', error);
         }
     };
- 
+
+    const fetchPendingUsers = async () => {
+        try {
+            const response = await axios.get('http://localhost:8080/users/fetchPending');
+            setPendingUsers(response.data);
+        } catch (error) {
+            console.error('Error fetching pending users:', error);
+        }
+    };
 
     const deleteUser = async (deleteId) => {
         try {
@@ -52,14 +56,35 @@ function AdminListComponent() {
         fetchUsers();
     };
 
+    const approveUser = async (userId) => {
+        try {
+            await axios.put(`http://localhost:8080/admin/approveUser/${userId}`);
+            alert('User approved successfully!');
+            fetchPendingUsers();
+        } catch (error) {
+            alert('Failed to approve user');
+        }
+
+        fetchUsers();
+    };
+
+    const rejectUser = async (userId) => {
+        try {
+            await axios.put(`http://localhost:8080/admin/rejectUser/${userId}`);
+            alert('User rejected and deleted successfully!');
+            fetchPendingUsers();
+        } catch (error) {
+            alert('Failed to reject and delete user');
+        }
+    };
+
     return (
         <div className="container">
-            <h4 className="Tag">Page under Development</h4>
-            <h1>Administration  {senderId}</h1>
+            <h1>Administration</h1>
             <div>
                 <h2>List of Users - <strong>take caution when making changes here.</strong></h2>
-                {user ? (
-                    user.map((res, index) => (
+                {users.length !== 0 ? (
+                    users.map((res, index) => (
                         <div key={index} className="Container">
                             <p>{res.firstName} {res.lastName} ({res.email})</p>
                             <button onClick={() => deleteUser(res.id)}>Delete User</button>
@@ -68,6 +93,20 @@ function AdminListComponent() {
                     ))
                 ) : (
                     <p>Loading users...</p>
+                )}
+            </div>
+            <div>
+                <h2>Pending User Requests</h2>
+                {pendingUsers.length !== 0 ? (
+                    pendingUsers.map((res, index) => (
+                        <div key={index} className="Container">
+                            <p>{res.firstName} {res.lastName}</p>
+                            <button onClick={() => approveUser(res.id)}>Approve</button>
+                            <button onClick={() => rejectUser(res.id)}>Reject</button>
+                        </div>
+                    ))
+                ) : (
+                    <p>Loading pending users...</p>
                 )}
             </div>
         </div>

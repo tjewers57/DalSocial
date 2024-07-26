@@ -24,4 +24,6 @@ public interface UserService {
 
     boolean correctAnswer(String email, String securityAnswer);
 
+    //Admin
+    List<User> fetchPendingUsers();
 }
