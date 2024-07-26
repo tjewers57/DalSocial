@@ -1,6 +1,7 @@
 package com.csci3130.group7.dalsocial.service;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -100,6 +101,24 @@ public class BlockServiceTest {
 
         blockRepository.save(block);
         assertFalse(blockService.checkBlockStatus(userId, targetId));
+    }
+
+    @Test
+    public void testFindBlockByUserAndTarget(){
+        Block block = new Block();
+        int userId = 1;
+        int targetId = 2;
+
+        block.setUserId(userId);
+        block.setTargetId(targetId);
+
+        when(blockRepository.findByUserIdAndTargetId(userId, targetId)).thenReturn(Optional.of(block));
+        assertEquals(block, blockService.findBlockByUserIdAndTargetId(userId, targetId));
+    }
+
+    @Test
+    public void testFindBlockByUserAndTargetWhenNull(){
+        assertNull(blockService.findBlockByUserIdAndTargetId(1, 2));
     }
 
     @Test

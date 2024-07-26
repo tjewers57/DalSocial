@@ -14,5 +14,7 @@ public interface BlockService {
 
     Boolean checkBlockStatus(Integer userId, Integer targetId);
 
+    Block findBlockByUserIdAndTargetId(Integer userId, Integer targetId);
+
     String deleteBlock(Integer id);
 }

@@ -41,8 +41,13 @@ public class BlockController {
     }
 
     @GetMapping("/status/{userId}/{targetId}")
-    public Boolean getBlockStatus(@PathVariable Integer userId, Integer targetId){
+    public Boolean getBlockStatus(@PathVariable Integer userId, @PathVariable Integer targetId){
         return blockService.checkBlockStatus(userId, targetId);
+    }
+
+    @GetMapping("/get/{userId}/{targetId}")
+    public Block getBlockByUserIdAndTargetId(@PathVariable Integer userId, @PathVariable Integer targetId){
+        return blockService.findBlockByUserIdAndTargetId(userId, targetId);
     }
 
     @DeleteMapping("/delete/{id}")
