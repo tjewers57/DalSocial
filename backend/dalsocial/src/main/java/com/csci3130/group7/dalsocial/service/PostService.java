@@ -17,5 +17,5 @@ public interface PostService {
 
     String updatePost(Post post);
     String likePost(Integer id, Integer likes);
-    String dislikePost(Integer id);
+
 }

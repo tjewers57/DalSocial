@@ -23,6 +23,7 @@ public class Post {
 
     private Integer userId;
 
+    @Column(nullable = false)
     private Integer likes;
 
     public Integer getId() {

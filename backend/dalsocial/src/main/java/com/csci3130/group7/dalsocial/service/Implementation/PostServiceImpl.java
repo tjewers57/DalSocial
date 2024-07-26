@@ -76,21 +76,4 @@ public class PostServiceImpl implements PostService {
         }
     }
 
-
-    @Override
-    public String dislikePost(Integer id) {
-        Optional<Post> optionalPost = postRepository.findById(id);
-        if (optionalPost.isPresent()) {
-            Post post = optionalPost.get();
-            if (post.getLikes() > 0) {
-                post.setLikes(post.getLikes()-1); // Decrement the likes count, if greater than 0
-            }
-            postRepository.save(post);
-            return "Post disliked successfully";
-        } else {
-            return "Post not found with id: " + id;
-        }
-
-
-    }
 }

@@ -44,6 +44,4 @@ public class PostController {
     @PutMapping("/{id}/{likes}")
     public String likePost(@PathVariable Integer id, Integer likes) {return postService.likePost(id,likes);}
 
-    @PutMapping("/dislikes/{id}")
-    public String dislikePost(@PathVariable Integer id) {return postService.dislikePost(id);}
 }
