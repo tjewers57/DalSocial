@@ -80,6 +80,7 @@ public class UserServiceImpl implements UserService {
             user1.setLastName(user.getLastName());
             user1.setEmail(user.getEmail());
             user1.setPassword(user.getPassword());
+            user1.setRole(user.getRole());
             userRepository.save(user1);
             return "User successfully updated";
         } else {
