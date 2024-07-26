@@ -38,10 +38,10 @@ const Login = () => {
                 const userRole = currentUser.data.role;
 
                 if (userRole === "ROLE_USER") {
-                    navigate('/feed');// Redirect to admin page for admin users
+                    navigate('/feed');
 
                 } else {
-                    navigate('/admin'); // Redirect to feed/home page for regular users
+                    navigate('/admin');
                 }
             } else {
                 setErrMsg(response.data);

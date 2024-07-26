@@ -2,8 +2,7 @@ package com.csci3130.group7.dalsocial.service.Implementation;
 
 import com.csci3130.group7.dalsocial.model.User;
 import com.csci3130.group7.dalsocial.model.UserRole;
-import com.csci3130.group7.dalsocial.model.UserStatus;
-import com.csci3130.group7.dalsocial.repository.AdminRepository;
+import com.csci3130.group7.dalsocial.model.ApprovalStatus;
 import com.csci3130.group7.dalsocial.repository.UserRepository;
 import com.csci3130.group7.dalsocial.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,31 +16,12 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     UserRepository userRepository;
 
-
-    @Override
-    public String updateUserRolebyId(int userId) {
-
-        User userRole = userRepository.findById(userId).orElse(null);
-
-        if(userRole.getRole() != null){
-            String adminRole= "ROLE_ADMIN";
-              userRole.setRole(UserRole.valueOf(adminRole));
-              userRepository.save(userRole);
-            return "User role successfully updated";
-        } else {
-
-            return "User already have admin role" + userRole.getRole();
-        }
-    }
-
-    //Admin
     @Override
     public String approveUser(int userId) {
         Optional<User> optionalUser = userRepository.findById(userId);
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();
-            user.setStatus(UserStatus.APPROVED);
-            user.setApproved(true); // Set approved to true
+            user.setStatus(ApprovalStatus.APPROVED);
             userRepository.save(user);
             return "User approved successfully";
         } else {
@@ -58,6 +38,5 @@ public class AdminServiceImpl implements AdminService {
         } else {
             return "User not found";
         }
-
     }
 }

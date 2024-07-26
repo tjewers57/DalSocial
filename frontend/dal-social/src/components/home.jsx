@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React from 'react';
 import '../css/feed.css';
 import { Link } from 'react-router-dom';
 
@@ -10,11 +10,10 @@ const Home = () => {
 
             <nav className='nav'>
                 <Link to="/signup" className='nav-item'>
-                    <a href="#">Sign Up</a>
+                    <button>Signup</button>
                 </Link>
-                <p className='nav-item'>|</p>
                 <Link to="/login" className='nav-item'>
-                    <a href="#">Login</a>
+                    <button>Login</button>
                 </Link>
             </nav>
             

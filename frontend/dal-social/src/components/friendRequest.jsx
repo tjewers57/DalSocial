@@ -16,7 +16,7 @@ const FriendRequest = (userEmail) => {
         try {
             const currentUser = await axios.get('http://localhost:8080/users/getbyemail/' + localStorage.getItem('loggedInUser'));
             const targetUser = await axios.get('http://localhost:8080/users/getbyemail/' + userEmail.userEmail);
-            if(currentUser.data == '' || targetUser.data == ''){
+            if(currentUser.data === '' || targetUser.data === ''){
                 alert("Error, invalid user.");
             }
             
@@ -34,6 +34,8 @@ const FriendRequest = (userEmail) => {
                 case "No request pending":
                     setNotFriends(true);
                     break;
+                default:
+                    console.log("Error, request status unrecognized.");
             }
         } catch (error) {
             console.log(error);
@@ -47,12 +49,12 @@ const FriendRequest = (userEmail) => {
         try {
             const currentUser = await axios.get('http://localhost:8080/users/getbyemail/' + localStorage.getItem('loggedInUser'));
             const targetUser = await axios.get('http://localhost:8080/users/getbyemail/' + userEmail.userEmail);
-            if(currentUser.data == '' || targetUser.data == ''){
+            if(currentUser.data === '' || targetUser.data === ''){
                 alert("Error, invalid user.");
             }
 
             const requestResponse = await axios.post('http://localhost:8080/friend-requests/acceptbyusers/' + targetUser.data.id + '/' + currentUser.data.id);
-            if(requestResponse.data == "Friend request accepted") {
+            if(requestResponse.data === "Friend request accepted") {
                 window.location.reload();
             } else {
                 alert("Error accepting request");
@@ -69,12 +71,12 @@ const FriendRequest = (userEmail) => {
         try {
             const currentUser = await axios.get('http://localhost:8080/users/getbyemail/' + localStorage.getItem('loggedInUser'));
             const targetUser = await axios.get('http://localhost:8080/users/getbyemail/' + userEmail.userEmail);
-            if(currentUser.data == '' || targetUser.data == ''){
+            if(currentUser.data === '' || targetUser.data === ''){
                 alert("Error, invalid user.");
             }
 
             const requestResponse = await axios.delete('http://localhost:8080/friend-requests/deletebyusers/' + currentUser.data.id + '/' + targetUser.data.id);
-            if(requestResponse.data == "Friend request deleted"){
+            if(requestResponse.data === "Friend request deleted"){
                 window.location.reload();
             } else {
                 alert("Error handling request.");
@@ -91,12 +93,12 @@ const FriendRequest = (userEmail) => {
         try {
             const currentUser = await axios.get('http://localhost:8080/users/getbyemail/' + localStorage.getItem('loggedInUser'));
             const targetUser = await axios.get('http://localhost:8080/users/getbyemail/' + userEmail.userEmail);
-            if(currentUser.data == '' || targetUser.data == ''){
+            if(currentUser.data === '' || targetUser.data === ''){
                 alert("Error, invalid user.");
             }
 
             const requestResponse = await axios.post('http://localhost:8080/friend-requests/' + currentUser.data.id + "/send-friend-request/" + targetUser.data.id);
-            if(requestResponse.data == "Friend request sent"){
+            if(requestResponse.data === "Friend request sent"){
                 window.location.reload();
             } else {
                 alert("Error sending request.");

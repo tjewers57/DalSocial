@@ -11,6 +11,7 @@ import Admin from './components/admin';
 import FriendList from './components/friendList';
 import { Format } from './Format';
 import './App.css';
+import AdminRoute from './components/adminRoute';
 
 function App() {
 
@@ -28,7 +29,10 @@ function App() {
               <Route path = "/feed" element={<Feed/>}/>
               <Route path = "/profile/:email" element={<Profile/>}/>
               <Route path="/friendlist" element={<FriendList/>}/>
-              <Route path="/admin" element={<Admin/>}/>
+              {/* regular users should not be able to access admin pages */}
+              <Route element={<AdminRoute/>}>
+                <Route path="/admin" element={<Admin/>}/>
+              </Route>
             </Route>
           </Route>
         </Routes>

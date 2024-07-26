@@ -1,7 +1,7 @@
 package com.csci3130.group7.dalsocial.repository;
 
 import com.csci3130.group7.dalsocial.model.User;
-import com.csci3130.group7.dalsocial.model.UserStatus;
+import com.csci3130.group7.dalsocial.model.ApprovalStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +15,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     User findByEmail(String email);
 
     //Admin
-    List<User> findByStatus(UserStatus status);
+    List<User> findByStatus(ApprovalStatus status);
 
 }

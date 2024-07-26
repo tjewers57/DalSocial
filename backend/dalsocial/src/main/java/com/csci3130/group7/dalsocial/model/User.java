@@ -25,10 +25,10 @@ public class User {
     private String password;
 
     @Column(nullable = false)
-    public String securityQuestion;
+    private String securityQuestion;
 
     @Column(nullable = false)
-    public String securityAnswer;
+    private String securityAnswer;
 
     @Enumerated(EnumType.STRING)
     private UserRole role;
@@ -36,18 +36,13 @@ public class User {
     @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
     private List<Post> posts;
 
-    /*@ManyToMany()
-    @JoinTable(
-            name = "group_members",
-            joinColumns = {@JoinColumn(name = "user_id")},
-            inverseJoinColumns = {@JoinColumn(name = "group_id")}
-    )
-    private Set<Group> groups = new HashSet<>();*/
-
     @JsonIgnore
     @OneToOne (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "profile_id", referencedColumnName = "id")
     private Profile profile;
+
+    @Enumerated(EnumType.STRING)
+    private ApprovalStatus status;
 
 
     public void setId(Integer id) {
@@ -114,14 +109,6 @@ public class User {
         this.securityAnswer = securityAnswer;
     }
 
-    /*public Set<Group> getGroups() {
-        return groups;
-    }
-
-    public void setGroups(Set<Group> groups) {
-        this.groups = groups;
-    }*/
-
     public List<Post> getPosts() {
         return posts;
     }
@@ -138,6 +125,14 @@ public class User {
         this.profile = profile;
     }
 
+    public ApprovalStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ApprovalStatus status) {
+        this.status = status;
+    }
+
     public User(){
 
     }
@@ -151,24 +146,5 @@ public class User {
         this.securityQuestion = securityQuestion;
         this.securityAnswer = securityAnswer;
         this.role = role;
-    }
-
-    //admin
-    @Enumerated(EnumType.STRING)
-    private UserStatus status;
-    public UserStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(UserStatus status) {
-        this.status = status;
-    }
-    private Boolean approved;
-    public Boolean getApproved() {
-        return approved;
-    }
-
-    public void setApproved(Boolean approved) {
-        this.approved = approved;
     }
 }

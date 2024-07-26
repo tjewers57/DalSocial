@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../css/post.css';
-import { Link, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 const Post = (post) => {
     const[firstName, setFirstName] = useState('');

@@ -1,27 +1,19 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/feed.css';
 import axios from 'axios';
-import { Link, useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Logout from './logout.jsx';
 import Post from './post.jsx';
 
 const Feed = () => {
-    const userRef = useRef();
-    const errRef = useRef();
-
     const[content, setContent] = useState('');
     const[title, setTitle] = useState('');
-    const[user_Id, setUserId] = useState('');
-
     const[isExpanded, setIsExpanded] = useState(false);
-    const[email, setEmail] = useState('');
-
-    const navigate = useNavigate();
-
-
     const[posts, setPosts] = useState([]);
     const[loading, setLoading] = useState(true);
     const[error, setError] = useState(null);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -38,7 +30,7 @@ const Feed = () => {
                 let allPosts = [];
                 
                 for(let i = 0; i < friendsData.length; i++){
-                    if(friendsData[i].sender.id != user.data.id){
+                    if(friendsData[i].sender.id !== user.data.id){
                         const postsResponse = await axios.get('http://localhost:8080/posts/fetch/' + friendsData[i].sender.id);
                         if(!postsResponse){
                             throw new Error("Failed to grab posts");
@@ -75,7 +67,6 @@ const Feed = () => {
         try{
             const email = localStorage.getItem('loggedInUser');
             const user = await axios.get("http://localhost:8080/users/getbyemail/" + email);
-            setUserId(user.data.id);
             const formData = {
                 content,
                 title,
@@ -104,9 +95,6 @@ const Feed = () => {
                 <button aria-expanded={isExpanded} id='nav-button' onClick={toggleVisible}>Create Post</button>
                 <Logout className='logout'/>
             </nav>
-            
-            <p>This is the feed page (in development)</p>
-
             <div id={isExpanded ? 'visible' : 'hidden'} className='post'>
                 <form onSubmit={handleSubmit}>
                     <label>Create your post!</label>

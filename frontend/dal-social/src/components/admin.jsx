@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useParams } from 'react';
 import axios from 'axios';
 import '../css/admin.css';
 
@@ -14,7 +14,11 @@ function AdminListComponent() {
     const fetchUsers = async () => {
         try {
             const response = await axios.get('http://localhost:8080/users/fetch');
-            const filteredUsers = response.data.filter(user => user.role !== 'ROLE_ADMIN' && user.status !== 'PENDING');
+            if (!response.data) {
+                throw new Error('Failed to fetch users');
+            }
+            // Filter out users with the role 'ROLE_ADMIN'
+            const filteredUsers = response.data.filter(user => user.role !== 'ROLE_ADMIN');
             setUsers(filteredUsers);
         } catch (error) {
             console.error('Error fetching users:', error);
@@ -34,20 +38,22 @@ function AdminListComponent() {
         try {
             await axios.delete(`http://localhost:8080/users/delete/${deleteId}`);
             alert('User deleted successfully!');
-            fetchUsers();
         } catch (error) {
             alert('Failed to delete user');
         }
+        fetchUsers();
     };
 
     const changeUserRole = async (userId) => {
         try {
-            await axios.put(`http://localhost:8080/admin/changeRole/${userId}`);
+            const user = await axios.get(`http://localhost:8080/users/get/${userId}`);
+            user.data.role = "ROLE_ADMIN";
+            await axios.put('http://localhost:8080/users/update', user.data);
             alert('User role changed successfully!');
-            fetchUsers();
         } catch (error) {
             alert('Failed to change the user role');
         }
+        fetchUsers();
     };
 
     const approveUser = async (userId) => {
@@ -76,13 +82,13 @@ function AdminListComponent() {
         <div className="container">
             <h1>Administration</h1>
             <div>
-                <h2>List of Users</h2>
-                {users.length ? (
+                <h2>List of Users - <strong>take caution when making changes here.</strong></h2>
+                {users.length !== 0 ? (
                     users.map((res, index) => (
                         <div key={index} className="Container">
-                            <p>{res.firstName} {res.lastName}</p>
-                            <button onClick={() => deleteUser(res.id)}>Remove</button>
-                            <button onClick={() => changeUserRole(res.id)}>Admin</button>
+                            <p>{res.firstName} {res.lastName} ({res.email})</p>
+                            <button onClick={() => deleteUser(res.id)}>Delete User</button>
+                            <button onClick={() => changeUserRole(res.id) } >Elevate to Administrator</button>
                         </div>
                     ))
                 ) : (
@@ -91,7 +97,7 @@ function AdminListComponent() {
             </div>
             <div>
                 <h2>Pending User Requests</h2>
-                {pendingUsers.length ? (
+                {pendingUsers.length !== 0 ? (
                     pendingUsers.map((res, index) => (
                         <div key={index} className="Container">
                             <p>{res.firstName} {res.lastName}</p>

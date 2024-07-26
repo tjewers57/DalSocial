@@ -41,4 +41,8 @@
     height: 3.5em;
 }
 
+.nav-item > button {
+    width: 100%;
+}
+
 
