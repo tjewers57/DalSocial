@@ -25,10 +25,10 @@ public class User {
     private String password;
 
     @Column(nullable = false)
-    public String securityQuestion;
+    private String securityQuestion;
 
     @Column(nullable = false)
-    public String securityAnswer;
+    private String securityAnswer;
 
     @Enumerated(EnumType.STRING)
     private UserRole role;
