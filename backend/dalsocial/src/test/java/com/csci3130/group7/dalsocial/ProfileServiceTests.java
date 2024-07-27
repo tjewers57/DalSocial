@@ -1,4 +1,4 @@
-package com.csci3130.group7.dalsocial.service;
+package com.csci3130.group7.dalsocial;
 
 import com.csci3130.group7.dalsocial.model.Profile;
 import com.csci3130.group7.dalsocial.model.User;
@@ -19,7 +19,7 @@ import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class ProfileServiceTest {
+public class ProfileServiceTests {
 
     @Mock
     private ProfileRepository profileRepository;

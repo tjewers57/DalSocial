@@ -60,4 +60,9 @@ public class UserController {
     public boolean checkAnswer(@PathVariable String email, @PathVariable String answer) {
         return userService.correctAnswer(email, answer);
     }
+    //Admin
+    @GetMapping("/fetchPending")
+    public List<User> fetchPendingUsers() {
+        return userService.fetchPendingUsers();
+    }
 }

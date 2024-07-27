@@ -1,0 +1,49 @@
+.Container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+.Tag{
+    color: red;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.Container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.Container p {
+    margin: 5px 0;
+}
+
+.Container button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.Container button:hover {
+    background-color: #0056b3;
+}
+
+.Container h3 {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.adminWrapper {
+    text-align: center;
+}

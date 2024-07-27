@@ -18,7 +18,7 @@ const SignUp = () => {
     const verifyFields = async (event) => {
         event.preventDefault();
 
-        if(!firstName || !lastName || !email || !password || !securityQuestion || !securityQuestion){
+        if(!firstName || !lastName || !email || !password || !securityQuestion || !securityAnswer){
             alert("Please fill in all fields.");
             return;
         }
@@ -32,16 +32,16 @@ const SignUp = () => {
             securityAnswer,
             role
         };
-    
+
         try {
             const response = await axios.post('http://localhost:8080/users/save', formData);
             alert(response.data);
-            if(response.data === "User created successfully"){
-                navigate('/login');
+            if(response.data === "User created successfully. Awaiting approval.") {
+                navigate('/login'); // Redirect to login page
             }
         } catch (error) {
-            console.log(error)
-            alert("An error occured, please try again.");
+            console.log(error);
+            alert("An error occurred, please try again.");
         }
     }
 

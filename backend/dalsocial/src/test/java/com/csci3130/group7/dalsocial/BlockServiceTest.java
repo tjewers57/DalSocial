@@ -1,4 +1,4 @@
-package com.csci3130.group7.dalsocial.service;
+package com.csci3130.group7.dalsocial;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;

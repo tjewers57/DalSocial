@@ -1,4 +1,4 @@
-package com.csci3130.group7.dalsocial.service;
+package com.csci3130.group7.dalsocial;
 
 import com.csci3130.group7.dalsocial.model.User;
 import com.csci3130.group7.dalsocial.repository.UserRepository;
@@ -19,7 +19,7 @@ import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class UserServiceTest {
+public class UserServiceTests {
 
     @Mock
     private UserRepository userRepository;
@@ -39,16 +39,18 @@ public class UserServiceTest {
 
     @Test
     public void createReturnsErrorWhenEmailIsInvalid(){
-        // only dal students/faculty can use the app, so the domain name must be "@dal.ca"
-        User notDal = new User();
-        notDal.setEmail("john@mail.com");
-
         // no host portion -> not a valid email
         User notLongEnough = new User();
         notLongEnough.setEmail("@dal.ca");
-
-        Assertions.assertEquals("Invalid email address, please enter a valid Dalhousie email address", userService.createUser(notDal));
         Assertions.assertEquals("Invalid email address, please enter a valid Dalhousie email address", userService.createUser(notLongEnough));
+    }
+
+    @Test
+    public void createReturnsErrorWhenEmailIsNotDalEmail(){
+        // only dal students/faculty can use the app, so the domain name must be "@dal.ca"
+        User notDal = new User();
+        notDal.setEmail("john@mail.com");
+        Assertions.assertEquals("Invalid email address, please enter a valid Dalhousie email address", userService.createUser(notDal));
     }
 
     @Test
@@ -125,7 +127,7 @@ public class UserServiceTest {
     @Test
     public void findByFirstNameReturnsEmptyList(){
         when(userRepository.findByFirstName(anyString())).thenReturn(List.of());
-        Assertions.assertTrue(userService.fetchAllUsers().isEmpty());
+        Assertions.assertTrue(userService.findByFirstName(anyString()).isEmpty());
     }
 
     @Test
@@ -136,6 +138,7 @@ public class UserServiceTest {
         john.setPassword("Password1!");
 
         when(userRepository.findByFirstName("John")).thenReturn(List.of(john));
+        Assertions.assertTrue(userService.findByFirstName("John").contains(john));
     }
 
     @Test

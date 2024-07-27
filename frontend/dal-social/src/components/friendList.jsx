@@ -45,8 +45,6 @@ const FriendList = () => {
             });
             setFriends(friendList);
             setUnfilteredFriends(friendList);
-            console.log("friends");
-            console.log(friends);
         } catch (error) {
             console.log(error)
             alert("An error occured, please try again.");
@@ -68,8 +66,6 @@ const FriendList = () => {
                 outgoingList.push(friendData);
             });
             setOutgoingRequests(outgoingList);
-            console.log("outgoing");
-            console.log(outgoingRequests);
         } catch (error) {
             console.log(error)
             alert("An error occured, please try again.");
@@ -90,9 +86,6 @@ const FriendList = () => {
                 incomingList.push(friendData);
             });
             setIncomingRequests(incomingList);
-            console.log(incomingList);
-            console.log("incoming");
-            console.log(incomingRequests);
         } catch (error) {
             console.log(error)
             alert("An error occured, please try again.");
@@ -116,7 +109,7 @@ const FriendList = () => {
                     <h2>My Friends</h2>
                     <input className='searchBar' type='search' placeholder='Search Friends' onChange={(e) => setSearchInput(e.target.value)} value={searchInput}/>
                 </div>
-                {friends.length != 0 ? (
+                {friends.length !== 0 ? (
                 friends.map((friend, index) =>
                     <div className="friendProfile" key={index}>
                         <p className="friendProfile" onClick={() => navigate(`/profile/${friend.email}`)}>{ friend.firstName } { friend.lastName}</p>
@@ -130,7 +123,7 @@ const FriendList = () => {
                 <h2>Friend Requests</h2>
                 <div id="outgoing" className='friendWrapper'>
                     <h3>Outgoing Requests</h3>
-                    {outgoingRequests.length != 0 ? (
+                    {outgoingRequests.length !== 0 ? (
                     outgoingRequests.map((request, index) =>
                         <div className='requestEntry' key={index}>
                             <p className="friendProfile" onClick={() => navigate(`/profile/${request.email}`)}>{ request.firstName } { request.lastName}</p>
@@ -142,7 +135,7 @@ const FriendList = () => {
                 </div>
                 <div id="incoming" className='friendWrapper'>
                     <h3>Incoming Requests</h3>
-                    {incomingRequests.length != 0 ? (
+                    {incomingRequests.length !== 0 ? (
                     incomingRequests.map((request, index) =>
                         <div className='requestEntry' key={index}>
                             <p className="friendProfile" onClick={() => navigate(`/profile/${request.email}`)}>{ request.firstName } { request.lastName}</p>

@@ -1,4 +1,4 @@
-package com.csci3130.group7.dalsocial.service;
+package com.csci3130.group7.dalsocial;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -20,7 +20,7 @@ import com.csci3130.group7.dalsocial.repository.PostRepository;
 import com.csci3130.group7.dalsocial.service.Implementation.PostServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
-public class PostServiceTest {
+public class PostServiceTests {
 
     @Mock
     private PostRepository postRepository;

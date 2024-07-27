@@ -1,0 +1,4 @@
+Project Name,Package Name,Type Name,Method Name,Test Smell,Cause of the Smell
+dalsocial,com.csci3130.group7.dalsocial,UserServiceTests,createReturnsErrorWhenEmailIsInvalid,Assertion roulette,The tool detected the smell in this test method because the test uses multiple assertion in the test. Total number of assertions in the test are: 2
+dalsocial,com.csci3130.group7.dalsocial,UserServiceTests,createReturnsErrorWhenEmailIsInvalid,Eager test,The tool detected the smell in this test method because the test checks the results of more than one method from class under test. The called methods are: com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl.createUser; com.csci3130.group7.dalsocial.model.User.setEmail
+dalsocial,com.csci3130.group7.dalsocial,UserServiceTests,findByFirstNameReturnsListOfUsers,Missing assertion,The tool detected the smell in this test method because the test doesn't have any assertion.
