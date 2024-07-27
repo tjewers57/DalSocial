@@ -1,0 +1,23 @@
+# CI/CD Pipeline for the Backend Spring Boot project, compiles the maven project then executes the unit tests.
+
+stages: # List of stages for jobs, and their order of execution.
+  - build
+  - test
+
+build-backend: # Compiles the project
+  stage: build
+  image: maven:3.9-eclipse-temurin-21-alpine # Docker image running Maven 3.9 with JDK21
+  script:
+    - cd backend/dalsocial
+    - echo "Compiling Maven project"
+    - mvn clean package -Dskiptests
+    - echo "Compile complete"
+
+test-backend:   # Testing
+  stage: test    # Tests only execute if the compile stage is successful. 
+  image: maven:3.9-eclipse-temurin-21-alpine
+  script:
+    - cd backend/dalsocial
+    - echo "Running Unit Tests"
+    - mvn test # Run JUnit tests through Maven
+    - echo "Test execution Complete"

@@ -31,6 +31,8 @@
     border: none;
     padding: 5px 10px;
     cursor: pointer;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .Container button:hover {
@@ -40,4 +42,8 @@
 .Container h3 {
     margin-top: 10px;
     font-size: 18px;
+}
+
+.adminWrapper {
+    text-align: center;
 }

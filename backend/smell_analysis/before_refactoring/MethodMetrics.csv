@@ -1,0 +1,219 @@
+Project Name,Package Name,Type Name,Method Name,LOC,CC,PC,Line no,IsTest,Main prod class tested,Production classes tested
+dalsocial,com.csci3130.group7.dalsocial.controller,FriendRequestController,sendFriendRequest,5,1,2,26,0,com.csci3130.group7.dalsocial.service.FriendRequestService,com.csci3130.group7.dalsocial.service.FriendRequestService; com.csci3130.group7.dalsocial.service.UserService
+dalsocial,com.csci3130.group7.dalsocial.controller,FriendRequestController,acceptFriendRequestByUsers,5,1,2,34,0,com.csci3130.group7.dalsocial.service.FriendRequestService,com.csci3130.group7.dalsocial.service.FriendRequestService; com.csci3130.group7.dalsocial.service.UserService
+dalsocial,com.csci3130.group7.dalsocial.controller,FriendRequestController,getFriendsByUserId,3,1,1,41,0,com.csci3130.group7.dalsocial.service.FriendRequestService,com.csci3130.group7.dalsocial.service.FriendRequestService
+dalsocial,com.csci3130.group7.dalsocial.controller,FriendRequestController,getOutgoingRequests,3,1,1,46,0,com.csci3130.group7.dalsocial.service.FriendRequestService,com.csci3130.group7.dalsocial.service.FriendRequestService
+dalsocial,com.csci3130.group7.dalsocial.controller,FriendRequestController,getIncomingRequests,3,1,1,51,0,com.csci3130.group7.dalsocial.service.FriendRequestService,com.csci3130.group7.dalsocial.service.FriendRequestService
+dalsocial,com.csci3130.group7.dalsocial.controller,FriendRequestController,checkRequestStatus,16,4,2,56,0,com.csci3130.group7.dalsocial.service.FriendRequestService,com.csci3130.group7.dalsocial.service.FriendRequestService; com.csci3130.group7.dalsocial.service.UserService
+dalsocial,com.csci3130.group7.dalsocial.controller,FriendRequestController,deleteFriendRequest,5,1,2,72,0,com.csci3130.group7.dalsocial.service.UserService,com.csci3130.group7.dalsocial.service.UserService; com.csci3130.group7.dalsocial.service.FriendRequestService
+dalsocial,com.csci3130.group7.dalsocial.controller,PostController,savePost,3,1,1,22,0,com.csci3130.group7.dalsocial.service.PostService,com.csci3130.group7.dalsocial.service.PostService
+dalsocial,com.csci3130.group7.dalsocial.controller,PostController,fetchAllPosts,3,1,1,27,0,com.csci3130.group7.dalsocial.service.PostService,com.csci3130.group7.dalsocial.service.PostService
+dalsocial,com.csci3130.group7.dalsocial.controller,PostController,getPostById,3,1,1,32,0,com.csci3130.group7.dalsocial.service.PostService,com.csci3130.group7.dalsocial.service.PostService
+dalsocial,com.csci3130.group7.dalsocial.controller,PostController,updateUser,3,1,1,37,0,com.csci3130.group7.dalsocial.service.PostService,com.csci3130.group7.dalsocial.service.PostService
+dalsocial,com.csci3130.group7.dalsocial.controller,PostController,deleteUser,3,1,1,42,0,com.csci3130.group7.dalsocial.service.PostService,com.csci3130.group7.dalsocial.service.PostService
+dalsocial,com.csci3130.group7.dalsocial.controller,ProfileController,save,3,1,1,17,0,com.csci3130.group7.dalsocial.service.ProfileService,com.csci3130.group7.dalsocial.service.ProfileService
+dalsocial,com.csci3130.group7.dalsocial.controller,ProfileController,getProfileById,3,1,1,22,0,com.csci3130.group7.dalsocial.service.ProfileService,com.csci3130.group7.dalsocial.service.ProfileService
+dalsocial,com.csci3130.group7.dalsocial.controller,ProfileController,getProfileByUser,3,1,1,27,0,com.csci3130.group7.dalsocial.service.ProfileService,com.csci3130.group7.dalsocial.service.ProfileService
+dalsocial,com.csci3130.group7.dalsocial.controller,ProfileController,update,3,1,1,32,0,com.csci3130.group7.dalsocial.service.ProfileService,com.csci3130.group7.dalsocial.service.ProfileService
+dalsocial,com.csci3130.group7.dalsocial.controller,ProfileController,delete,3,1,1,37,0,com.csci3130.group7.dalsocial.service.ProfileService,com.csci3130.group7.dalsocial.service.ProfileService
+dalsocial,com.csci3130.group7.dalsocial.controller,UserController,saveUser,3,1,1,19,0,com.csci3130.group7.dalsocial.service.UserService,com.csci3130.group7.dalsocial.service.UserService
+dalsocial,com.csci3130.group7.dalsocial.controller,UserController,fetchAllUsers,3,1,0,24,0,com.csci3130.group7.dalsocial.service.UserService,com.csci3130.group7.dalsocial.service.UserService
+dalsocial,com.csci3130.group7.dalsocial.controller,UserController,getUserById,3,1,1,29,0,com.csci3130.group7.dalsocial.service.UserService,com.csci3130.group7.dalsocial.service.UserService
+dalsocial,com.csci3130.group7.dalsocial.controller,UserController,getUserByFirstName,3,1,1,34,0,com.csci3130.group7.dalsocial.service.UserService,com.csci3130.group7.dalsocial.service.UserService
+dalsocial,com.csci3130.group7.dalsocial.controller,UserController,getUserByEmail,3,1,1,39,0,com.csci3130.group7.dalsocial.service.UserService,com.csci3130.group7.dalsocial.service.UserService
+dalsocial,com.csci3130.group7.dalsocial.controller,UserController,updateUser,3,1,1,44,0,com.csci3130.group7.dalsocial.service.UserService,com.csci3130.group7.dalsocial.service.UserService
+dalsocial,com.csci3130.group7.dalsocial.controller,UserController,deleteUser,3,1,1,49,0,com.csci3130.group7.dalsocial.service.UserService,com.csci3130.group7.dalsocial.service.UserService
+dalsocial,com.csci3130.group7.dalsocial.controller,UserController,authUser,3,1,1,54,0,utils.LoginInfo,utils.LoginInfo; com.csci3130.group7.dalsocial.service.UserService
+dalsocial,com.csci3130.group7.dalsocial.controller,UserController,checkAnswer,3,1,2,59,0,com.csci3130.group7.dalsocial.service.UserService,com.csci3130.group7.dalsocial.service.UserService
+dalsocial,com.csci3130.group7.dalsocial,DalsocialApplication,main,3,1,1,9,0,,
+dalsocial,com.csci3130.group7.dalsocial,FriendServiceTests,setup,5,1,0,34,0,,
+dalsocial,com.csci3130.group7.dalsocial,FriendServiceTests,sendFriendRequestReturnsErrorWhenRequestAlreadySent,9,1,0,41,1,com.csci3130.group7.dalsocial.service.Implementation.FriendRequestServiceImpl,com.csci3130.group7.dalsocial.service.Implementation.FriendRequestServiceImpl; com.csci3130.group7.dalsocial.model.Friend; com.csci3130.group7.dalsocial.repository.FriendRequestRepository
+dalsocial,com.csci3130.group7.dalsocial,FriendServiceTests,sendFriendRequestReturnsErrorWhenUsersAreFriends,9,1,0,53,1,com.csci3130.group7.dalsocial.service.Implementation.FriendRequestServiceImpl,com.csci3130.group7.dalsocial.service.Implementation.FriendRequestServiceImpl; com.csci3130.group7.dalsocial.model.Friend; com.csci3130.group7.dalsocial.repository.FriendRequestRepository
+dalsocial,com.csci3130.group7.dalsocial,FriendServiceTests,sendFriendRequestSendsRequest,6,1,0,65,1,com.csci3130.group7.dalsocial.service.Implementation.FriendRequestServiceImpl,com.csci3130.group7.dalsocial.service.Implementation.FriendRequestServiceImpl; com.csci3130.group7.dalsocial.repository.FriendRequestRepository
+dalsocial,com.csci3130.group7.dalsocial,FriendServiceTests,acceptReturnsErrorWhenRequestDoesntExist,4,1,0,73,1,com.csci3130.group7.dalsocial.repository.FriendRequestRepository,com.csci3130.group7.dalsocial.repository.FriendRequestRepository; com.csci3130.group7.dalsocial.service.Implementation.FriendRequestServiceImpl
+dalsocial,com.csci3130.group7.dalsocial,FriendServiceTests,acceptIsSuccessfulWhenRequestIsAccepted,10,1,0,79,1,com.csci3130.group7.dalsocial.model.Friend,com.csci3130.group7.dalsocial.model.Friend; com.csci3130.group7.dalsocial.repository.FriendRequestRepository; com.csci3130.group7.dalsocial.service.Implementation.FriendRequestServiceImpl
+dalsocial,com.csci3130.group7.dalsocial,FriendServiceTests,findAllFriendsOfUserReturnsListOfFriends,12,1,0,91,1,com.csci3130.group7.dalsocial.model.Friend,com.csci3130.group7.dalsocial.model.Friend; com.csci3130.group7.dalsocial.service.Implementation.FriendRequestServiceImpl; com.csci3130.group7.dalsocial.repository.FriendRequestRepository; com.csci3130.group7.dalsocial.model.User
+dalsocial,com.csci3130.group7.dalsocial,FriendServiceTests,findAllOutGoingRequestsReturnsListOfRequests,10,1,0,106,1,com.csci3130.group7.dalsocial.repository.FriendRequestRepository,com.csci3130.group7.dalsocial.repository.FriendRequestRepository; com.csci3130.group7.dalsocial.model.Friend; com.csci3130.group7.dalsocial.model.User; com.csci3130.group7.dalsocial.service.Implementation.FriendRequestServiceImpl
+dalsocial,com.csci3130.group7.dalsocial,FriendServiceTests,findAllIncomingRequestsReturnsListOfRequests,10,1,0,118,1,com.csci3130.group7.dalsocial.model.Friend,com.csci3130.group7.dalsocial.model.Friend; com.csci3130.group7.dalsocial.repository.FriendRequestRepository; com.csci3130.group7.dalsocial.model.User; com.csci3130.group7.dalsocial.service.Implementation.FriendRequestServiceImpl
+dalsocial,com.csci3130.group7.dalsocial,FriendServiceTests,checkIfFriendsReturnsFalseWhenUsersAreNotFriends,5,1,0,130,1,com.csci3130.group7.dalsocial.service.Implementation.FriendRequestServiceImpl,com.csci3130.group7.dalsocial.service.Implementation.FriendRequestServiceImpl; com.csci3130.group7.dalsocial.repository.FriendRequestRepository
+dalsocial,com.csci3130.group7.dalsocial,FriendServiceTests,checkIfFriendsReturnsTrueWhenUsersAreFriends,10,1,0,137,1,com.csci3130.group7.dalsocial.service.Implementation.FriendRequestServiceImpl,com.csci3130.group7.dalsocial.service.Implementation.FriendRequestServiceImpl; com.csci3130.group7.dalsocial.model.Friend; com.csci3130.group7.dalsocial.repository.FriendRequestRepository
+dalsocial,com.csci3130.group7.dalsocial,FriendServiceTests,checkIfRequestSentReturnsFalseWhenRequestDoesNotExist,4,1,0,149,1,com.csci3130.group7.dalsocial.repository.FriendRequestRepository,com.csci3130.group7.dalsocial.repository.FriendRequestRepository; com.csci3130.group7.dalsocial.service.Implementation.FriendRequestServiceImpl; com.csci3130.group7.dalsocial.model.User
+dalsocial,com.csci3130.group7.dalsocial,FriendServiceTests,checkIfRequestSentReturnsTrueWhenRequestExists,11,1,0,155,1,com.csci3130.group7.dalsocial.repository.FriendRequestRepository,com.csci3130.group7.dalsocial.repository.FriendRequestRepository; com.csci3130.group7.dalsocial.model.Friend; com.csci3130.group7.dalsocial.service.Implementation.FriendRequestServiceImpl; com.csci3130.group7.dalsocial.model.User
+dalsocial,com.csci3130.group7.dalsocial,FriendServiceTests,checkIfRequestPendingReturnsFalseWhenRequestDoesNotExist,4,1,0,168,1,com.csci3130.group7.dalsocial.service.Implementation.FriendRequestServiceImpl,com.csci3130.group7.dalsocial.service.Implementation.FriendRequestServiceImpl; com.csci3130.group7.dalsocial.repository.FriendRequestRepository; com.csci3130.group7.dalsocial.model.User
+dalsocial,com.csci3130.group7.dalsocial,FriendServiceTests,checkIfRequestPendingReturnsTrueWhenRequestExists,11,1,0,174,1,com.csci3130.group7.dalsocial.service.Implementation.FriendRequestServiceImpl,com.csci3130.group7.dalsocial.service.Implementation.FriendRequestServiceImpl; com.csci3130.group7.dalsocial.model.Friend; com.csci3130.group7.dalsocial.repository.FriendRequestRepository; com.csci3130.group7.dalsocial.model.User
+dalsocial,com.csci3130.group7.dalsocial,FriendServiceTests,deleteBySenderAndReceiverDeletesUser,7,1,0,187,1,com.csci3130.group7.dalsocial.model.Friend,com.csci3130.group7.dalsocial.model.Friend; com.csci3130.group7.dalsocial.service.Implementation.FriendRequestServiceImpl
+dalsocial,com.csci3130.group7.dalsocial,PostServiceTests,setup,3,1,0,31,0,,
+dalsocial,com.csci3130.group7.dalsocial,PostServiceTests,testCreatePost,8,1,0,36,1,com.csci3130.group7.dalsocial.model.Post,com.csci3130.group7.dalsocial.model.Post; com.csci3130.group7.dalsocial.service.Implementation.PostServiceImpl
+dalsocial,com.csci3130.group7.dalsocial,PostServiceTests,testFetchAllPostsByUserId,19,1,0,47,1,com.csci3130.group7.dalsocial.service.Implementation.PostServiceImpl,com.csci3130.group7.dalsocial.service.Implementation.PostServiceImpl; com.csci3130.group7.dalsocial.model.Post; com.csci3130.group7.dalsocial.repository.PostRepository
+dalsocial,com.csci3130.group7.dalsocial,PostServiceTests,testFindPostById,6,1,0,72,1,com.csci3130.group7.dalsocial.service.Implementation.PostServiceImpl,com.csci3130.group7.dalsocial.service.Implementation.PostServiceImpl
+dalsocial,com.csci3130.group7.dalsocial,PostServiceTests,testDeletePost,8,1,0,81,1,com.csci3130.group7.dalsocial.model.Post,com.csci3130.group7.dalsocial.model.Post; com.csci3130.group7.dalsocial.service.Implementation.PostServiceImpl
+dalsocial,com.csci3130.group7.dalsocial,PostServiceTests,testUpdatePost,8,1,0,92,1,com.csci3130.group7.dalsocial.model.Post,com.csci3130.group7.dalsocial.model.Post; com.csci3130.group7.dalsocial.service.Implementation.PostServiceImpl
+dalsocial,com.csci3130.group7.dalsocial,ProfileServiceTests,setup,3,1,0,30,0,,
+dalsocial,com.csci3130.group7.dalsocial,ProfileServiceTests,createReturnsErrorWhenProfileIsNull,3,1,0,35,1,com.csci3130.group7.dalsocial.service.Implementation.ProfileServiceImpl,com.csci3130.group7.dalsocial.service.Implementation.ProfileServiceImpl
+dalsocial,com.csci3130.group7.dalsocial,ProfileServiceTests,createReturnsErrorWhenUserIsNull,5,1,0,40,1,com.csci3130.group7.dalsocial.model.Profile,com.csci3130.group7.dalsocial.model.Profile; com.csci3130.group7.dalsocial.service.Implementation.ProfileServiceImpl
+dalsocial,com.csci3130.group7.dalsocial,ProfileServiceTests,createSavesProfile,6,1,0,47,1,com.csci3130.group7.dalsocial.model.Profile,com.csci3130.group7.dalsocial.model.Profile; com.csci3130.group7.dalsocial.service.Implementation.ProfileServiceImpl
+dalsocial,com.csci3130.group7.dalsocial,ProfileServiceTests,findByIdThrowsExceptionWhenProfileDoesntExist,5,1,0,55,0,com.csci3130.group7.dalsocial.service.Implementation.ProfileServiceImpl,com.csci3130.group7.dalsocial.service.Implementation.ProfileServiceImpl
+dalsocial,com.csci3130.group7.dalsocial,ProfileServiceTests,findByIdReturnsProfile,7,1,0,62,1,com.csci3130.group7.dalsocial.model.Profile,com.csci3130.group7.dalsocial.model.Profile; com.csci3130.group7.dalsocial.service.Implementation.ProfileServiceImpl
+dalsocial,com.csci3130.group7.dalsocial,ProfileServiceTests,findByUserReturnsNullWhenUserDoesntExist,5,1,0,71,1,com.csci3130.group7.dalsocial.repository.ProfileRepository,com.csci3130.group7.dalsocial.repository.ProfileRepository; com.csci3130.group7.dalsocial.service.Implementation.ProfileServiceImpl
+dalsocial,com.csci3130.group7.dalsocial,ProfileServiceTests,findByUserReturnsProfile,7,1,0,78,1,com.csci3130.group7.dalsocial.model.Profile,com.csci3130.group7.dalsocial.model.Profile; com.csci3130.group7.dalsocial.repository.ProfileRepository; com.csci3130.group7.dalsocial.service.Implementation.ProfileServiceImpl
+dalsocial,com.csci3130.group7.dalsocial,ProfileServiceTests,updateReturnsErrorWhenProfileDoesntExist,7,1,0,88,1,com.csci3130.group7.dalsocial.model.Profile,com.csci3130.group7.dalsocial.model.Profile; com.csci3130.group7.dalsocial.service.Implementation.ProfileServiceImpl
+dalsocial,com.csci3130.group7.dalsocial,ProfileServiceTests,updateUpdatesProfile,6,1,0,97,1,com.csci3130.group7.dalsocial.model.Profile,com.csci3130.group7.dalsocial.model.Profile; com.csci3130.group7.dalsocial.service.Implementation.ProfileServiceImpl
+dalsocial,com.csci3130.group7.dalsocial,ProfileServiceTests,deleteDeletesProfile,3,1,0,106,1,com.csci3130.group7.dalsocial.service.Implementation.ProfileServiceImpl,com.csci3130.group7.dalsocial.service.Implementation.ProfileServiceImpl
+dalsocial,com.csci3130.group7.dalsocial,UserServiceTests,setup,3,1,0,30,0,,
+dalsocial,com.csci3130.group7.dalsocial,UserServiceTests,createReturnsErrorWhenUserIsNull,3,1,0,35,1,com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl,com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl
+dalsocial,com.csci3130.group7.dalsocial,UserServiceTests,createReturnsErrorWhenEmailIsInvalid,8,1,0,40,1,com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl,com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl; com.csci3130.group7.dalsocial.model.User
+dalsocial,com.csci3130.group7.dalsocial,UserServiceTests,createReturnsErrorWhenEmailAlreadyInUse,10,1,0,54,1,com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl,com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl; com.csci3130.group7.dalsocial.model.User; com.csci3130.group7.dalsocial.repository.UserRepository
+dalsocial,com.csci3130.group7.dalsocial,UserServiceTests,createReturnsErrorWhenPasswordIsInvalid,6,1,0,69,1,com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl,com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl; com.csci3130.group7.dalsocial.model.User
+dalsocial,com.csci3130.group7.dalsocial,UserServiceTests,createSavesUser,7,1,0,78,1,com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl,com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl; com.csci3130.group7.dalsocial.model.User
+dalsocial,com.csci3130.group7.dalsocial,UserServiceTests,fetchReturnsEmptyList,4,1,0,89,1,com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl,com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl
+dalsocial,com.csci3130.group7.dalsocial,UserServiceTests,fetchReturnsListOfUsers,7,1,0,95,1,com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl,com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl; com.csci3130.group7.dalsocial.model.User
+dalsocial,com.csci3130.group7.dalsocial,UserServiceTests,findByIdThrowsExceptionWhenUserDoesNotExist,5,1,0,105,0,com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl,com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl
+dalsocial,com.csci3130.group7.dalsocial,UserServiceTests,findByIdReturnsUser,8,1,0,112,1,com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl,com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl; com.csci3130.group7.dalsocial.model.User
+dalsocial,com.csci3130.group7.dalsocial,UserServiceTests,findByFirstNameReturnsEmptyList,4,1,0,125,1,com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl,com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl; com.csci3130.group7.dalsocial.repository.UserRepository
+dalsocial,com.csci3130.group7.dalsocial,UserServiceTests,findByFirstNameReturnsListOfUsers,7,1,0,131,1,com.csci3130.group7.dalsocial.repository.UserRepository,com.csci3130.group7.dalsocial.repository.UserRepository; com.csci3130.group7.dalsocial.model.User
+dalsocial,com.csci3130.group7.dalsocial,UserServiceTests,findByEmailReturnsNull,4,1,0,141,1,com.csci3130.group7.dalsocial.repository.UserRepository,com.csci3130.group7.dalsocial.repository.UserRepository; com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl
+dalsocial,com.csci3130.group7.dalsocial,UserServiceTests,findByEmailReturnsUser,8,1,0,147,1,com.csci3130.group7.dalsocial.model.User,com.csci3130.group7.dalsocial.model.User; com.csci3130.group7.dalsocial.repository.UserRepository; com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl
+dalsocial,com.csci3130.group7.dalsocial,UserServiceTests,updateReturnsErrorWhenUserDoesntExist,7,1,0,158,1,com.csci3130.group7.dalsocial.model.User,com.csci3130.group7.dalsocial.model.User; com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl
+dalsocial,com.csci3130.group7.dalsocial,UserServiceTests,updateReturnsErrorWhenPasswordInvalid,7,1,0,167,1,com.csci3130.group7.dalsocial.model.User,com.csci3130.group7.dalsocial.model.User; com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl
+dalsocial,com.csci3130.group7.dalsocial,UserServiceTests,updateUpdatesUser,7,1,0,176,1,com.csci3130.group7.dalsocial.model.User,com.csci3130.group7.dalsocial.model.User; com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl
+dalsocial,com.csci3130.group7.dalsocial,UserServiceTests,deleteDeletesUser,3,1,0,185,1,com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl,com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl
+dalsocial,com.csci3130.group7.dalsocial,UserServiceTests,authenticateReturnsErrorWhenUserDoesNotExist,4,1,0,190,1,com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl,com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl; com.csci3130.group7.dalsocial.repository.UserRepository
+dalsocial,com.csci3130.group7.dalsocial,UserServiceTests,authenticateReturnsErrorWhenPasswordIncorrect,7,1,0,196,1,com.csci3130.group7.dalsocial.model.User,com.csci3130.group7.dalsocial.model.User; com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl; com.csci3130.group7.dalsocial.repository.UserRepository
+dalsocial,com.csci3130.group7.dalsocial,UserServiceTests,authenticateReturnsSuccessfulWhenPasswordCorrect,7,1,0,206,1,com.csci3130.group7.dalsocial.model.User,com.csci3130.group7.dalsocial.model.User; com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl; com.csci3130.group7.dalsocial.repository.UserRepository
+dalsocial,com.csci3130.group7.dalsocial,UserServiceTests,answerCheckReturnsFalseWhenUserDoesntExist,4,1,0,216,1,com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl,com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl; com.csci3130.group7.dalsocial.repository.UserRepository
+dalsocial,com.csci3130.group7.dalsocial,UserServiceTests,answerCheckReturnsFalseWhenAnswerIncorrect,8,1,0,222,1,com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl,com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl; com.csci3130.group7.dalsocial.model.User; com.csci3130.group7.dalsocial.repository.UserRepository
+dalsocial,com.csci3130.group7.dalsocial,UserServiceTests,answerCheckReturnsTrueWhenAnswerCorrect,8,1,0,232,1,com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl,com.csci3130.group7.dalsocial.service.Implementation.UserServiceImpl; com.csci3130.group7.dalsocial.model.User; com.csci3130.group7.dalsocial.repository.UserRepository
+dalsocial,com.csci3130.group7.dalsocial.model,Friend,setId,3,1,1,22,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Friend,getId,3,1,0,26,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Friend,getStatus,3,1,0,30,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Friend,setStatus,3,1,1,34,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Friend,getSender,3,1,0,38,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Friend,setSender,3,1,1,42,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Friend,getReceiver,3,1,0,46,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Friend,setReceiver,3,1,1,50,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Friend,Friend,2,1,0,54,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Group,getId,3,1,0,26,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Group,getName,3,1,0,30,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Group,setName,3,1,1,34,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Group,getDescription,3,1,0,38,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Group,setDescription,3,1,1,42,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Group,getOwner,3,1,0,46,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Group,setOwner,3,1,1,50,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Group,Group,2,1,0,62,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Group,Group,6,1,4,66,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Post,getId,3,1,0,26,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Post,getPostDate,3,1,0,30,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Post,getContent,3,1,0,34,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Post,setContent,3,1,1,38,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Post,getTitle,3,1,0,42,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Post,setTitle,3,1,1,46,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Post,getUserId,3,1,0,50,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Post,setUserId,3,1,1,54,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Post,Post,2,1,0,58,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Post,Post,7,1,4,62,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Profile,getId,3,1,0,18,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Profile,setId,3,1,1,22,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Profile,getTitle,3,1,0,26,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Profile,setTitle,3,1,1,30,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Profile,getBio,3,1,0,34,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Profile,setBio,3,1,1,38,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Profile,getStatus,3,1,0,42,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Profile,setStatus,3,1,1,46,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Profile,getUser,3,1,0,53,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Profile,setUser,3,1,1,57,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Profile,Profile,2,1,0,61,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,Profile,Profile,5,1,3,63,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,User,setId,3,1,1,53,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,User,getId,3,1,0,57,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,User,getFirstName,3,1,0,61,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,User,setFirstName,3,1,1,65,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,User,getLastName,3,1,0,69,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,User,setLastName,3,1,1,73,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,User,getEmail,3,1,0,77,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,User,setEmail,3,1,1,81,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,User,getRole,3,1,0,85,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,User,setRole,3,1,1,89,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,User,getPassword,3,1,0,93,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,User,setPassword,3,1,1,97,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,User,getSecurityQuestion,3,1,0,101,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,User,setSecurityQuestion,3,1,1,105,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,User,getSecurityAnswer,3,1,0,109,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,User,setSecurityAnswer,3,1,1,113,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,User,getPosts,3,1,0,125,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,User,setPosts,3,1,1,129,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,User,getProfile,3,1,0,133,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,User,setProfile,3,1,1,137,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,User,User,2,1,0,141,0,,
+dalsocial,com.csci3130.group7.dalsocial.model,User,User,10,1,8,145,0,,
+dalsocial,com.csci3130.group7.dalsocial.repository,FriendRequestRepository,findBySenderAndReceiver,0,1,2,14,0,,
+dalsocial,com.csci3130.group7.dalsocial.repository,FriendRequestRepository,deleteBySenderAndReceiver,0,1,2,16,0,,
+dalsocial,com.csci3130.group7.dalsocial.repository,FriendRequestRepository,findAllBySenderIdAndStatus,0,1,2,18,0,,
+dalsocial,com.csci3130.group7.dalsocial.repository,FriendRequestRepository,findAllByReceiverIdAndStatus,0,1,2,20,0,,
+dalsocial,com.csci3130.group7.dalsocial.repository,PostRepository,findByPostDate,0,1,1,14,0,,
+dalsocial,com.csci3130.group7.dalsocial.repository,PostRepository,findAllByUserId,0,1,1,16,0,,
+dalsocial,com.csci3130.group7.dalsocial.repository,ProfileRepository,findByUserId,0,1,1,11,0,,
+dalsocial,com.csci3130.group7.dalsocial.repository,UserRepository,findByFirstName,0,1,1,12,0,,
+dalsocial,com.csci3130.group7.dalsocial.repository,UserRepository,findByEmail,0,1,1,14,0,,
+dalsocial,com.csci3130.group7.dalsocial.service,FriendRequestService,sendFriendRequest,0,1,2,10,0,,
+dalsocial,com.csci3130.group7.dalsocial.service,FriendRequestService,acceptBySenderAndReceiver,0,1,2,12,0,,
+dalsocial,com.csci3130.group7.dalsocial.service,FriendRequestService,findAllFriendsOfUser,0,1,1,14,0,,
+dalsocial,com.csci3130.group7.dalsocial.service,FriendRequestService,findAllOutgoingRequests,0,1,1,16,0,,
+dalsocial,com.csci3130.group7.dalsocial.service,FriendRequestService,findAllIncomingRequests,0,1,1,18,0,,
+dalsocial,com.csci3130.group7.dalsocial.service,FriendRequestService,deleteBySenderAndReceiver,0,1,2,20,0,,
+dalsocial,com.csci3130.group7.dalsocial.service,FriendRequestService,checkIfUsersAreFriends,0,1,2,22,0,,
+dalsocial,com.csci3130.group7.dalsocial.service,FriendRequestService,checkIfRequestSent,0,1,2,24,0,,
+dalsocial,com.csci3130.group7.dalsocial.service,FriendRequestService,checkIfRequestPending,0,1,2,26,0,,
+dalsocial,com.csci3130.group7.dalsocial.service,PostService,createPost,0,1,1,9,0,,
+dalsocial,com.csci3130.group7.dalsocial.service,PostService,fetchAllPostsByUserId,0,1,1,11,0,,
+dalsocial,com.csci3130.group7.dalsocial.service,PostService,findPostById,0,1,1,13,0,,
+dalsocial,com.csci3130.group7.dalsocial.service,PostService,deletePost,0,1,1,15,0,,
+dalsocial,com.csci3130.group7.dalsocial.service,PostService,updatePost,0,1,1,17,0,,
+dalsocial,com.csci3130.group7.dalsocial.service,ProfileService,createProfile,0,1,1,8,0,,
+dalsocial,com.csci3130.group7.dalsocial.service,ProfileService,findProfileById,0,1,1,10,0,,
+dalsocial,com.csci3130.group7.dalsocial.service,ProfileService,findProfileByUser,0,1,1,12,0,,
+dalsocial,com.csci3130.group7.dalsocial.service,ProfileService,updateProfile,0,1,1,14,0,,
+dalsocial,com.csci3130.group7.dalsocial.service,ProfileService,deleteProfile,0,1,1,16,0,,
+dalsocial,com.csci3130.group7.dalsocial.service,UserService,createUser,0,1,1,9,0,,
+dalsocial,com.csci3130.group7.dalsocial.service,UserService,fetchAllUsers,0,1,0,11,0,,
+dalsocial,com.csci3130.group7.dalsocial.service,UserService,findUserById,0,1,1,13,0,,
+dalsocial,com.csci3130.group7.dalsocial.service,UserService,findByFirstName,0,1,1,15,0,,
+dalsocial,com.csci3130.group7.dalsocial.service,UserService,findByEmail,0,1,1,17,0,,
+dalsocial,com.csci3130.group7.dalsocial.service,UserService,updateUser,0,1,1,19,0,,
+dalsocial,com.csci3130.group7.dalsocial.service,UserService,deleteUser,0,1,1,21,0,,
+dalsocial,com.csci3130.group7.dalsocial.service,UserService,authenticateUser,0,1,2,23,0,,
+dalsocial,com.csci3130.group7.dalsocial.service,UserService,correctAnswer,0,1,2,25,0,,
+dalsocial,com.csci3130.group7.dalsocial.service.Implementation,FriendRequestServiceImpl,sendFriendRequest,16,3,2,21,0,com.csci3130.group7.dalsocial.model.Friend,com.csci3130.group7.dalsocial.model.Friend; com.csci3130.group7.dalsocial.repository.FriendRequestRepository
+dalsocial,com.csci3130.group7.dalsocial.service.Implementation,FriendRequestServiceImpl,acceptBySenderAndReceiver,11,2,2,37,0,com.csci3130.group7.dalsocial.repository.FriendRequestRepository,com.csci3130.group7.dalsocial.repository.FriendRequestRepository; com.csci3130.group7.dalsocial.model.Friend
+dalsocial,com.csci3130.group7.dalsocial.service.Implementation,FriendRequestServiceImpl,findAllFriendsOfUser,6,1,1,49,0,com.csci3130.group7.dalsocial.repository.FriendRequestRepository,com.csci3130.group7.dalsocial.repository.FriendRequestRepository
+dalsocial,com.csci3130.group7.dalsocial.service.Implementation,FriendRequestServiceImpl,findAllOutgoingRequests,3,1,1,57,0,com.csci3130.group7.dalsocial.repository.FriendRequestRepository,com.csci3130.group7.dalsocial.repository.FriendRequestRepository
+dalsocial,com.csci3130.group7.dalsocial.service.Implementation,FriendRequestServiceImpl,findAllIncomingRequests,3,1,1,62,0,com.csci3130.group7.dalsocial.repository.FriendRequestRepository,com.csci3130.group7.dalsocial.repository.FriendRequestRepository
+dalsocial,com.csci3130.group7.dalsocial.service.Implementation,FriendRequestServiceImpl,checkIfUsersAreFriends,5,1,2,67,0,com.csci3130.group7.dalsocial.repository.FriendRequestRepository,com.csci3130.group7.dalsocial.repository.FriendRequestRepository; com.csci3130.group7.dalsocial.model.Friend
+dalsocial,com.csci3130.group7.dalsocial.service.Implementation,FriendRequestServiceImpl,checkIfRequestSent,4,1,2,74,0,com.csci3130.group7.dalsocial.repository.FriendRequestRepository,com.csci3130.group7.dalsocial.repository.FriendRequestRepository; com.csci3130.group7.dalsocial.model.Friend; com.csci3130.group7.dalsocial.model.User
+dalsocial,com.csci3130.group7.dalsocial.service.Implementation,FriendRequestServiceImpl,checkIfRequestPending,4,1,2,80,0,com.csci3130.group7.dalsocial.repository.FriendRequestRepository,com.csci3130.group7.dalsocial.repository.FriendRequestRepository; com.csci3130.group7.dalsocial.model.User; com.csci3130.group7.dalsocial.model.Friend
+dalsocial,com.csci3130.group7.dalsocial.service.Implementation,FriendRequestServiceImpl,deleteBySenderAndReceiver,11,3,2,86,0,com.csci3130.group7.dalsocial.repository.FriendRequestRepository,com.csci3130.group7.dalsocial.repository.FriendRequestRepository
+dalsocial,com.csci3130.group7.dalsocial.service.Implementation,PostServiceImpl,createPost,7,2,1,20,0,,
+dalsocial,com.csci3130.group7.dalsocial.service.Implementation,PostServiceImpl,fetchAllPostsByUserId,3,1,1,28,0,com.csci3130.group7.dalsocial.repository.PostRepository,com.csci3130.group7.dalsocial.repository.PostRepository
+dalsocial,com.csci3130.group7.dalsocial.service.Implementation,PostServiceImpl,findPostById,10,2,1,33,0,,
+dalsocial,com.csci3130.group7.dalsocial.service.Implementation,PostServiceImpl,deletePost,4,1,1,45,0,,
+dalsocial,com.csci3130.group7.dalsocial.service.Implementation,PostServiceImpl,updatePost,13,2,1,51,0,com.csci3130.group7.dalsocial.model.Post,com.csci3130.group7.dalsocial.model.Post
+dalsocial,com.csci3130.group7.dalsocial.service.Implementation,ProfileServiceImpl,createProfile,16,5,1,18,0,com.csci3130.group7.dalsocial.model.Profile,com.csci3130.group7.dalsocial.model.Profile
+dalsocial,com.csci3130.group7.dalsocial.service.Implementation,ProfileServiceImpl,findProfileById,10,2,1,32,0,,
+dalsocial,com.csci3130.group7.dalsocial.service.Implementation,ProfileServiceImpl,findProfileByUser,3,1,1,43,0,com.csci3130.group7.dalsocial.repository.ProfileRepository,com.csci3130.group7.dalsocial.repository.ProfileRepository
+dalsocial,com.csci3130.group7.dalsocial.service.Implementation,ProfileServiceImpl,updateProfile,14,2,1,48,0,com.csci3130.group7.dalsocial.model.Profile,com.csci3130.group7.dalsocial.model.Profile
+dalsocial,com.csci3130.group7.dalsocial.service.Implementation,ProfileServiceImpl,deleteProfile,4,1,1,63,0,,
+dalsocial,com.csci3130.group7.dalsocial.service.Implementation,UserServiceImpl,createUser,18,5,1,24,0,com.csci3130.group7.dalsocial.model.User,com.csci3130.group7.dalsocial.model.User; com.csci3130.group7.dalsocial.repository.UserRepository; utils.PasswordValidator
+dalsocial,com.csci3130.group7.dalsocial.service.Implementation,UserServiceImpl,fetchAllUsers,3,1,0,43,0,,
+dalsocial,com.csci3130.group7.dalsocial.service.Implementation,UserServiceImpl,findUserById,10,2,1,48,0,,
+dalsocial,com.csci3130.group7.dalsocial.service.Implementation,UserServiceImpl,findByFirstName,3,1,1,59,0,com.csci3130.group7.dalsocial.repository.UserRepository,com.csci3130.group7.dalsocial.repository.UserRepository
+dalsocial,com.csci3130.group7.dalsocial.service.Implementation,UserServiceImpl,findByEmail,3,1,1,64,0,com.csci3130.group7.dalsocial.repository.UserRepository,com.csci3130.group7.dalsocial.repository.UserRepository
+dalsocial,com.csci3130.group7.dalsocial.service.Implementation,UserServiceImpl,updateUser,18,3,1,69,0,com.csci3130.group7.dalsocial.model.User,com.csci3130.group7.dalsocial.model.User; utils.PasswordValidator
+dalsocial,com.csci3130.group7.dalsocial.service.Implementation,UserServiceImpl,deleteUser,4,1,1,88,0,,
+dalsocial,com.csci3130.group7.dalsocial.service.Implementation,UserServiceImpl,authenticateUser,11,3,2,94,0,com.csci3130.group7.dalsocial.model.User,com.csci3130.group7.dalsocial.model.User; com.csci3130.group7.dalsocial.repository.UserRepository
+dalsocial,com.csci3130.group7.dalsocial.service.Implementation,UserServiceImpl,correctAnswer,6,2,2,107,0,com.csci3130.group7.dalsocial.model.User,com.csci3130.group7.dalsocial.model.User; com.csci3130.group7.dalsocial.repository.UserRepository
+dalsocial,utils,LoginInfo,getEmail,3,1,0,8,0,,
+dalsocial,utils,LoginInfo,setEmail,3,1,1,12,0,,
+dalsocial,utils,LoginInfo,getPassword,3,1,0,16,0,,
+dalsocial,utils,LoginInfo,setPassword,3,1,1,20,0,,
+dalsocial,utils,LoginInfo,LoginInfo,4,1,2,24,0,,
+dalsocial,utils,PasswordValidator,validatePassword,24,7,1,13,0,utils.PasswordValidator,utils.PasswordValidator
+dalsocial,utils,PasswordValidator,specialChar,4,1,1,33,0,,

@@ -42,6 +42,8 @@ const Status = () => {
                 case 'invisible':
                     returnStatus = "STATUS_INVISIBLE";
                     break;
+                default:
+                    console.log("Error, status not recognized.");
             }
 
             const data = {

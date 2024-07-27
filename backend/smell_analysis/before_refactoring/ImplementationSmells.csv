@@ -1,0 +1,9 @@
+Project Name,Package Name,Type Name,Method Name,Implementation Smell,Cause of the Smell,Method start line no
+dalsocial,com.csci3130.group7.dalsocial,FriendServiceTests,checkIfRequestSentReturnsTrueWhenRequestExists,Magic Number,The method contains a magic number: 2,155
+dalsocial,com.csci3130.group7.dalsocial,FriendServiceTests,checkIfRequestPendingReturnsTrueWhenRequestExists,Magic Number,The method contains a magic number: 2,174
+dalsocial,com.csci3130.group7.dalsocial,PostServiceTests,testFetchAllPostsByUserId,Magic Number,The method contains a magic number: 3,47
+dalsocial,com.csci3130.group7.dalsocial,UserServiceTests,createReturnsErrorWhenEmailIsInvalid,Long Statement,"The length of the statement ""Assertions.assertEquals(""Invalid email address` please enter a valid Dalhousie email address""`userService.createUser(notDal));"" is 126.",40
+dalsocial,com.csci3130.group7.dalsocial,UserServiceTests,createReturnsErrorWhenEmailIsInvalid,Long Statement,"The length of the statement ""Assertions.assertEquals(""Invalid email address` please enter a valid Dalhousie email address""`userService.createUser(notLongEnough));"" is 133.",40
+dalsocial,com.csci3130.group7.dalsocial.model,User,User,Long Parameter List,The method has 8 parameters. ,145
+dalsocial,com.csci3130.group7.dalsocial.service.Implementation,UserServiceImpl,createUser,Magic Number,The method contains a magic number: 8,24
+dalsocial,utils,PasswordValidator,specialChar,Long Statement,"The length of the statement ""Set<Character> specialCharacters=Set.of('!'`'@'`'#'`'$'`'%'`'^'`'&'`'*'`'('`')'`'-'`'_'`'+'`'='`'{'`'}'`'['`']'`':'`';'`'<'`'>'`'`'`'.'`'?'`'/'`'\\'`'|'`'~'`'`');"" is 162.",33
