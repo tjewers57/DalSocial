@@ -14,7 +14,6 @@ const Profile = () => {
 
     const { email } = useParams();
     const[isBlocked, setIsBlocked] = useState(false);
-    const[targetEmail, setTargetEmail] = useState('');
     const[title, setTitle] = useState('');
     const[bio, setBio] = useState('');
     const[status, setStatus] = useState('');
