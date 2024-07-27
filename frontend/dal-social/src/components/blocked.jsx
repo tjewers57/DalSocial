@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-
+import '../css/blocked.css'
 
 const Blocked = (targetEmail) => {
     const[isBlocked, setIsBlocked] = useState(false);
@@ -10,9 +10,6 @@ const Blocked = (targetEmail) => {
     }, [])
 
     const getStatus = async () => {
-        console.log(targetEmail);
-        console.log(targetEmail.targetEmail);
-
         try {
             const currentUser = await axios.get('http://localhost:8080/users/getbyemail/' + localStorage.getItem('loggedInUser'));
             const targetUser = await axios.get('http://localhost:8080/users/getbyemail/' + targetEmail.targetEmail);
@@ -45,7 +42,7 @@ const Blocked = (targetEmail) => {
             }
 
             //this will add the target user to the list of blocked users
-            const blockUserResponse = await axios.get('http://localhost:8080/block/save', formData);
+            const blockUserResponse = await axios.post('http://localhost:8080/block/save', formData);
             if(blockUserResponse.data){
                 window.location.reload();
             }
@@ -70,7 +67,7 @@ const Blocked = (targetEmail) => {
             const block = await axios.get('http://localhost:8080/block/get/' + currentUser.data.id + '/' + targetUser.data.id);
 
             //this will delete the target user from the list of blocked users
-            const unblockUserResponse = await axios.get('http://localhost:8080/block/delete/' + block.data.id);
+            const unblockUserResponse = await axios.delete('http://localhost:8080/block/delete/' + block.data.id);
             if(unblockUserResponse.data){
                 window.location.reload();
             }
@@ -88,14 +85,12 @@ const Blocked = (targetEmail) => {
         <div>
             {isBlocked && (
                 <div>
-                    <button onClick={unblockUser}>Unblock</button>
-                    <h2>You cannot see this user's posts as you are blocked.</h2>
-                    <p>Better luck next time, chum.</p>
+                    <button className="button-unblocked" onClick={unblockUser}>Unblock</button>
                 </div>
             )}
 
             {!isBlocked &&
-                <button onClick={blockUser}>BLOCK</button>
+                <button className="button-blocked" onClick={blockUser}>BLOCK</button>
             }
 
         </div>

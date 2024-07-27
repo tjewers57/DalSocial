@@ -104,8 +104,6 @@ const Feed = () => {
                 <button aria-expanded={isExpanded} id='nav-button' onClick={toggleVisible}>Create Post</button>
                 <Logout className='logout'/>
             </nav>
-            
-            <p>This is the feed page (in development)</p>
 
             <div id={isExpanded ? 'visible' : 'hidden'} className='post'>
                 <form onSubmit={handleSubmit}>
