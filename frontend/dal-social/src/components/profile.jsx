@@ -229,7 +229,6 @@ const Profile = () => {
                     {isBlocked && (
                         <div>
                             <h3>You cannot view this person's posts. As you have been blocked.</h3>
-                            <p>Better luck next time, chum.</p>
                         </div>
                     )}
                 </div> 
