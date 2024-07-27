@@ -6,12 +6,15 @@ import '../css/profile.css'
 import Post from './post';
 import DeleteUser from './deleteUser';
 import FriendRequest from './friendRequest';
+import Blocked from './blocked';
 
 const Profile = () => {
 
     const navigate = useNavigate();
 
     const { email } = useParams();
+    const[isBlocked, setIsBlocked] = useState(false);
+    const[targetEmail, setTargetEmail] = useState('');
     const[title, setTitle] = useState('');
     const[bio, setBio] = useState('');
     const[status, setStatus] = useState('');
@@ -20,9 +23,29 @@ const Profile = () => {
     const[posts, setPosts] = useState([]);
 
     useEffect(() => {
+        getStatus();
         fetchUser();
         fetchProfile();
     }, [])
+
+    const getStatus = async () => {
+        try {
+            const currentUser = await axios.get('http://localhost:8080/users/getbyemail/' + localStorage.getItem('loggedInUser'));
+            const targetUser = await axios.get('http://localhost:8080/users/getbyemail/' + email);
+            if(currentUser.data == '' || targetUser.data == ''){
+                alert("Error, invalid user.");
+            }
+
+            //this will grab the status of the relationship between the two users
+            const blockStatus = await axios.get('http://localhost:8080/block/status/' + targetUser.data.id + '/' + currentUser.data.id);
+            if(blockStatus.data){
+                setIsBlocked(true);
+            }
+        } catch (error) {
+            console.log(error);
+            alert("An error occured, please try again.");
+        }
+    }
 
     const fetchUser = async () => {
         var returnUser;
@@ -152,41 +175,65 @@ const Profile = () => {
     return (
         <div className='profileWrapper'>
             <section className='userInfo'>
-                <h4> {firstName} {lastName} </h4>
-                <p> {email} </p>
-                <p id="status"> {status} </p>
-                {email == localStorage.getItem("loggedInUser") && (
-                    <button onClick={editProfile}>Edit</button>
-                )}
-                <div className='statusForm'>
-                {email == localStorage.getItem("loggedInUser") && (
-                    <Status/>
-                )}
-                {email == localStorage.getItem("loggedInUser") && (
-                    <DeleteUser/>
-                )}
-                {email != localStorage.getItem("loggedInUser") && (
-                    <FriendRequest userEmail={email}/>
-                )}
-                </div>
+                <section className='userInfo-section'>
+                    <h4> {firstName} {lastName} </h4>
+                    <p> {email} </p>
+                    <p id="status"> {status} </p>
+                    {email == localStorage.getItem("loggedInUser") && (
+                        <button onClick={editProfile}>Edit</button>
+                    )}
+                    <div className='statusForm'>
+                    {email == localStorage.getItem("loggedInUser") && (
+                        <Status/>
+                    )}
+                    {email == localStorage.getItem("loggedInUser") && (
+                        <DeleteUser/>
+                    )}
+                    {email != localStorage.getItem("loggedInUser") && (
+                        <FriendRequest userEmail={email}/>
+                    )}
+                    </div>
+                </section>
+                <section>
+                    <div>
+                        {email != localStorage.getItem("loggedInUser") && (
+                            <Blocked targetEmail={email}/>
+                        )}
+                    </div>
+                </section>
             </section>
             <section className='bio'>
                 <h4>{title}</h4>
                 <pre>{bio}</pre>
             </section>
+
             <section className='posts'>
-                <h3>Posts</h3>
-                <div className='postsContainer'>
-                    { posts.length > 0 ? (
-                        posts.map((post, index) => (
-                            <div key={index} className='post'>
-                                <Post post={post}/>
+                <div>
+                    {!isBlocked && (
+                        <div>
+                            <h3>Posts</h3>
+                            <div className='postsContainer'>
+                                { posts.length > 0 ? (
+                                    posts.map((post, index) => (
+                                        <div key={index} className='post'>
+                                            <Post post={post}/>
+                                        </div>
+                                    ))
+                                ) : (
+                                    <p id="postPlaceholder">{firstName} currently does not have any posts.</p>
+                                )}
                             </div>
-                        ))
-                    ) : (
-                        <p id="postPlaceholder">{firstName} currently does not have any posts.</p>
+                        </div>
                     )}
                 </div>
+                <div>
+                    {isBlocked && (
+                        <div>
+                            <h3>You cannot view this person's posts. As you have been blocked.</h3>
+                            <p>Better luck next time, chum.</p>
+                        </div>
+                    )}
+                </div> 
             </section>
         </div>
     );

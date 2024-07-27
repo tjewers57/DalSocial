@@ -1,0 +1,13 @@
+.button-blocked{
+    margin: auto;
+    margin-top: 1%;
+    padding: 1em;
+    background-color: rgb(228, 15, 15);
+}
+
+.button-unblocked{
+    margin: auto;
+    margin-top: 1%;
+    padding: 1em;
+    background-color: rgb(28, 105, 133);
+}
