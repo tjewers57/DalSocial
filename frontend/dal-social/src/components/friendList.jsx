@@ -45,8 +45,6 @@ const FriendList = () => {
             });
             setFriends(friendList);
             setUnfilteredFriends(friendList);
-            console.log("friends");
-            console.log(friends);
         } catch (error) {
             console.log(error)
             alert("An error occured, please try again.");
@@ -68,8 +66,6 @@ const FriendList = () => {
                 outgoingList.push(friendData);
             });
             setOutgoingRequests(outgoingList);
-            console.log("outgoing");
-            console.log(outgoingRequests);
         } catch (error) {
             console.log(error)
             alert("An error occured, please try again.");
@@ -90,9 +86,6 @@ const FriendList = () => {
                 incomingList.push(friendData);
             });
             setIncomingRequests(incomingList);
-            console.log(incomingList);
-            console.log("incoming");
-            console.log(incomingRequests);
         } catch (error) {
             console.log(error)
             alert("An error occured, please try again.");
