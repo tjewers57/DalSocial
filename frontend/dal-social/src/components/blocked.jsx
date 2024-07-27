@@ -49,6 +49,8 @@ const Blocked = (targetEmail) => {
             else{
                 alert("Error handling request.");
             }
+
+            const requestResponse = await axios.delete('http://localhost:8080/friend-requests/deletebyusers/' + currentUser.data.id + '/' + targetUser.data.id);
         }
         catch (error) {
             console.log(error);
