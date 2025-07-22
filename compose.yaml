@@ -1,0 +1,27 @@
+services:
+  frontend:
+    build: 
+      context: ./frontend/dal-social/
+    ports:
+      - 3000:3000
+  backend:
+    build:
+      context: ./backend/dalsocial/
+    ports:
+      - 8080:8080
+  mysql:
+    image: mysql
+    ports:
+      - 3307:3306
+    volumes:
+      - test-mysql-data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD= # replace with SQL root password
+volumes:
+  test-mysql-data:
+    external: true
+    name: test-mysql-data
+    
+
+
+

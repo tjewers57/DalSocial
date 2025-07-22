@@ -85,7 +85,7 @@ public class UserServiceTests {
 
         when(userRepository.save(john)).thenReturn(john);
 
-        Assertions.assertEquals("User created successfully", userService.createUser(john));
+        Assertions.assertEquals("User created successfully. Awaiting approval.", userService.createUser(john));
     }
 
     @Test
