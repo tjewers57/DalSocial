@@ -34,7 +34,7 @@ const SignUp = () => {
         };
 
         try {
-            const response = await axios.post('http://localhost:8080/users/save', formData);
+            const response = await axios.post(`http://${process.env.BACKEND_API}:8080/users/save`, formData);
             alert(response.data);
             if(response.data === "User created successfully. Awaiting approval.") {
                 navigate('/login'); // Redirect to login page

@@ -11,14 +11,14 @@ const Blocked = (targetEmail) => {
 
     const getStatus = async () => {
         try {
-            const currentUser = await axios.get('http://localhost:8080/users/getbyemail/' + localStorage.getItem('loggedInUser'));
-            const targetUser = await axios.get('http://localhost:8080/users/getbyemail/' + targetEmail.targetEmail);
+            const currentUser = await axios.get(`http://${process.env.BACKEND_API}:8080/users/getbyemail/` + localStorage.getItem('loggedInUser'));
+            const targetUser = await axios.get(`http://${process.env.BACKEND_API}:8080/users/getbyemail/` + targetEmail.targetEmail);
             if(currentUser.data == '' || targetUser.data == ''){
                 alert("Error, invalid user.");
             }
 
             //this will grab the status of the relationship between the two users
-            const blockStatus = await axios.get('http://localhost:8080/block/status/' + currentUser.data.id + '/' + targetUser.data.id);
+            const blockStatus = await axios.get(`http://${process.env.BACKEND_API}:8080/block/status/` + currentUser.data.id + '/' + targetUser.data.id);
             if(blockStatus.data){
                 setIsBlocked(true);
             }
@@ -30,8 +30,8 @@ const Blocked = (targetEmail) => {
 
     const blockUser = async () => {
         try {
-            const currentUser = await axios.get('http://localhost:8080/users/getbyemail/' + localStorage.getItem('loggedInUser'));
-            const targetUser = await axios.get('http://localhost:8080/users/getbyemail/' + targetEmail.targetEmail);
+            const currentUser = await axios.get(`http://${process.env.BACKEND_API}:8080/users/getbyemail/` + localStorage.getItem('loggedInUser'));
+            const targetUser = await axios.get(`http://${process.env.BACKEND_API}:8080/users/getbyemail/` + targetEmail.targetEmail);
             if(currentUser.data == '' || targetUser.data == ''){
                 alert("Error, invalid user.");
             }
@@ -42,7 +42,7 @@ const Blocked = (targetEmail) => {
             }
 
             //this will add the target user to the list of blocked users
-            const blockUserResponse = await axios.post('http://localhost:8080/block/save', formData);
+            const blockUserResponse = await axios.post(`http://${process.env.BACKEND_API}:8080/block/save`, formData);
             if(blockUserResponse.data){
                 window.location.reload();
             }
@@ -50,7 +50,7 @@ const Blocked = (targetEmail) => {
                 alert("Error handling request.");
             }
 
-            const requestResponse = await axios.delete('http://localhost:8080/friend-requests/deletebyusers/' + currentUser.data.id + '/' + targetUser.data.id);
+            const requestResponse = await axios.delete(`http://${process.env.BACKEND_API}:8080/friend-requests/deletebyusers/` + currentUser.data.id + '/' + targetUser.data.id);
         }
         catch (error) {
             console.log(error);
@@ -60,16 +60,16 @@ const Blocked = (targetEmail) => {
 
     const unblockUser = async () => {
         try {
-            const currentUser = await axios.get('http://localhost:8080/users/getbyemail/' + localStorage.getItem('loggedInUser'));
-            const targetUser = await axios.get('http://localhost:8080/users/getbyemail/' + targetEmail.targetEmail);
+            const currentUser = await axios.get(`http://${process.env.BACKEND_API}:8080/users/getbyemail/` + localStorage.getItem('loggedInUser'));
+            const targetUser = await axios.get(`http://${process.env.BACKEND_API}:8080/users/getbyemail/` + targetEmail.targetEmail);
             if(currentUser.data == '' || targetUser.data == ''){
                 alert("Error, invalid user.");
             }
 
-            const block = await axios.get('http://localhost:8080/block/get/' + currentUser.data.id + '/' + targetUser.data.id);
+            const block = await axios.get(`http://${process.env.BACKEND_API}:8080/block/get/` + currentUser.data.id + '/' + targetUser.data.id);
 
             //this will delete the target user from the list of blocked users
-            const unblockUserResponse = await axios.delete('http://localhost:8080/block/delete/' + block.data.id);
+            const unblockUserResponse = await axios.delete(`http://${process.env.BACKEND_API}:8080/block/delete/` + block.data.id);
             if(unblockUserResponse.data){
                 window.location.reload();
             }

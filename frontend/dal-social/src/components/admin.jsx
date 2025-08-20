@@ -13,7 +13,7 @@ function AdminListComponent() {
 
     const fetchUsers = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/users/fetch');
+            const response = await axios.get(`http://${process.env.BACKEND_API}:8080/users/fetch`);
             if (!response.data) {
                 throw new Error('Failed to fetch users');
             }
@@ -27,7 +27,7 @@ function AdminListComponent() {
 
     const fetchPendingUsers = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/users/fetchPending');
+            const response = await axios.get(`http://${process.env.BACKEND_API}:8080/users/fetchPending`);
             setPendingUsers(response.data);
         } catch (error) {
             console.error('Error fetching pending users:', error);
@@ -36,7 +36,7 @@ function AdminListComponent() {
 
     const deleteUser = async (deleteId) => {
         try {
-            await axios.delete(`http://localhost:8080/users/delete/${deleteId}`);
+            await axios.delete(`http://${process.env.BACKEND_API}:8080/users/delete/${deleteId}`);
             alert('User deleted successfully!');
         } catch (error) {
             alert('Failed to delete user');
@@ -46,9 +46,9 @@ function AdminListComponent() {
 
     const changeUserRole = async (userId) => {
         try {
-            const user = await axios.get(`http://localhost:8080/users/get/${userId}`);
+            const user = await axios.get(`http://${process.env.BACKEND_API}:8080/users/get/${userId}`);
             user.data.role = "ROLE_ADMIN";
-            await axios.put('http://localhost:8080/users/update', user.data);
+            await axios.put('http://${process.env.BACKEND_API}:8080/users/update', user.data);
             alert('User role changed successfully!');
         } catch (error) {
             alert('Failed to change the user role');
@@ -58,7 +58,7 @@ function AdminListComponent() {
 
     const approveUser = async (userId) => {
         try {
-            await axios.put(`http://localhost:8080/admin/approveUser/${userId}`);
+            await axios.put(`http://${process.env.BACKEND_API}:8080/admin/approveUser/${userId}`);
             alert('User approved successfully!');
             fetchPendingUsers();
         } catch (error) {
@@ -70,7 +70,7 @@ function AdminListComponent() {
 
     const rejectUser = async (userId) => {
         try {
-            await axios.put(`http://localhost:8080/admin/rejectUser/${userId}`);
+            await axios.put(`http://${process.env.BACKEND_API}:8080/admin/rejectUser/${userId}`);
             alert('User rejected and deleted successfully!');
             fetchPendingUsers();
         } catch (error) {
