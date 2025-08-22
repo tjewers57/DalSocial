@@ -19,9 +19,9 @@ const Feed = () => {
         const fetchPosts = async () => {
             try{
                 const email = localStorage.getItem('loggedInUser');
-                const user = await axios.get(`http://${process.env.BACKEND_API}:8080/users/getbyemail/` + email);
+                const user = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/getbyemail/` + email);
                 
-                const friendsResponse = await axios.get(`http://${process.env.BACKEND_API}:8080/friend-requests/getfriendsbyuserid/${user.data.id}`);
+                const friendsResponse = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/friend-requests/getfriendsbyuserid/${user.data.id}`);
                 if(!friendsResponse){
                     throw new Error("Failed to grab userId");
                 }
@@ -31,7 +31,7 @@ const Feed = () => {
                 
                 for(let i = 0; i < friendsData.length; i++){
                     if(friendsData[i].sender.id !== user.data.id){
-                        const postsResponse = await axios.get(`http://${process.env.BACKEND_API}:8080/posts/fetch/` + friendsData[i].sender.id);
+                        const postsResponse = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/posts/fetch/` + friendsData[i].sender.id);
                         if(!postsResponse){
                             throw new Error("Failed to grab posts");
                         }
@@ -66,13 +66,13 @@ const Feed = () => {
 
         try{
             const email = localStorage.getItem('loggedInUser');
-            const user = await axios.get(`http://${process.env.BACKEND_API}:8080/users/getbyemail/` + email);
+            const user = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/getbyemail/` + email);
             const formData = {
                 content,
                 title,
                 userId: user.data.id
             }
-            const response = await axios.post(`http://${process.env.BACKEND_API}:8080/posts/save`, formData);
+            const response = await axios.post(`http://${process.env.REACT_APP_BACKEND_API}:8080/posts/save`, formData);
             alert(response.data);
         }
         catch(error) {

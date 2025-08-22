@@ -29,12 +29,12 @@ const Login = () => {
         };
 
         try {
-            const response = await axios.post("http://${process.env.BACKEND_API}:8080/users/auth", loginData);
+            const response = await axios.post("http://${process.env.REACT_APP_BACKEND_API}:8080/users/auth", loginData);
 
             if (response.data === "User authenticated successfully") {
                 localStorage.setItem('loggedInUser', email);
 
-                const currentUser = await axios.get(`http://${process.env.BACKEND_API}:8080/users/getbyemail/` + localStorage.getItem('loggedInUser'));
+                const currentUser = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/getbyemail/` + localStorage.getItem('loggedInUser'));
                 const userRole = currentUser.data.role;
 
                 if (userRole === "ROLE_USER") {

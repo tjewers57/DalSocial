@@ -16,7 +16,7 @@ const Post = (post) => {
 
     const getUser = async () => {
         try {
-            const user = await axios.get(`http://${process.env.BACKEND_API}:8080/users/get/` + post.post.userId);
+            const user = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/get/` + post.post.userId);
             setFirstName(user.data.firstName);
             setLastName(user.data.lastName);
             setEmail(user.data.email);

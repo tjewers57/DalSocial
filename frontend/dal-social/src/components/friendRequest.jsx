@@ -14,13 +14,13 @@ const FriendRequest = (userEmail) => {
 
     const getStatus = async () => {
         try {
-            const currentUser = await axios.get(`http://${process.env.BACKEND_API}:8080/users/getbyemail/` + localStorage.getItem('loggedInUser'));
-            const targetUser = await axios.get(`http://${process.env.BACKEND_API}:8080/users/getbyemail/` + userEmail.userEmail);
+            const currentUser = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/getbyemail/` + localStorage.getItem('loggedInUser'));
+            const targetUser = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/getbyemail/` + userEmail.userEmail);
             if(currentUser.data === '' || targetUser.data === ''){
                 alert("Error, invalid user.");
             }
             
-            const requestStatus = await axios.get(`http://${process.env.BACKEND_API}:8080/friend-requests/checkrequeststatus/` + currentUser.data.id + '/' + targetUser.data.id);
+            const requestStatus = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/friend-requests/checkrequeststatus/` + currentUser.data.id + '/' + targetUser.data.id);
             switch(requestStatus.data){
                 case "Users are friends":
                     setFriends(true);
@@ -47,13 +47,13 @@ const FriendRequest = (userEmail) => {
         e.preventDefault();
 
         try {
-            const currentUser = await axios.get(`http://${process.env.BACKEND_API}:8080/users/getbyemail/` + localStorage.getItem('loggedInUser'));
-            const targetUser = await axios.get(`http://${process.env.BACKEND_API}:8080/users/getbyemail/` + userEmail.userEmail);
+            const currentUser = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/getbyemail/` + localStorage.getItem('loggedInUser'));
+            const targetUser = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/getbyemail/` + userEmail.userEmail);
             if(currentUser.data === '' || targetUser.data === ''){
                 alert("Error, invalid user.");
             }
 
-            const requestResponse = await axios.post(`http://${process.env.BACKEND_API}:8080/friend-requests/acceptbyusers/` + targetUser.data.id + '/' + currentUser.data.id);
+            const requestResponse = await axios.post(`http://${process.env.REACT_APP_BACKEND_API}:8080/friend-requests/acceptbyusers/` + targetUser.data.id + '/' + currentUser.data.id);
             if(requestResponse.data === "Friend request accepted") {
                 window.location.reload();
             } else {
@@ -69,13 +69,13 @@ const FriendRequest = (userEmail) => {
         e.preventDefault();
 
         try {
-            const currentUser = await axios.get(`http://${process.env.BACKEND_API}:8080/users/getbyemail/` + localStorage.getItem('loggedInUser'));
-            const targetUser = await axios.get(`http://${process.env.BACKEND_API}:8080/users/getbyemail/` + userEmail.userEmail);
+            const currentUser = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/getbyemail/` + localStorage.getItem('loggedInUser'));
+            const targetUser = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/getbyemail/` + userEmail.userEmail);
             if(currentUser.data === '' || targetUser.data === ''){
                 alert("Error, invalid user.");
             }
 
-            const requestResponse = await axios.delete(`http://${process.env.BACKEND_API}:8080/friend-requests/deletebyusers/` + currentUser.data.id + '/' + targetUser.data.id);
+            const requestResponse = await axios.delete(`http://${process.env.REACT_APP_BACKEND_API}:8080/friend-requests/deletebyusers/` + currentUser.data.id + '/' + targetUser.data.id);
             if(requestResponse.data === "Friend request deleted"){
                 window.location.reload();
             } else {
@@ -91,13 +91,13 @@ const FriendRequest = (userEmail) => {
         e.preventDefault();
 
         try {
-            const currentUser = await axios.get(`http://${process.env.BACKEND_API}:8080/users/getbyemail/` + localStorage.getItem('loggedInUser'));
-            const targetUser = await axios.get(`http://${process.env.BACKEND_API}:8080/users/getbyemail/` + userEmail.userEmail);
+            const currentUser = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/getbyemail/` + localStorage.getItem('loggedInUser'));
+            const targetUser = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/getbyemail/` + userEmail.userEmail);
             if(currentUser.data === '' || targetUser.data === ''){
                 alert("Error, invalid user.");
             }
 
-            const requestResponse = await axios.post(`http://${process.env.BACKEND_API}:8080/friend-requests/` + currentUser.data.id + "/send-friend-request/" + targetUser.data.id);
+            const requestResponse = await axios.post(`http://${process.env.REACT_APP_BACKEND_API}:8080/friend-requests/` + currentUser.data.id + "/send-friend-request/" + targetUser.data.id);
             if(requestResponse.data === "Friend request sent"){
                 window.location.reload();
             } else {

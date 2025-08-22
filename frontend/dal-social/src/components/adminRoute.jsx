@@ -11,7 +11,7 @@ const AdminRoute = () => {
     }, [])
 
     const verifyAdminStatus = async () => {
-        const currentUser = await axios.get(`http://${process.env.BACKEND_API}:8080/users/getbyemail/${localStorage.getItem('loggedInUser')}`);
+        const currentUser = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/getbyemail/${localStorage.getItem('loggedInUser')}`);
         if(currentUser.data.role == "ROLE_ADMIN"){
             setIsAdmin(true);
         } else {

@@ -22,7 +22,7 @@ const UserSearch = () => {
     // fetch all users in the database.
     const fetchUsers = async () => {
         try{
-            const users = await axios.get(`http://${process.env.BACKEND_API}:8080/users/fetch`);
+            const users = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/fetch`);
             if(users.data === ''){
                 alert("Error fetching search results, please try again.");
             }

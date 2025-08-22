@@ -24,7 +24,7 @@ const ResetPassword  = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.get(`http://${process.env.BACKEND_API}:8080/users/getbyemail/` + email);
+            const response = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/getbyemail/` + email);
             if(response.data == ''){
                 setErrMsg("An account with this email was not found.");
             }
@@ -40,7 +40,7 @@ const ResetPassword  = () => {
     const checkQuestion = async (e) => {
         e.preventDefault();
 
-        const response = await axios.get(`http://${process.env.BACKEND_API}:8080/users/checkanswer/` + email + '/' + securityAnswer);
+        const response = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/checkanswer/` + email + '/' + securityAnswer);
 
         if(response.data){
             setAllowReset(true);
@@ -56,10 +56,10 @@ const ResetPassword  = () => {
         if(password != confirmPassword){
             setErrMsg("Two passwords do not match.");
         } else {
-            const user = await axios.get(`http://${process.env.BACKEND_API}:8080/users/getbyemail/` + email);
+            const user = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/getbyemail/` + email);
             if(user.data != ''){
                 user.data.password = password;
-                const update = await axios.put('http://${process.env.BACKEND_API}:8080/users/update', user.data);
+                const update = await axios.put('http://${process.env.REACT_APP_BACKEND_API}:8080/users/update', user.data);
                 if(update.data === "User successfully updated"){
                     alert("Password reset successfully!");
                     navigate("/login");

@@ -11,8 +11,8 @@ const DeleteUser = () => {
         e.preventDefault();
 
         try {
-            const user = await axios.get(`http://${process.env.BACKEND_API}:8080/users/getbyemail/` + localStorage.getItem('loggedInUser'));
-            const response = await axios.delete(`http://${process.env.BACKEND_API}:8080/users/delete/` + user.data.id);
+            const user = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/getbyemail/` + localStorage.getItem('loggedInUser'));
+            const response = await axios.delete(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/delete/` + user.data.id);
             if(response.data === "User deleted successfully"){
                 alert("User deleted successfully");
                 localStorage.removeItem('loggedInUser');
