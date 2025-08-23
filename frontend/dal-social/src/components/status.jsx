@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+import { getBackendApi } from '../loadConfig';
 
 const Status = () => {
     const[status, setStatus] = useState('');
@@ -25,8 +26,8 @@ const Status = () => {
 
     const statusChange = async () => {
         try {
-            const user = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/getbyemail/` + localStorage.getItem('loggedInUser'));
-            const profile = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/profiles/getbyuser/` + user.data.id);
+            const user = await axios.get(`${getBackendApi()}/users/getbyemail/` + localStorage.getItem('loggedInUser'));
+            const profile = await axios.get(`${getBackendApi()}/profiles/getbyuser/` + user.data.id);
 
             var returnStatus;
             switch(status) {
@@ -54,7 +55,7 @@ const Status = () => {
             }
 
             try {
-                const response = await axios.put('http://${process.env.REACT_APP_BACKEND_API}:8080/profiles/update', data);
+                const response = await axios.put('${getBackendApi()}/profiles/update', data);
             } catch (error) {
                 console.log(error);
                 alert("An error occured, please try again.");

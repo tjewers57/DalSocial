@@ -7,6 +7,7 @@ import Post from './post';
 import DeleteUser from './deleteUser';
 import FriendRequest from './friendRequest';
 import Blocked from './blocked';
+import { getBackendApi } from '../loadConfig';
 
 const Profile = () => {
 
@@ -29,14 +30,14 @@ const Profile = () => {
 
     const getStatus = async () => {
         try {
-            const currentUser = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/getbyemail/` + localStorage.getItem('loggedInUser'));
-            const targetUser = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/getbyemail/` + email);
+            const currentUser = await axios.get(`${getBackendApi()}/users/getbyemail/` + localStorage.getItem('loggedInUser'));
+            const targetUser = await axios.get(`${getBackendApi()}/users/getbyemail/` + email);
             if(currentUser.data == '' || targetUser.data == ''){
                 alert("Error, invalid user.");
             }
 
             //this will grab the status of the relationship between the two users
-            const blockStatus = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/block/status/` + targetUser.data.id + '/' + currentUser.data.id);
+            const blockStatus = await axios.get(`${getBackendApi()}/block/status/` + targetUser.data.id + '/' + currentUser.data.id);
             if(blockStatus.data){
                 setIsBlocked(true);
             }
@@ -49,7 +50,7 @@ const Profile = () => {
     const fetchUser = async () => {
         var returnUser;
         try {
-            const response = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/getbyemail/` + email);
+            const response = await axios.get(`${getBackendApi()}/users/getbyemail/` + email);
             if(response.data == ''){
                 alert("Error, invalid profile, redirecting to home.");
                 navigate("/profile/" + localStorage.getItem("loggedInUser"));
@@ -69,8 +70,8 @@ const Profile = () => {
     const fetchProfile = async () => {
         var returnProfile;
         try {
-            const user = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/getbyemail/` + email);
-            const profile = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/profiles/getbyuser/` + user.data.id);
+            const user = await axios.get(`${getBackendApi()}/users/getbyemail/` + email);
+            const profile = await axios.get(`${getBackendApi()}/profiles/getbyuser/` + user.data.id);
             setTitle(profile.data.title);
             setBio(profile.data.bio);
             switch(profile.data.status){
@@ -155,14 +156,14 @@ const Profile = () => {
             displayBio.append(displayContent);
 
             try {
-                const profile = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/profiles/getbyuser/` + u.id);
+                const profile = await axios.get(`${getBackendApi()}/profiles/getbyuser/` + u.id);
                 const data = {
                     id: profile.data.id,
                     title,
                     bio,
                     status: profile.data.status
                 };
-                const response = await axios.put('http://${process.env.REACT_APP_BACKEND_API}:8080/profiles/update', data);
+                const response = await axios.put('${getBackendApi()}/profiles/update', data);
             } catch (error) {
                 console.log(error);
                 alert("An error occured, please try again.");

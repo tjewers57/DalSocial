@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../css/signup.css';
+import { getBackendApi } from '../loadConfig';
 
 const SignUp = () => {
 
@@ -34,7 +35,7 @@ const SignUp = () => {
         };
 
         try {
-            const response = await axios.post(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/save`, formData);
+            const response = await axios.post(`${getBackendApi()}/users/save`, formData);
             alert(response.data);
             if(response.data === "User created successfully. Awaiting approval.") {
                 navigate('/login'); // Redirect to login page

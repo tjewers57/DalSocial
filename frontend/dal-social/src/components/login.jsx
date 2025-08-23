@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../css/signup.css';
+import { getBackendApi } from '../loadConfig';
 
 const Login = () => {
     const userRef = useRef();
@@ -29,12 +30,12 @@ const Login = () => {
         };
 
         try {
-            const response = await axios.post("http://${process.env.REACT_APP_BACKEND_API}:8080/users/auth", loginData);
+            const response = await axios.post("${getBackendApi()}/users/auth", loginData);
 
             if (response.data === "User authenticated successfully") {
                 localStorage.setItem('loggedInUser', email);
 
-                const currentUser = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/getbyemail/` + localStorage.getItem('loggedInUser'));
+                const currentUser = await axios.get(`${getBackendApi()}/users/getbyemail/` + localStorage.getItem('loggedInUser'));
                 const userRole = currentUser.data.role;
 
                 if (userRole === "ROLE_USER") {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../css/post.css';
 import {useNavigate} from 'react-router-dom';
+import { getBackendApi } from '../loadConfig';
 
 const Post = (post) => {
     const[firstName, setFirstName] = useState('');
@@ -16,7 +17,7 @@ const Post = (post) => {
 
     const getUser = async () => {
         try {
-            const user = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/get/` + post.post.userId);
+            const user = await axios.get(`${getBackendApi()}/users/get/` + post.post.userId);
             setFirstName(user.data.firstName);
             setLastName(user.data.lastName);
             setEmail(user.data.email);

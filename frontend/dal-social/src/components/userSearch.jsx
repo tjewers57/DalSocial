@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../css/userSearch.css';
+import { getBackendApi } from '../loadConfig';
 
 const UserSearch = () => {
 
@@ -22,7 +23,7 @@ const UserSearch = () => {
     // fetch all users in the database.
     const fetchUsers = async () => {
         try{
-            const users = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/fetch`);
+            const users = await axios.get(`${getBackendApi()}/users/fetch`);
             if(users.data === ''){
                 alert("Error fetching search results, please try again.");
             }

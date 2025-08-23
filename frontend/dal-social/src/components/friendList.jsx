@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FriendRequest from './friendRequest';
 import '../css/friendList.css';
+import { getBackendApi } from '../loadConfig';
 
 const FriendList = () => {
     const navigate = useNavigate();
@@ -24,8 +25,8 @@ const FriendList = () => {
 
     const fetchFriends = async () => {
         try{
-            const currentUser = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/getbyemail/` + localStorage.getItem('loggedInUser'));
-            const response = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/friend-requests/getfriendsbyuserid/${currentUser.data.id}`);
+            const currentUser = await axios.get(`${getBackendApi()}/users/getbyemail/` + localStorage.getItem('loggedInUser'));
+            const response = await axios.get(`${getBackendApi()}/friend-requests/getfriendsbyuserid/${currentUser.data.id}`);
 
             let friendList = [];
             response.data.forEach((request) => {
@@ -53,8 +54,8 @@ const FriendList = () => {
 
     const fetchOutgoingRequests = async () => {
         try{
-            const currentUser = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/getbyemail/` + localStorage.getItem('loggedInUser'));
-            const response = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/friend-requests/getoutgoingrequests/${currentUser.data.id}`);
+            const currentUser = await axios.get(`${getBackendApi()}/users/getbyemail/` + localStorage.getItem('loggedInUser'));
+            const response = await axios.get(`${getBackendApi()}/friend-requests/getoutgoingrequests/${currentUser.data.id}`);
             
             let outgoingList = [];
             response.data.forEach((request) => {
@@ -74,8 +75,8 @@ const FriendList = () => {
 
     const fetchIncomingRequests = async () => {
         try{
-            const currentUser = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/users/getbyemail/` + localStorage.getItem('loggedInUser'));
-            const response = await axios.get(`http://${process.env.REACT_APP_BACKEND_API}:8080/friend-requests/getincomingrequests/${currentUser.data.id}`);
+            const currentUser = await axios.get(`${getBackendApi()}/users/getbyemail/` + localStorage.getItem('loggedInUser'));
+            const response = await axios.get(`${getBackendApi()}/friend-requests/getincomingrequests/${currentUser.data.id}`);
             let incomingList = [];
             response.data.forEach((request) => {
                 const friendData = {
