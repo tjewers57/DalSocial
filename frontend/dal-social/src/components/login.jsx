@@ -30,7 +30,7 @@ const Login = () => {
         };
 
         try {
-            const response = await axios.post("${getBackendApi()}/users/auth", loginData);
+            const response = await axios.post(`${getBackendApi()}/users/auth`, loginData);
 
             if (response.data === "User authenticated successfully") {
                 localStorage.setItem('loggedInUser', email);
