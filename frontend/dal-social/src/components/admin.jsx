@@ -49,7 +49,7 @@ function AdminListComponent() {
         try {
             const user = await axios.get(`${getBackendApi()}/users/get/${userId}`);
             user.data.role = "ROLE_ADMIN";
-            await axios.put('${getBackendApi()}/users/update', user.data);
+            await axios.put(`${getBackendApi()}/users/update`, user.data);
             alert('User role changed successfully!');
         } catch (error) {
             alert('Failed to change the user role');

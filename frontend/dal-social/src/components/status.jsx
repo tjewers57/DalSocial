@@ -55,7 +55,7 @@ const Status = () => {
             }
 
             try {
-                const response = await axios.put('${getBackendApi()}/profiles/update', data);
+                const response = await axios.put(`${getBackendApi()}/profiles/update`, data);
             } catch (error) {
                 console.log(error);
                 alert("An error occured, please try again.");

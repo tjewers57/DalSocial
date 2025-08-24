@@ -60,7 +60,7 @@ const ResetPassword  = () => {
             const user = await axios.get(`${getBackendApi()}/users/getbyemail/` + email);
             if(user.data != ''){
                 user.data.password = password;
-                const update = await axios.put('${getBackendApi()}/users/update', user.data);
+                const update = await axios.put(`${getBackendApi()}/users/update`, user.data);
                 if(update.data === "User successfully updated"){
                     alert("Password reset successfully!");
                     navigate("/login");
