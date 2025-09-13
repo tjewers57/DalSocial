@@ -19,7 +19,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Compiling...'
-                dir('DalSocial/backend/dalsocial') {
+                dir('/backend/dalsocial') {
                     sh 'mvn -B -DskipTests clean package'
                 }
             }
@@ -27,7 +27,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Running Unit Tests...'
-                dir('DalSocial/backend/dalsocial') {
+                dir('/backend/dalsocial') {
                     sh 'mvn test'
                 }
             }
