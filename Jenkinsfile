@@ -10,12 +10,20 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                echo 'Compiling...'
+                sh '''
+                cd DalSocial/backend/dalsocial
+                mvn -B -DskipTests clean package
+                '''
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn test'
+                echo 'Running Unit Tests...'
+                sh '''
+                cd DalSocial/backend/dalsocial
+                mvn test
+                '''
             }
             post {
                 always {
