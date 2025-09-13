@@ -8,6 +8,14 @@ pipeline {
         pollSCM '*/5 * * * *'
     }
     stages {
+        stage ('Debug Checkout') {
+            steps {
+                echo 'Debugging...'
+                sh 'pwd'
+                sh 'ls -la'
+                sh 'ls -R | head -50'
+            }
+        }
         stage('Build') {
             steps {
                 echo 'Compiling...'
