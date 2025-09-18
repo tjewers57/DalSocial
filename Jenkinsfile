@@ -31,7 +31,16 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo "Deploying..."
+                echo "Building Docker Image..."
+                dir ('./backend/dalsocial') {
+                    sh 'docker build -t travisj572/dalsocial-backend:v1.0.${BUILD_NUMBER} .'
+                    echo "Pushing Docker Image to Docker Hub..."
+                    withCredentials([usernamePassword(credentialsId: 'docker-login', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                        sh 'echo $PASSWORD | docker login -u $USERNAME --password-stdin'
+                        sh 'docker push travisj572/dalsocial-backend:v1.0.${BUILD_NUMBER}'
+                        sh 'docker logout'   
+                    }
+                }
             }
         }
     }
